@@ -1,3 +1,11 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td, textarea, input {
+  font-family: arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
 .pageTitle {
   padding: 5px;
   font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
@@ -13,7 +21,20 @@
   white-space: nowrap;
 }
 
-
 .listTable tr:hover {
   background: #DDF;
+}
+
+textarea {
+  height:150px;
+}
+
+td {
+  vertical-align: top;
+
+}
+
+.labelCell {
+  padding: 3px 0px;
+  text-align: right;
 }

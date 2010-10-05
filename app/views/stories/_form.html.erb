@@ -11,23 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :estimate %><br />
-    <%= f.text_field :estimate %>
-  </div>
-  <div class="field">
-    <%= f.label :create_date %><br />
-    <%= f.datetime_select :create_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table>
+	<tr>
+    <td class='labelCell'><%= f.label :title %></td>
+    <td><%= f.text_field :title %></td>
+	</tr>
+	<tr>
+	  <td class='labelCell'><%= f.label :description %></td>
+  	<td><%= f.text_area :description %></td>
+	</tr>
+	<tr>  
+		<td class='labelCell'><%= f.label :estimate %></td>
+	  <td><%= f.text_field :estimate %></td>
+	</tr>
+	<tr>
+	  <td class='labelCell'><%= f.label :create_date %></td>
+  	<td><%= f.datetime_select :create_date %></td>
+	</tr>
+  <tr>
+	  <td></td>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+
 <% end %>
