@@ -23,6 +23,7 @@ body, p, ol, ul, td, textarea, input {
 
 .listTable tr:hover {
   background: #DDF;
+  cursor: pointer;
 }
 
 textarea {
@@ -31,7 +32,7 @@ textarea {
 
 td {
   vertical-align: top;
-
+  margin: 0px;
 }
 
 .labelCell {
