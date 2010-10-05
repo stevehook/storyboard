@@ -1,0 +1,19 @@
+.pageTitle {
+  padding: 5px;
+  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  background: #DDD;
+}
+
+.listTable {
+  
+}
+
+.listTable th {
+  text-align: left;
+  white-space: nowrap;
+}
+
+
+.listTable tr:hover {
+  background: #DDF;
+}
