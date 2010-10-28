@@ -10,12 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100912084656) do
+ActiveRecord::Schema.define(:version => 20101027123117) do
 
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "estimate"
+    t.datetime "create_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "story_status_id", :default => 1, :null => false
+  end
+
+  create_table "story_statuses", :force => true do |t|
+    t.string   "title",       :null => false
     t.datetime "create_date"
     t.datetime "created_at"
     t.datetime "updated_at"

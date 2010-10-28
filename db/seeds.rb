@@ -1,4 +1,9 @@
 Story.delete_all
+StoryStatus.delete_all
+
+StoryStatus.create(:title => 'Open')
+StoryStatus.create(:title => 'Closed')
+StoryStatus.create(:title => 'In Progress')
 
 Story.create(:title => 'Story list should look good',
   :description => 'Stories should be displayed in a styled table',

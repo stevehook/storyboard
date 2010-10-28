@@ -1,25 +1,29 @@
 <div class='pageTitle'>Story List</div>
 
 <table class='listTable' cellspacing='0'>
+  <thead>
   <tr>
     <th>Title</th>
     <th>Description</th>
     <th>Estimate</th>
     <th>Create date</th>
+    <th>Status</th>
     <th></th>
   </tr>
+  </thead>
 
+  <tbody>
 <% @stories.each do |story| %>
   <tr>
     <td><%= story.title %></td>
     <td><%= story.description %></td>
     <td><%= story.estimate %></td>
     <td><%= story.create_date %></td>
-    <td><%= link_to 'Open', edit_story_path(story) %></td>
+    <td><%= story.status.title %></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Story', new_story_path %>

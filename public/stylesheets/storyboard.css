@@ -21,13 +21,13 @@ body, p, ol, ul, td, textarea, input {
   white-space: nowrap;
 }
 
-.listTable tr:hover {
+.listTable tbody tr:hover {
   background: #DDF;
   cursor: pointer;
 }
 
 textarea {
-  height:150px;
+  height: 150px;
 }
 
 td {

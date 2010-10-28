@@ -1,7 +1,7 @@
 class CreateStories < ActiveRecord::Migration
   def self.up
     create_table :stories do |t|
-      t.string :title
+      t.string :title, :null => false
       t.text :description
       t.integer :estimate
       t.timestamp :create_date
