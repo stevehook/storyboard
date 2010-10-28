@@ -5,9 +5,11 @@ one:
   description: MyText
   estimate: 1
   create_date: 2010-09-12 09:46:56
+  story_status_id: 1
 
 two:
   title: MyString
   description: MyText
   estimate: 1
   create_date: 2010-09-12 09:46:56
+  story_status_id: 1
