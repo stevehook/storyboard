@@ -18,8 +18,8 @@
     <td><%= story.title %></td>
     <td><%= story.description %></td>
     <td><%= story.estimate %></td>
-    <td><%= story.create_date %></td>
-    <td><%= story.status.title %></td>
+    <td><%= story.created_at %></td>
+    <td><%= story.status.title unless story.status.nil? %></td>
   </tr>
 <% end %>
   </tbody>

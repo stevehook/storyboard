@@ -30,8 +30,8 @@ GEM
     activesupport (3.0.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
-    bson (1.1.1)
-    bson_ext (1.1.1)
+    bson (1.1.2)
+    bson_ext (1.1.2)
     builder (2.1.2)
     cucumber (0.9.4)
       builder (~> 2.1.2)
@@ -58,11 +58,11 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mongo (1.0.9)
-      bson (>= 1.0.5)
-    mongoid (2.0.0.beta.19)
+    mongo (1.1.2)
+      bson (>= 1.1.1)
+    mongoid (2.0.0.beta.20)
       activemodel (~> 3.0)
-      mongo (= 1.0.9)
+      mongo (~> 1.1)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     nokogiri (1.4.3.1)
@@ -115,9 +115,9 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bson_ext (>= 1.1.1)
+  bson_ext (>= 1.1.2)
   cucumber-rails (>= 0.3.2)
-  mongoid (>= 2.0.0.beta.19)
+  mongoid (>= 2.0.0.beta.20)
   rails (= 3.0.0)
   rspec-rails (>= 2.0.0)
   sqlite3-ruby

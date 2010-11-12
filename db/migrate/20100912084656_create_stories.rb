@@ -5,6 +5,7 @@ class CreateStories < ActiveRecord::Migration
       t.text :description
       t.integer :estimate
       t.timestamp :create_date
+      timestamps
 
       t.timestamps
     end
