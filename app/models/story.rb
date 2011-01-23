@@ -9,9 +9,10 @@ class Story
   field :estimate, :data_type => Integer
   referenced_in :status, :class_name => 'StoryStatus'
 
-  validates :title, :description, :presence => true
-  validates :estimate, :numericality => {:greater_than_or_equal_to => 1, :less_than_or_equal_to => 20}
-  validates :title, :uniqueness => true
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :estimate, :numericality => {:greater_than_or_equal_to => 1, :less_than_or_equal_to => 20}, :presence => true
+  #validates :title, :uniqueness => true
   
   #belongs_to :status, :class_name => 'StoryStatus', :foreign_key => 'story_status_id'
 end
