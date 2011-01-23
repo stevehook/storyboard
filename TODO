@@ -1,8 +1,8 @@
 * Get rid of the Welcome aboard home page.
 * Edit a story from /stories.
 * Add a new story from /stories.
-* Work out how to do meaningful URLs with mongodb IDs.
 * Implement a menu bar.
+* Work out how to do meaningful URLs with mongodb IDs.
 * Work out how to setup some text data.
 * Implement some filters on /stories.
 * Implement sorting on /stories.
