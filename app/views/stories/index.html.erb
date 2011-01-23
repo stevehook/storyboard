@@ -15,6 +15,7 @@
   <tbody>
 <% @stories.each do |story| %>
   <tr>
+    <td><%= story.id %></td>
     <td><%= story.title %></td>
     <td><%= story.description %></td>
     <td><%= story.estimate %></td>

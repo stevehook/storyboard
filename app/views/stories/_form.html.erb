@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :id %>
+  <%= f.text_field :id, :readonly => true %>
 <table>
 	<tr>
     <td class='labelCell'><%= f.label :title %></td>
