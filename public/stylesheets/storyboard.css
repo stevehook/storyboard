@@ -4,12 +4,14 @@ body, p, ol, ul, td, textarea, input {
   font-family: arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
+  margin: 0px;
 }
 
 .pageTitle {
   padding: 5px;
-  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  background: #DDD;
+  font: 140% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  background: #555;
+  color: #DDF;
 }
 
 .listTable {
@@ -39,3 +41,37 @@ td {
   padding: 3px 0px;
   text-align: right;
 }
+
+/* Menu */
+
+.header {
+  background-color: #444;
+  display: block;
+  min-height: 3em;
+}
+
+.menu {
+  list-style-type: disc;
+  list-style: none;
+}
+
+.menu li {
+  color: #DDF;
+  float: right;
+  min-width: 4em;
+  padding: 3px;
+  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  text-align: center;
+}
+
+.menu li a {
+  color: #DDF;
+  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  text-decoration: none;
+}
+
+.menu li:hover {
+  background-color: #222;
+  cursor: pointer;
+}
+

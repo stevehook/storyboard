@@ -1,5 +1,7 @@
 Storyboard::Application.routes.draw do
   resources :stories
+  resources :tasks
+  resources :users
 
   get "say/hello"
 
