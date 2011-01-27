@@ -1,5 +1,5 @@
 * Get rid of the Welcome aboard home page. DONE
-* Edit a story from /stories.
+* Edit a story from /stories. DONE
 * Add a new story from /stories.
 * Implement a simple menu bar. DONE
 * Swap out prototype.js for jQuery.
