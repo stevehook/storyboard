@@ -8,6 +8,7 @@ class Story
   field :description, :data_type => String
   field :estimate, :data_type => Integer
   referenced_in :status, :class_name => 'StoryStatus'
+  referenced_in :sprint
 
   validates :title, :presence => true
   validates :description, :presence => true
