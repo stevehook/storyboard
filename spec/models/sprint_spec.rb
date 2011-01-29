@@ -8,9 +8,8 @@ describe Sprint do
    end
    
   it "should be valid if mandatory attributes are specified" do
-    sprint = Sprint.create(:title => 'test title', :description => 'test description', :estimate => 2)
+    sprint = Sprint.create(:title => 'test title', :description => 'test description')
     sprint.valid?.should be_true
     sprint.errors[:title].none?.should be_true
   end
-  
 end
