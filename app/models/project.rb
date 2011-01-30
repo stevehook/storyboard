@@ -7,7 +7,7 @@ class Project
   field :title, :data_type => String
   field :sprint_length, :data_type => Integer, :default => DEFAULT_SPRINT_LENGTH
   field :description, :data_type => String
-  field :start_date, :data_type => Date
+  field :start_date, :data_type => Date, :default => Time.new
   references_many :sprints
 
   validates :title, :presence => true
@@ -21,5 +21,9 @@ class Project
       :end_date => self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * 2592000))
     self.sprints << sprint
     sprint
+  end
+  
+  def end_date
+    self.start_date + (self.sprints.length * self.sprint_length * 2592000)
   end
 end

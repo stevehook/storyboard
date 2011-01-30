@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe SprintController do
+describe SprintsController do
 
 end

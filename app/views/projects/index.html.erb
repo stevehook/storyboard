@@ -1,0 +1,26 @@
+<div class='pageTitle'>Project List</div>
+
+<table class='listTable' cellspacing='0'>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+<% @projects.each do |project| %>
+  <tr data-href='<%= edit_project_path(project.id) %>'>
+    <td><%= project.id %></td>
+    <td><%= project.title %></td>
+    <td><%= project.start_date %></td>
+    <td><%= project.end_date %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />

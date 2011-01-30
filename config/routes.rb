@@ -1,5 +1,7 @@
 Storyboard::Application.routes.draw do
   resources :stories
+  resources :projects
+  resources :sprints
   resources :tasks
   resources :users
 
