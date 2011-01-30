@@ -1,14 +1,16 @@
 require 'spec_helper'
 
 describe Project do
-  let(:project) { Project.create(:title => 'test project', :start_date => Time.new) }
+  START_DATE = Time.utc(2011, 'jan', 1)
+  
+  let(:project) { Project.create(:title => 'test project', :start_date => START_DATE) }
    
   it "should be valid if mandatory attributes are specified" do
     project.valid?.should be_true
     project.errors[:title].none?.should be_true
   end
   
-  context "after creating new Project with one sprint" do
+  context "after adding one sprint" do
     let!(:sprint) { project.add_sprint }
     
     it "should have 1 sprint in the collection" do
@@ -19,8 +21,44 @@ describe Project do
       sprint.order.should == 1
     end
     
-    it "sprint should have correct start time" do
-      # TODO
+    it "sprint should have title '1'" do
+      sprint.title.should == '1'
     end
+    
+    it "sprint should have correct start date" do
+      sprint.start_date.should == START_DATE
+    end
+    
+    it "sprint should have correct end date" do
+      sprint.end_date.should == START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * 2592000)
+    end
+    
+    context "after adding second sprint" do
+      let!(:sprint2) { project.add_sprint }
+    
+      it "should have 2 sprint in the collection" do
+        project.sprints.length.should == 2
+      end
+  
+      it "sprint 2 should have order 2" do
+        sprint2.order.should == 2
+      end
+  
+      it "sprint 2 should have title '2'" do
+        sprint2.title.should == '2'
+      end
+    
+      it "sprint 2 should have correct start date" do
+        sprint2.start_date.should == START_DATE + (Project::DEFAULT_SPRINT_LENGTH * 2592000)
+      end
+    
+      it "sprint 2 should have correct end date" do
+        sprint2.end_date.should == START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * 2592000)
+      end
+    end
+  end
+  
+  context "after changing start date of project with two sprints" do
+    # TODO
   end
 end
