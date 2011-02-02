@@ -26,7 +26,7 @@ class Project
   end
   
   def end_date
-    self.start_date + (self.sprints.length * self.sprint_length * 2592000)
+    self.start_date + (self.sprints.length * self.sprint_length * 2592000) if self.start_date && self.start_date != ''
   end
   
   def before_save
