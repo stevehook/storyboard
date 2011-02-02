@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Project do
   START_DATE = Time.utc(2011, 'jan', 1)
+  NEW_START_DATE = Time.utc(2011, 'feb', 12)
+  
   
   let(:project) { Project.create(:title => 'test project', :start_date => START_DATE) }
    
@@ -59,6 +61,28 @@ describe Project do
   end
   
   context "after changing start date of project with two sprints" do
-    # TODO
+    let!(:sprint1) { project.add_sprint }
+    let!(:sprint2) { project.add_sprint }
+    
+    before(:each) do
+      project.start_date = NEW_START_DATE
+      project.before_save
+    end
+    
+    it "sprint 1 start_date should be adjusted correctly" do
+      sprint1.start_date.should == NEW_START_DATE
+    end
+    
+    it "sprint 1 end_date should be adjusted correctly" do
+      sprint1.end_date.should == NEW_START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * 2592000)
+    end
+    
+    it "sprint 2 start_date should be adjusted correctly" do
+      sprint2.start_date.should == NEW_START_DATE + (Project::DEFAULT_SPRINT_LENGTH * 2592000)
+    end
+    
+    it "sprint 2 end_date should be adjusted correctly" do
+      sprint2.end_date.should == NEW_START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * 2592000)
+    end
   end
 end
