@@ -1,5 +1,6 @@
 class Project
   DEFAULT_SPRINT_LENGTH = 14
+  ONE_DAY = 86400
   
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -19,8 +20,8 @@ class Project
     sprint ||= Sprint.create()
     sprint.order = self.sprints.length + 1
     sprint.title = (self.sprints.length + 1).to_s
-    sprint.start_date = self.start_date + (self.sprints.length * self.sprint_length * 86400)
-    sprint.end_date = self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * 86400)
+    sprint.start_date = self.start_date + (self.sprints.length * self.sprint_length * ONE_DAY)
+    sprint.end_date = self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * ONE_DAY)
     self.sprints << sprint
     sprint
   end
@@ -30,7 +31,7 @@ class Project
     self.sprint_length = self.sprint_length.to_i if self.sprint_length.class == String
     self.start_date = Time.parse(self.start_date) if self.start_date.class == String
       
-    self.start_date + (self.sprints.length * self.sprint_length * 86400) if self.start_date && self.start_date != ''
+    self.start_date + (self.sprints.length * self.sprint_length * ONE_DAY) if self.start_date && self.start_date != ''
   end
   
   def before_save
@@ -40,8 +41,8 @@ class Project
     
     if self.start_date_changed?
       self.sprints.each do |sprint|
-        sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * 86400)
-        sprint.end_date = self.start_date + (((sprint.order * self.sprint_length) - 1) * 86400)
+        sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * ONE_DAY)
+        sprint.end_date = self.start_date + (((sprint.order * self.sprint_length) - 1) * ONE_DAY)
       end
     end
   end
