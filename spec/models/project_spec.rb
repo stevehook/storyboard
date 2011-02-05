@@ -32,7 +32,7 @@ describe Project do
     end
     
     it "sprint should have correct end date" do
-      sprint.end_date.should == START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * 2592000)
+      sprint.end_date.should == START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * 86400)
     end
     
     context "after adding second sprint" do
@@ -51,11 +51,11 @@ describe Project do
       end
     
       it "sprint 2 should have correct start date" do
-        sprint2.start_date.should == START_DATE + (Project::DEFAULT_SPRINT_LENGTH * 2592000)
+        sprint2.start_date.should == START_DATE + (Project::DEFAULT_SPRINT_LENGTH * 86400)
       end
     
       it "sprint 2 should have correct end date" do
-        sprint2.end_date.should == START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * 2592000)
+        sprint2.end_date.should == START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * 86400)
       end
     end
   end
@@ -74,15 +74,15 @@ describe Project do
     end
     
     it "sprint 1 end_date should be adjusted correctly" do
-      sprint1.end_date.should == NEW_START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * 2592000)
+      sprint1.end_date.should == NEW_START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * 86400)
     end
     
     it "sprint 2 start_date should be adjusted correctly" do
-      sprint2.start_date.should == NEW_START_DATE + (Project::DEFAULT_SPRINT_LENGTH * 2592000)
+      sprint2.start_date.should == NEW_START_DATE + (Project::DEFAULT_SPRINT_LENGTH * 86400)
     end
     
     it "sprint 2 end_date should be adjusted correctly" do
-      sprint2.end_date.should == NEW_START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * 2592000)
+      sprint2.end_date.should == NEW_START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * 86400)
     end
   end
 end

@@ -15,12 +15,12 @@ class Project
   
   before_save :before_save
   
-  def add_sprint
-    sprint = Sprint.create(:title => 'fill in sprint title', 
-      :order => self.sprints.length + 1,
-      :title => (self.sprints.length + 1).to_s,
-      :start_date => self.start_date + (self.sprints.length * self.sprint_length * 2592000),
-      :end_date => self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * 2592000))
+  def add_sprint(sprint = nil)
+    sprint ||= Sprint.create()
+    sprint.order = self.sprints.length + 1
+    sprint.title = (self.sprints.length + 1).to_s
+    sprint.start_date = self.start_date + (self.sprints.length * self.sprint_length * 86400)
+    sprint.end_date = self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * 86400)
     self.sprints << sprint
     sprint
   end
@@ -30,7 +30,7 @@ class Project
     self.sprint_length = self.sprint_length.to_i if self.sprint_length.class == String
     self.start_date = Time.parse(self.start_date) if self.start_date.class == String
       
-    self.start_date + (self.sprints.length * self.sprint_length * 2592000) if self.start_date && self.start_date != ''
+    self.start_date + (self.sprints.length * self.sprint_length * 86400) if self.start_date && self.start_date != ''
   end
   
   def before_save
@@ -40,8 +40,8 @@ class Project
     
     if self.start_date_changed?
       self.sprints.each do |sprint|
-        sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * 2592000)
-        sprint.end_date = self.start_date + (((sprint.order * self.sprint_length) - 1) * 2592000)
+        sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * 86400)
+        sprint.end_date = self.start_date + (((sprint.order * self.sprint_length) - 1) * 86400)
       end
     end
   end

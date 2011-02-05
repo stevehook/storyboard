@@ -4,7 +4,7 @@ class SprintsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.find(params[:project_id])
-    @sprint = Sprint.new :project => @project
+    @sprint = @project.add_sprint
 
     respond_to do |format|
       format.html # new.html.erb
@@ -16,6 +16,8 @@ class SprintsController < ApplicationController
   # POST /projects.xml
   def create
     @sprint = Sprint.new(params[:sprint])
+    @project = Project.find(params[:sprint_project_id])
+    @project.add_sprint(@sprint)
 
     respond_to do |format|
       if @sprint.save
