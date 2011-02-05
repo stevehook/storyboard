@@ -26,10 +26,18 @@ class Project
   end
   
   def end_date
+    # Coerce date types - must be a better way to do this...
+    self.sprint_length = self.sprint_length.to_i if self.sprint_length.class == String
+    self.start_date = Time.parse(self.start_date) if self.start_date.class == String
+      
     self.start_date + (self.sprints.length * self.sprint_length * 2592000) if self.start_date && self.start_date != ''
   end
   
   def before_save
+    # Coerce date types - must be a better way to do this...
+    self.sprint_length = self.sprint_length.to_i if self.sprint_length.class == String
+    self.start_date = Time.parse(self.start_date) if self.start_date.class == String
+    
     if self.start_date_changed?
       self.sprints.each do |sprint|
         sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * 2592000)

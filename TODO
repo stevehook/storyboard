@@ -9,6 +9,7 @@
 * Implement sorting on /stories.
 * Setup autotest. DONE
 * Add a date picker to Project and Sprint forms
+* Work out how to represent enforce data types with mongoid
 
 
 
