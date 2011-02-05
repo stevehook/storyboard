@@ -10,6 +10,8 @@
 * Setup autotest. DONE
 * Add a date picker to Project and Sprint forms
 * Work out how to represent enforce data types with mongoid
+* Add a sprint to a project. DONE
+* Sprint view - show basic details and any stories allocated to the sprint
 
 
 
