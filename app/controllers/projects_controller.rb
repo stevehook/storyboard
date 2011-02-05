@@ -81,4 +81,12 @@ class ProjectsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # GET /projects/1/new_sprint
+  def new_sprint
+    @project = Project.find(params[:id])
+    @sprint = Sprint.new
+    @sprint.project = @project
+    render 'sprints/new'
+  end
 end

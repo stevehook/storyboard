@@ -1,6 +1,8 @@
 Storyboard::Application.routes.draw do
   resources :stories
-  resources :projects
+  resources :projects do
+    resources :sprints
+  end
   resources :sprints
   resources :tasks
   resources :users

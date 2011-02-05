@@ -1,0 +1,8 @@
+<div class='pageTitle'>Project - <%= @project.title %></div>
+
+<% @project.sprints.each do |sprint| %>
+  <div><%= sprint.title %></div>
+<% end %>
+
+<%= link_to 'Add Sprint', new_sprint_path(:project_id => @project) %>
+<%= link_to 'Back', projects_path %>
