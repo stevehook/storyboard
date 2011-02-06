@@ -37,6 +37,7 @@ class ReleasesController < ApplicationController
   # GET /releases/1/edit
   def edit
     @release = Release.find(params[:id])
+    @project = @release.project
   end
 
   # POST /releases
