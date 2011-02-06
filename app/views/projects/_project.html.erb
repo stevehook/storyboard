@@ -1,7 +1,5 @@
 <div class='listItem'>
 <span class='listItemTitle'><%= project.title %></span><br/>
-<span class='listItemDetail'><%= "From #{project.start_date} to #{project.end_date}. " %></span>
-<span class='listItemDetail'><%= "Sprint Length #{project.sprint_length} days." %></span>
 <a href="<%= edit_project_path(project.id) %>">Edit</a>
 <a href="<%= project_path(project.id) %>">View</a>
 </div>

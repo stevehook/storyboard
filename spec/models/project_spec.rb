@@ -4,7 +4,7 @@ describe Project do
   START_DATE = Time.utc(2011, 'jan', 1)
   NEW_START_DATE = Time.utc(2011, 'feb', 12)
   
-  let(:project) { Project.create(:title => 'test project', :start_date => START_DATE) }
+  let(:project) { Project.create(:title => 'test project') }
    
   it "should be valid if mandatory attributes are specified" do
     project.valid?.should be_true

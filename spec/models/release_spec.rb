@@ -4,11 +4,18 @@ describe Release do
   START_DATE = Time.utc(2011, 'jan', 1)
   NEW_START_DATE = Time.utc(2011, 'feb', 12)
   
+  let(:project) { Project.create(:title => 'test project') }
   let(:release) { Release.create(:title => 'test release', :start_date => START_DATE) }
-   
+
   it "should be valid if mandatory attributes are specified" do
+    release.project = project
     release.valid?.should be_true
     release.errors[:title].none?.should be_true
+  end
+
+  it "should be invalid if mandatory attributes are NOT specified" do
+    release.valid?.should be_false
+    release.errors[:project].none?.should be_false
   end
   
   context "after adding one sprint" do

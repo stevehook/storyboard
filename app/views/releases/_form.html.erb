@@ -1,10 +1,10 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
+<%= form_for(@release) do |f| %>
+  <% if @release.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
 
       <ul>
-      <% @project.errors.full_messages.each do |msg| %>
+      <% @release.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -20,6 +20,10 @@
 	<tr>
     <td class='labelCell'><%= f.label :sprint_length %></td>
     <td><%= f.text_field :sprint_length %></td>
+	</tr>
+	<tr>
+    <td class='labelCell'><%= f.label :start_date %></td>
+    <td><%= f.text_field :start_date %></td>
 	</tr>
   <tr>
 	  <td></td>

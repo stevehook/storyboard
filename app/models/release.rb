@@ -10,8 +10,10 @@ class Release
   field :description, :data_type => String
   field :start_date, :data_type => Date, :default => Time.new
   references_many :sprints
+  referenced_in :project
 
   validates :title, :presence => true
+  validates :project, :presence => true
   validates :sprint_length, :presence => true
   
   before_save :before_save
@@ -33,7 +35,8 @@ class Release
   end
   
   def coerce_properties
-    # Coerce date types - must be a better way to do this...
+    # Coerce date types
+    # TODO: There must be a better way to do this... why don't mongoid/rails allow us to put string values into non-string fields?
     self.sprint_length = self.sprint_length.to_i if self.sprint_length.class == String
     self.start_date = Time.parse(self.start_date) if self.start_date.class == String    
   end

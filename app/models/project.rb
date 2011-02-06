@@ -6,13 +6,13 @@ class Project
   include Mongoid::Timestamps
   
   field :title, :data_type => String
-  field :sprint_length, :data_type => Integer, :default => DEFAULT_SPRINT_LENGTH
-  field :description, :data_type => String
-  field :start_date, :data_type => Date, :default => Time.new
+  # field :sprint_length, :data_type => Integer, :default => DEFAULT_SPRINT_LENGTH
+  # field :description, :data_type => String
+  # field :start_date, :data_type => Date, :default => Time.new
   references_many :releases
 
   validates :title, :presence => true
-  validates :sprint_length, :presence => true
+  # validates :sprint_length, :presence => true
   
   # before_save :before_save
   # 

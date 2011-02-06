@@ -11,4 +11,5 @@ class Sprint
   referenced_in :release
 
   validates :title, :presence => true
+  validates :release, :presence => true
 end

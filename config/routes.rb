@@ -4,6 +4,7 @@ Storyboard::Application.routes.draw do
     resources :sprints
   end
   resources :sprints
+  resources :releases
   resources :tasks
   resources :users
 
