@@ -24,7 +24,9 @@ class ReleasesController < ApplicationController
   # GET /releases/new
   # GET /releases/new.xml
   def new
+    @project = Project.find(params[:parent])
     @release = Release.new
+    @project.create_release(@release)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +43,8 @@ class ReleasesController < ApplicationController
   # POST /releases.xml
   def create
     @release = Release.new(params[:release])
+    @project = Project.find(@release.project_id)
+    @project.create_release(@release)
 
     respond_to do |format|
       if @release.save

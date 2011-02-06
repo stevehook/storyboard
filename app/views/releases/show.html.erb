@@ -1,5 +1,5 @@
 <div class='pageTitle'>Release - <%= @release.title %></div>
 <%= render @release.sprints %>
 <hr/>
-<%= link_to 'Add Release', new_release_path(:parent => @release.id) %>
+<%= link_to 'Add Sprint', new_sprint_path(:parent => @release.id) %>
 <%= link_to 'Back', releases_path %>

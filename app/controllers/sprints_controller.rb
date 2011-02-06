@@ -5,9 +5,7 @@ class SprintsController < ApplicationController
   def new
     @release = Release.find(params[:parent])
     @sprint = Sprint.new 
-    Rails.logger.info 'Adding sprint...'
     @release.create_sprint(@sprint)
-    Rails.logger.info 'Added sprint.'
 
     respond_to do |format|
       format.html # new.html.erb

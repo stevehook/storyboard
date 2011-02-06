@@ -38,7 +38,7 @@ describe Release do
     end
     
     it "sprint should have correct end date" do
-      sprint.end_date.should == START_DATE + ((Release::DEFAULT_SPRINT_LENGTH - 1) * Release::ONE_DAY)
+      sprint.end_date.should == START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * Project::ONE_DAY)
     end
     
     context "after adding second sprint" do
@@ -57,11 +57,11 @@ describe Release do
       end
     
       it "sprint 2 should have correct start date" do
-        sprint2.start_date.should == START_DATE + (Release::DEFAULT_SPRINT_LENGTH * Release::ONE_DAY)
+        sprint2.start_date.should == START_DATE + (Project::DEFAULT_SPRINT_LENGTH * Project::ONE_DAY)
       end
     
       it "sprint 2 should have correct end date" do
-        sprint2.end_date.should == START_DATE + (((Release::DEFAULT_SPRINT_LENGTH * 2) - 1) * Release::ONE_DAY)
+        sprint2.end_date.should == START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * Project::ONE_DAY)
       end
     end
   end
@@ -80,15 +80,15 @@ describe Release do
     end
     
     it "sprint 1 end_date should be adjusted correctly" do
-      sprint1.end_date.should == NEW_START_DATE + ((Release::DEFAULT_SPRINT_LENGTH - 1) * Release::ONE_DAY)
+      sprint1.end_date.should == NEW_START_DATE + ((Project::DEFAULT_SPRINT_LENGTH - 1) * Project::ONE_DAY)
     end
     
     it "sprint 2 start_date should be adjusted correctly" do
-      sprint2.start_date.should == NEW_START_DATE + (Release::DEFAULT_SPRINT_LENGTH * Release::ONE_DAY)
+      sprint2.start_date.should == NEW_START_DATE + (Project::DEFAULT_SPRINT_LENGTH * Project::ONE_DAY)
     end
     
     it "sprint 2 end_date should be adjusted correctly" do
-      sprint2.end_date.should == NEW_START_DATE + (((Release::DEFAULT_SPRINT_LENGTH * 2) - 1) * Release::ONE_DAY)
+      sprint2.end_date.should == NEW_START_DATE + (((Project::DEFAULT_SPRINT_LENGTH * 2) - 1) * Project::ONE_DAY)
     end
   end
 end

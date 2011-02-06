@@ -1,12 +1,10 @@
 class Release
-  DEFAULT_SPRINT_LENGTH = 14
-  ONE_DAY = 86400
-  
   include Mongoid::Document
   include Mongoid::Timestamps
   
   field :title, :data_type => String
-  field :sprint_length, :data_type => Integer, :default => DEFAULT_SPRINT_LENGTH
+  field :order, :data_type => Integer
+  field :sprint_length, :data_type => Integer, :default => Project::DEFAULT_SPRINT_LENGTH
   field :description, :data_type => String
   field :start_date, :data_type => Date, :default => Time.new
   references_many :sprints
@@ -23,8 +21,8 @@ class Release
     sprint ||= Sprint.create()
     sprint.order = self.sprints.length + 1
     sprint.title = (self.sprints.length + 1).to_s
-    sprint.start_date = self.start_date + (self.sprints.length * self.sprint_length * ONE_DAY)
-    sprint.end_date = self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * ONE_DAY)
+    sprint.start_date = self.start_date + (self.sprints.length * self.sprint_length * Project::ONE_DAY)
+    sprint.end_date = self.start_date + (((self.sprints.length + 1) * self.sprint_length - 1) * Project::ONE_DAY)
     sprint
   end
   
@@ -50,8 +48,8 @@ class Release
     coerce_properties
     if self.start_date_changed?
       self.sprints.each do |sprint|
-        sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * ONE_DAY)
-        sprint.end_date = self.start_date + (((sprint.order * self.sprint_length) - 1) * ONE_DAY)
+        sprint.start_date = self.start_date + ((sprint.order - 1) * self.sprint_length * Project::ONE_DAY)
+        sprint.end_date = self.start_date + (((sprint.order * self.sprint_length) - 1) * Project::ONE_DAY)
       end
     end
   end
