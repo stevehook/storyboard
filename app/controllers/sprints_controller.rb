@@ -30,4 +30,15 @@ class SprintsController < ApplicationController
       end
     end
   end
+
+  # GET /sprints/1
+  # GET /sprints/1.xml
+  def show
+    @sprint = Sprint.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @sprint }
+    end
+  end
 end
