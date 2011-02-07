@@ -12,6 +12,9 @@
 * Work out how to represent enforce data types with mongoid
 * Add a sprint to a project. DONE
 * Sprint view - show basic details and any stories allocated to the sprint
+* Learn more about mocks/stubs in rpsec
+* Learn more about controller specs
+* Learn about setting up fixtures with rspec (& factory girl?)
 
 
 

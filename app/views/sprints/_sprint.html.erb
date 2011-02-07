@@ -1,4 +1,7 @@
 <div class='listItem'>
-  <span class='listItemTitle'><%= sprint.title %></span><br/>
-  <span class='listItemDetail'><%= "From #{sprint.start_date} to #{sprint.end_date}. " %></span>
+  <span class='listItemTitle'>Sprint <%= sprint.title %></span><br/>
+  <span class='listItemDetail'><%= "#{sprint.start_date.to_s(:date)} - #{sprint.end_date.to_s(:date)}. " %></span><br/>
+  <a href="<%= edit_sprint_path(sprint.id) %>">Edit</a>
+  <a href="<%= sprint_path(sprint.id) %>">View</a>
+  <hr/>
 </div>
