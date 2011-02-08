@@ -1,13 +1,12 @@
-<div class='pageTitle'>Story List</div>
+<div class='pageTitle'>Project Backlog</div>
 
 <table class='listTable' cellspacing='0'>
   <thead>
   <tr>
-    <th>ID</th>
     <th>Title</th>
     <th>Description</th>
     <th>Estimate</th>
-    <th>Create date</th>
+    <th>Created on</th>
     <th>Status</th>
     <th></th>
   </tr>
@@ -16,16 +15,15 @@
   <tbody>
 <% @stories.each do |story| %>
   <tr data-href='<%= edit_story_path(story.id) %>'>
-    <td><%= story.id %></td>
     <td><%= story.title %></td>
     <td><%= story.description %></td>
     <td><%= story.estimate %></td>
-    <td><%= story.created_at %></td>
-    <td><%= story.status.title unless story.status.nil? %></td>
+    <td><%= story.created_at.to_s(:date) %></td>
+    <td><%= story.status %></td>
   </tr>
 <% end %>
   </tbody>
 </table>
 
-<br />
-
+<hr />
+<%= link_to 'New Story', new_story_path %>

@@ -7,6 +7,7 @@ class Release
   field :sprint_length, :data_type => Integer, :default => Project::DEFAULT_SPRINT_LENGTH
   field :description, :data_type => String
   field :start_date, :data_type => Date, :default => Time.new
+  # key :title
   references_many :sprints
   referenced_in :project
 

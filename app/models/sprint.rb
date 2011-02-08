@@ -7,6 +7,7 @@ class Sprint
   field :order, :data_type => Integer
   field :start_date, :data_type => Date
   field :end_date, :data_type => Date
+  # key :title
   references_many :stories
   referenced_in :release
 

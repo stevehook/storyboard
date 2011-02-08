@@ -25,6 +25,10 @@
 		<td class='labelCell'><%= f.label :estimate %></td>
 	  <td><%= f.text_field :estimate %></td>
 	</tr>
+	<tr>  
+		<td class='labelCell'><%= f.label :status %></td>
+	  <td><%= select_tag :story_status, options_for_select(Story::STATUSES), { :name => 'story[status]' } %></td>
+	</tr>
   <tr>
 	  <td></td>
 		<td><%= f.submit %></td>

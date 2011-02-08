@@ -8,6 +8,7 @@ class Project
   field :title, :data_type => String
   field :sprint_length, :data_type => Integer, :default => DEFAULT_SPRINT_LENGTH
   field :description, :data_type => String
+  #key :title
   references_many :releases
 
   validates :title, :presence => true
