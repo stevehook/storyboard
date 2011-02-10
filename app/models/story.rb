@@ -8,10 +8,10 @@ class Story
   field :description, :data_type => String
   field :estimate, :data_type => Integer
   field :status, :data_type => String, :default => :open
-  STATUSES = [:open, :ready, :committed, :done]
+  STATUSES = [:open, :ready, :committed, :done, :rejected]
   #key :title
   #referenced_in :status, :class_name => 'StoryStatus'
-  referenced_in :sprint
+  referenced_in :sprint, :inverse_of => :stories
   referenced_in :project
 
   validates :title, :presence => true

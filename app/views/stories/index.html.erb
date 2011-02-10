@@ -7,6 +7,7 @@
     <th>Description</th>
     <th>Estimate</th>
     <th>Created on</th>
+    <th>Sprint</th>
     <th>Status</th>
     <th></th>
   </tr>
@@ -19,6 +20,7 @@
     <td><%= story.description %></td>
     <td><%= story.estimate %></td>
     <td><%= story.created_at.to_s(:date) %></td>
+    <td><%= story.sprint.title if story.sprint %></td>
     <td><%= story.status %></td>
   </tr>
 <% end %>

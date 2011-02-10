@@ -8,7 +8,7 @@ class Sprint
   field :start_date, :data_type => Date
   field :end_date, :data_type => Date
   # key :title
-  references_many :stories
+  references_many :stories, :inverse_of => :sprint
   referenced_in :release
 
   validates :title, :presence => true
