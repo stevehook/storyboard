@@ -1,4 +1,4 @@
-<div class='pageTitle'>Release - <%= @release.title %></div>
+<% page_heading("Release - #{@release.title}") %>
 <%= render @release.sprints %>
 
 <%= link_to 'Add Sprint', new_sprint_path(:parent => @release.id) %>

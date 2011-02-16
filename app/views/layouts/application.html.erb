@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Storyboard</title>
+  <title><%= yield :title %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'jquery' %>
   <%= javascript_include_tag 'rails' %>
@@ -12,6 +12,7 @@
 
 <%= render(:partial => "shared/menu") %>
 
+<div class='pageTitle'><%= yield :title %></div>
 <%= yield %>
 
 </body>
