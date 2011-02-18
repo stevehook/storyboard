@@ -11,8 +11,9 @@ class Story
   STATUSES = [:open, :ready, :committed, :done, :rejected]
   #key :title
   #referenced_in :status, :class_name => 'StoryStatus'
-  referenced_in :sprint, :inverse_of => :stories
   referenced_in :project
+  referenced_in :release
+  referenced_in :sprint, :inverse_of => :stories
 
   validates :title, :presence => true
   validates :description, :presence => true
