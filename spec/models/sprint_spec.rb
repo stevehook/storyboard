@@ -14,4 +14,13 @@ describe Sprint do
     sprint.valid?.should be_false
     sprint.errors[:release].any?.should be_true
   end
+  
+  context "when setting the sprint on a story" do
+    let(:story) { Story.create(:title => 'test story') }
+  
+    it "should add the story to the sprint" do
+      story.sprint = sprint
+      sprint.stories.length.should == 1
+    end
+  end
 end
