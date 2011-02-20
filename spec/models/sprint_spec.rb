@@ -33,4 +33,16 @@ describe Sprint do
       story.sprint.should == sprint
     end
   end
+  
+  # context "when adding a story to a sprint" do
+  #   let(:story) { Story.create(:title => 'test story') }
+  # 
+  #   it "should associate the sprint with the story" do
+  #     story.sprint_id = sprint.id
+  #     puts story.sprint_id
+  #     story.save
+  #     story.sprint.should_not be_nil
+  #     story.sprint.should == sprint
+  #   end
+  # end
 end

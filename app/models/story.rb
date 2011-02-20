@@ -21,4 +21,10 @@ class Story
   #validates :title, :uniqueness => true
   
   #belongs_to :status, :class_name => 'StoryStatus', :foreign_key => 'story_status_id'
+  
+  before_save :before_save
+  
+  def before_save
+    self.sprint_id = nil if self.sprint_id == ''
+  end
 end
