@@ -20,10 +20,8 @@ class Story
   validates :estimate, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 20 }, :presence => true
   #validates :title, :uniqueness => true
   
-  #belongs_to :status, :class_name => 'StoryStatus', :foreign_key => 'story_status_id'
-  
+  # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
   before_save :before_save
-  
   def before_save
     self.sprint_id = nil if self.sprint_id == ''
   end
