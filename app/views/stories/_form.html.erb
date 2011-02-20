@@ -27,7 +27,7 @@
 	</tr>
 	<tr>  
 		<td class='labelCell'><%= f.label :status %></td>
-	  <td><%= select_tag :story_status, options_for_select(Story::STATUSES), { :name => 'story[status]' } %></td>
+	  <td><%= select_tag :story_status, options_for_select(Story::STATUSES, :selected => @story.status), { :name => 'story[status]' } %></td>
 	</tr>
 	<tr>  
 		<td class='labelCell'><%= f.label :sprint %></td>
