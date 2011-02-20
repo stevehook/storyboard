@@ -29,6 +29,22 @@ Story.create(:title => 'Story list should look good',
   :release => release20,
   :sprint => sprint1
 )
+Story.create(:title => 'Home page should display the project backlog',
+  :description => '/ URL should display backlog',
+  :estimate => 1,
+  :status => :done,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint1
+)
+Story.create(:title => 'User can open a story form from the story list',
+  :description => 'Left clicking anywhere in the story row should navigate to that list',
+  :estimate => 1,
+  :status => :done,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint1
+)
 Story.create(:title => 'Story form should look good',
   :description => 'Individual stories should be displayed in a styled form with appropriate controls. We need a date picker.',
   :estimate => 2,
@@ -37,8 +53,48 @@ Story.create(:title => 'Story form should look good',
   :release => release20,
   :sprint => sprint1
 )
+Story.create(:title => 'User should be able to create new stories',
+  :description => 'Individual stories should be displayed in a styled form with appropriate controls. We need a date picker.',
+  :estimate => 3,
+  :status => :done,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint1
+)
+Story.create(:title => 'User should be able to update existing stories',
+  :description => 'Individual stories should be displayed in a styled form with appropriate controls. We need a date picker.',
+  :estimate => 3,
+  :status => :done,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint1
+)
 Story.create(:title => 'Each page needs a consistent header and menu',
   :description => 'We need to implement a layout that contains a search box, branding logo and menu',
+  :estimate => 5,
+  :status => :commited,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint2
+)
+Story.create(:title => 'User should be able to pick the current project from the menu bar',
+  :description => 'As a user I need to be able to switch between different projects that are managed by the system',
+  :estimate => 3,
+  :status => :commited,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint2
+)
+Story.create(:title => 'Switch release from the menu bar',
+  :description => 'As a user I should easily be able to switch between different releases of the selected project',
+  :estimate => 3,
+  :status => :commited,
+  :project => project_x,
+  :release => release20,
+  :sprint => sprint2
+)
+Story.create(:title => 'The release drop-down in the menu bar should only display the releases for the selected project',
+  :description => '',
   :estimate => 3,
   :status => :commited,
   :project => project_x,
@@ -59,6 +115,24 @@ Story.create(:title => 'We need to set up model tests',
 )
 Story.create(:title => 'Implement a release dashboard',
   :description => 'Should display the sprints for the given release and the status of each one',
+  :estimate => 10,
+  :status => :open,
+  :project => project_x
+)
+Story.create(:title => 'Task model',
+  :description => 'As a sprint team member I need to be able to create tasks for each story during the sprint planning phase.',
+  :estimate => 10,
+  :status => :open,
+  :project => project_x
+)
+Story.create(:title => 'Project/Release burndown chart',
+  :description => 'As a sprint team member I need to be able to see a burndown chart for the release that I am working on to get an idea of project status.',
+  :estimate => 10,
+  :status => :open,
+  :project => project_x
+)
+Story.create(:title => 'Sprint burndown chart',
+  :description => 'As a sprint team member I need to be able to see a burndown chart for the sprint that I am working on to get an idea of sprint status.',
   :estimate => 10,
   :status => :open,
   :project => project_x
