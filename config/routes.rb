@@ -1,4 +1,6 @@
 Storyboard::Application.routes.draw do
+  resources :teams
+
   resources :stories
   resources :projects do
     resources :releases
