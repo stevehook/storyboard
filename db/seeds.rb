@@ -21,6 +21,12 @@ sprint7 = Sprint.create(:release => release20, :title => '7', :order => 7, :star
 sprint8 = Sprint.create(:release => release20, :title => '8', :order => 8, :start_date => Time.utc(2011, 'apr', 11), :end_date => Time.utc(2011, 'apr', 22))
 sprint9 = Sprint.create(:release => release20, :title => '9', :order => 9, :start_date => Time.utc(2011, 'apr', 25), :end_date => Time.utc(2011, 'may', 6))
 
+bob = User.create(:name => 'Bob', :email => 'bob@nocompany.com')
+alice = User.create(:name => 'Alice', :email => 'alice@nocompany.com')
+derek = User.create(:name => 'Derek', :email => 'derek@nocompany.com')
+mary = User.create(:name => 'Mary', :email => 'mary@nocompany.com')
+norman = User.create(:name => 'Norman', :email => 'norman@nocompany.com')
+
 Story.create(:title => 'Story list should look good',
   :description => 'Stories should be displayed in a styled table',
   :estimate => 1,
