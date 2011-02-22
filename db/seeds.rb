@@ -2,6 +2,8 @@ Story.delete_all
 Sprint.delete_all
 Release.delete_all
 Project.delete_all
+User.delete_all
+Team.delete_all
 
 project_x = Project.create(:title => 'Project X')
 
@@ -26,6 +28,8 @@ alice = User.create(:name => 'Alice', :email => 'alice@nocompany.com')
 derek = User.create(:name => 'Derek', :email => 'derek@nocompany.com')
 mary = User.create(:name => 'Mary', :email => 'mary@nocompany.com')
 norman = User.create(:name => 'Norman', :email => 'norman@nocompany.com')
+
+team1 = Team.create(:name => 'Team 1', :product_owner => alice, :scrum_master => bob, :members => [bob, derek, mary, norman])
 
 Story.create(:title => 'Story list should look good',
   :description => 'Stories should be displayed in a styled table',

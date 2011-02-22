@@ -1,23 +1,7 @@
-<h1>Listing teams</h1>
+<% page_heading("Team List") %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @teams.each do |team| %>
-  <tr>
-    <td><%= team.name %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div class='listPanel'>
+<%= render @teams.each %>
+</div>
 
 <br />
-
-<%= link_to 'New Team', new_team_path %>
