@@ -12,8 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>:
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :scrum_master %>:
+	  <td><%= f.collection_select :scrum_master_id, @team.members, :id, :name, { :include_blank => true } %></td>
+  </div>
+  <div class="field">
+    <%= f.label :product_owner %>:
+	  <td><%= f.collection_select :product_owner_id, User.all, :id, :name, { :include_blank => true } %></td>
   </div>
   <div class="actions">
     <%= f.submit %>
