@@ -2,6 +2,7 @@
   <span class='listItemTitle'><%= team.name %></span><br/>
   <span class='listItemDetail'>Scrum Master: <%= team.scrum_master.name if team.scrum_master %></span><br/>
   <span class='listItemDetail'>Product Owner: <%= team.product_owner.name if team.product_owner %></span><br/>
+  <span class='listItemDetail'>Members: <%= team.members.collect { |p| p.name }.join(', ') %></span><br/>
   <a href="<%= edit_team_path(team.id) %>">Edit</a>
   <a href="<%= team_path(team.id) %>">View</a>
   <hr/>
