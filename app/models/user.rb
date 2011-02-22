@@ -6,4 +6,9 @@ class User
   referenced_in :team, :inverse_of => :members
 
   validates :name, :email, :presence => true
+  
+  before_save :before_save
+  def before_save
+    self.team_id = nil if self.team_id == ''
+  end
 end
