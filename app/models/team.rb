@@ -1,5 +1,7 @@
 class Team
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   field :name, :type => String
   references_many :members, :class_name => 'User', :inverse_of => :team
   referenced_in :product_owner, :class_name => 'User'
