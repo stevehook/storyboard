@@ -11,19 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>:
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :scrum_master %>:
+<table>
+  <tr>
+    <td class='labelCell'><%= f.label :name %>:</td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <td class='labelCell'><%= f.label :scrum_master %>:</td>
 	  <td><%= f.collection_select :scrum_master_id, @team.members, :id, :name, { :include_blank => true } %></td>
-  </div>
-  <div class="field">
-    <%= f.label :product_owner %>:
+  </tr>
+  <tr>
+    <td class='labelCell'><%= f.label :product_owner %>:</td>
 	  <td><%= f.collection_select :product_owner_id, User.all, :id, :name, { :include_blank => true } %></td>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </tr>
+  <tr class="actions">
+	  <td></td>
+    <td><%= f.submit %></td>
+  </tr>
+
+</table>
 <% end %>
