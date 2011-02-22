@@ -31,6 +31,11 @@ norman = User.create(:name => 'Norman', :email => 'norman@nocompany.com')
 
 team1 = Team.create(:name => 'Team 1', :product_owner => alice, :scrum_master => bob, :members => [bob, derek, mary, norman])
 
+bob.update(:team => team1)
+derek.update(:team => team1)
+mary.update(:team => team1)
+norman.update(:team => team1)
+
 Story.create(:title => 'Story list should look good',
   :description => 'Stories should be displayed in a styled table',
   :estimate => 1,
