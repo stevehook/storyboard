@@ -14,6 +14,7 @@ class Story
   referenced_in :project
   referenced_in :release
   referenced_in :sprint, :inverse_of => :stories
+  embeds_many :tasks
 
   validates :title, :presence => true
   validates :description, :presence => true

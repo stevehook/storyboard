@@ -6,4 +6,6 @@ class Task
   field :description, :type => String
   field :estimate, :type => Integer
   field :remaining, :type => Integer
+  
+  embedded_in :story
 end
