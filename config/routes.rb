@@ -1,7 +1,9 @@
 Storyboard::Application.routes.draw do
   resources :teams
 
-  resources :stories
+  resources :stories do
+    resources :tasks
+  end
   resources :projects do
     resources :releases
   end
@@ -10,7 +12,6 @@ Storyboard::Application.routes.draw do
   end
   resources :sprints
   resources :releases
-  resources :tasks
   resources :users
 
   get "say/hello"

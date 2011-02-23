@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
-  # GET /tasks
-  # GET /tasks.xml
+  # GET /stories/1/tasks
+  # GET /stories/1/tasks.xml
   def index
-    @tasks = Task.all
+    story = Story.find(params[:story_id])
+    @tasks = story.tasks
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +11,11 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.xml
+  # GET /stories/1/tasks/1
+  # GET /stories/1/tasks/1.xml
   def show
-    @task = Task.find(params[:id])
+    story = Story.find(params[:story_id])
+    @task = story.tasks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +23,11 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/new
-  # GET /tasks/new.xml
+  # GET /stories/1/tasks/new
+  # GET /stories/1/tasks/new.xml
   def new
-    @task = Task.new
+    story = Story.find(params[:story_id])
+    @task = Task.new(:story => story)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,14 +35,16 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/1/edit
+  # GET /stories/1/tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
+    story = Story.find(params[:story_id])
+    @task = story.tasks.find(params[:id])
   end
 
-  # POST /tasks
-  # POST /tasks.xml
+  # POST /stories/1/tasks
+  # POST /stories/1/tasks.xml
   def create
+    story = Story.find(params[:story_id])
     @task = Task.new(params[:task])
 
     respond_to do |format|
@@ -53,10 +58,11 @@ class TasksController < ApplicationController
     end
   end
 
-  # PUT /tasks/1
-  # PUT /tasks/1.xml
+  # PUT /stories/1/tasks/1
+  # PUT /stories/1/tasks/1.xml
   def update
-    @task = Task.find(params[:id])
+    story = Story.find(params[:story_id])
+    @task = story.tasks.find(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -69,10 +75,11 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.xml
+  # DELETE /stories/1/tasks/1
+  # DELETE /stories/1/tasks/1.xml
   def destroy
-    @task = Task.find(params[:id])
+    story = Story.find(params[:story_id])
+    @task = story.tasks.find(params[:id])
     @task.destroy
 
     respond_to do |format|
