@@ -1,4 +1,4 @@
-<%= form_for(@task, :url => story_tasks_path(:story_id => @story)) do |f| %>
+<%= form_for(@task, :url => (@task.new_record? ? story_tasks_path(:story_id => @story) : story_task_path(:story_id => @story, :id => @task.id))) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
