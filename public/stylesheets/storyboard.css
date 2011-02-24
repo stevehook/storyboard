@@ -7,6 +7,18 @@ body, p, ol, ul, td, textarea, input {
   margin: 0px;
 }
 
+.listItem {
+  padding: 2px 5px;
+  border-bottom: 1px solid #BBB;
+}
+
+.listItemTitle {
+  font-size:   14px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #448;
+}
+
 .pageTitle {
   padding: 5px;
   font: 140% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;

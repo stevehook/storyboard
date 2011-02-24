@@ -1,5 +1,5 @@
 <% page_heading("Project - #{@project.title}") %>
 <%= render @project.releases %>
-<hr/>
+
 <%= link_to 'Add Release', new_release_path(:parent => @project.id) %>
 <%= link_to 'Back', projects_path %>
