@@ -4,6 +4,7 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th>Status</th>
     <th>Estimate</th>
     <th>Remaining</th>
     <th></th>
@@ -15,6 +16,7 @@
   <tr>
     <td><%= task.title %></td>
     <td><%= task.description %></td>
+    <td><%= task.status %></td>
     <td><%= task.estimate %></td>
     <td><%= task.remaining %></td>
     <td><%= link_to 'Show', story_task_path(@story, task) %></td>

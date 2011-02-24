@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :estimate %><br />
-    <%= f.text_field :estimate %>
-  </div>
-  <div class="field">
-    <%= f.label :remaining %><br />
-    <%= f.text_field :remaining %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table>
+  <tr class="field">
+    <td class='labelCell'><%= f.label :title %></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+  <tr class="field">
+    <td class='labelCell'><%= f.label :description %></td>
+    <td><%= f.text_field :description %></td>
+  </tr>
+	<tr>  
+		<td class='labelCell'><%= f.label :status %></td>
+	  <td><%= select_tag :task_status, options_for_select(Task::STATUSES, :selected => @task.status), { :name => 'task[status]' } %></td>
+	</tr>
+  <tr class="field">
+    <td class='labelCell'><%= f.label :estimate %></td>
+    <td><%= f.text_field :estimate %></td>
+  </tr>
+  <tr class="field">
+    <td class='labelCell'><%= f.label :remaining %></td>
+    <td><%= f.text_field :remaining %></td>
+  </tr>
+  <tr class="actions">
+    <td></td>
+    <rd><%= f.submit %></rd>
+  </tr>
+</table>
+
 <% end %>

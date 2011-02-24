@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'mongoid'
+require 'like_validator'
 
 class Story
   include Mongoid::Document
@@ -22,6 +23,7 @@ class Story
   validates :description, :presence => true
   validates :estimate, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 20 }, :presence => true
   #validates :title, :uniqueness => true
+  validates :status, :like => { :in => Story::STATUSES }
   
   # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
   before_save :before_save
