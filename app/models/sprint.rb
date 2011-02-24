@@ -20,6 +20,10 @@ class Sprint
   
   before_save :before_save
   def before_save
+    refresh_counts
+  end
+
+  def refresh_counts
     self.story_count = self.stories.length
     self.points_count = self.stories.inject(0) { |n, story| story.estimate + n }
   end

@@ -25,11 +25,17 @@ class Story
   #validates :title, :uniqueness => true
   validates :status, :like => { :in => Story::STATUSES }
   
-  # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
   before_save :before_save
   def before_save
+    # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
     self.sprint_id = nil if self.sprint_id == ''
+
     self.tasks_effort_remaining = self.tasks.inject(0) { |n, task| n + task.remaining.to_i }
     self.tasks_estimate = self.tasks.inject(0) { |n, task| n + task.estimate.to_i }
+
+    if self.sprint
+      self.sprint.refresh_counts 
+      self.sprint.save
+    end
   end
 end
