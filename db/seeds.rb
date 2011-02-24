@@ -146,9 +146,33 @@ Story.create(:title => 'Project/Release burndown chart',
   :status => :open,
   :project => project_x
 )
-Story.create(:title => 'Sprint burndown chart',
+story = Story.create(:title => 'Sprint burndown chart',
   :description => 'As a sprint team member I need to be able to see a burndown chart for the sprint that I am working on to get an idea of sprint status.',
   :estimate => 10,
-  :status => :open,
-  :project => project_x
+  :status => :commited,
+  :project => project_x,
+  :sprint => sprint2
 )
+
+story.tasks.create!(:title => 'Investigate graphing tools', 
+  :description => 'We need to decide on what technical approach we are going to take for rendering the burndown chart graphics in a Web application',
+  :estimate => 7,
+  :remaining => 4)
+story.tasks.create!(:title => 'Implement burndown view', 
+  :description => 'We will need a new view that should be accessible from the sprint#show view',
+  :estimate => 7,
+  :remaining => 7)
+story.tasks.create!(:title => 'Implement action to render graph', 
+  :description => 'We need to be able to render the graph on the burndown view',
+  :estimate => 7,
+  :remaining => 7)
+story.tasks.create!(:title => 'Write test cases', 
+  :description => '',
+  :estimate => 7,
+  :remaining => 7)
+story.tasks.create!(:title => 'Run tests', 
+  :description => '',
+  :estimate => 14,
+  :remaining => 14)
+
+  

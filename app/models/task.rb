@@ -7,5 +7,5 @@ class Task
   field :estimate, :type => Integer
   field :remaining, :type => Integer
   
-  embedded_in :story
+  embedded_in :story, :inverse_of => :tasks
 end
