@@ -47,12 +47,9 @@ class TasksController < ApplicationController
     @story = Story.find(params[:story_id])
     @task = Task.new(params[:task])
     @story.tasks << @task
-    logger.info 'create'
 
     respond_to do |format|
       if @task.save
-        logger.info 'created task successfully'
-        logger.info "redirecting to #{story_tasks_url}"
         format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else

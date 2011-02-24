@@ -8,6 +8,8 @@ class Story
   field :description, :data_type => String
   field :estimate, :data_type => Integer
   field :status, :data_type => String, :default => :open
+  field :tasks_estimate, :data_type => Integer
+  field :tasks_effort_remaining, :data_type => Integer
   STATUSES = [:open, :ready, :committed, :done, :rejected]
   #key :title
   #referenced_in :status, :class_name => 'StoryStatus'
@@ -25,5 +27,7 @@ class Story
   before_save :before_save
   def before_save
     self.sprint_id = nil if self.sprint_id == ''
+    self.tasks_effort_remaining = self.tasks.inject(0) { |n, task| n + task.remaining.to_i }
+    self.tasks_estimate = self.tasks.inject(0) { |n, task| n + task.estimate.to_i }
   end
 end
