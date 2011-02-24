@@ -47,5 +47,17 @@ describe Task do
     it "story#tasks_estimate should be correct" do
       story.tasks_estimate.should == 25
     end
+    
+    context "when modifying the remaining work on tasks" do
+      before(:each) do
+        @task2.remaining = 7
+        @task3.remaining = 6
+        story.before_save
+      end
+      
+      it "should update the story#tasks_effort_remaining" do
+        story.tasks_effort_remaining.should == 20
+      end
+    end
   end
 end
