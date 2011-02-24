@@ -7,10 +7,20 @@ class Sprint
   field :order, :data_type => Integer
   field :start_date, :data_type => Date
   field :end_date, :data_type => Date
+  field :story_count, :data_type => Integer, :default => 0
+  field :points_count, :data_type => Integer, :default => 0
   # key :title
   references_many :stories
   referenced_in :release
 
   validates :title, :presence => true
   validates :release, :presence => true
+  validates :story_count, :numericality => { :greater_than_or_equal_to => 0 }, :presence => true
+  validates :points_count, :numericality => { :greater_than_or_equal_to => 0 }, :presence => true
+  
+  before_save :before_save
+  def before_save
+    self.story_count = self.stories.length
+    self.points_count = self.stories.inject(0) { |n, story| story.estimate + n }
+  end
 end
