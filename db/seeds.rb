@@ -146,7 +146,7 @@ Story.create(:title => 'Project/Release burndown chart',
   :status => :open,
   :project => project_x
 )
-story = Story.create(:title => 'Sprint burndown chart',
+story = Story.create!(:title => 'Sprint burndown chart',
   :description => 'As a sprint team member I need to be able to see a burndown chart for the sprint that I am working on to get an idea of sprint status.',
   :estimate => 10,
   :status => :committed,
@@ -180,4 +180,7 @@ story.tasks.create!(:title => 'Run tests',
   :remaining => 14,
   :status => :not_started)
 
-  
+Sprint.all.each do |sprint|
+  sprint.refresh_counts
+  sprint.save!
+end

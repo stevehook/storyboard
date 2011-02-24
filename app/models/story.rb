@@ -33,9 +33,10 @@ class Story
     self.tasks_effort_remaining = self.tasks.inject(0) { |n, task| n + task.remaining.to_i }
     self.tasks_estimate = self.tasks.inject(0) { |n, task| n + task.estimate.to_i }
 
-    if self.sprint
-      self.sprint.refresh_counts 
-      self.sprint.save
-    end
+    # TODO: Need to work out how to refresh the counts on the parent sprint
+    # if self.sprint
+    #   self.sprint.refresh_counts
+    #   self.sprint.save!
+    # end
   end
 end

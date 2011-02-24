@@ -1,5 +1,5 @@
 <% page_heading("Release - #{@release.title}") %>
-<%= render @release.sprints %>
+<%= render @release.sprints.sort_by { |sprint| sprint.start_date } %>
 
 <%= link_to 'Add Sprint', new_sprint_path(:parent => @release.id) %>
 <%= link_to 'Back', releases_path %>
