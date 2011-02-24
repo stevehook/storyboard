@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   # GET /stories/1/tasks
   # GET /stories/1/tasks.xml
   def index
-    story = Story.find(params[:story_id])
-    @tasks = story.tasks
+    @story = Story.find(params[:story_id])
+    @tasks = @story.tasks
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +14,8 @@ class TasksController < ApplicationController
   # GET /stories/1/tasks/1
   # GET /stories/1/tasks/1.xml
   def show
-    story = Story.find(params[:story_id])
-    @task = story.tasks.find(params[:id])
+    @story = Story.find(params[:story_id])
+    @task = @story.tasks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,8 +26,8 @@ class TasksController < ApplicationController
   # GET /stories/1/tasks/new
   # GET /stories/1/tasks/new.xml
   def new
-    story = Story.find(params[:story_id])
-    @task = Task.new(:story => story)
+    @story = Story.find(params[:story_id])
+    @task = Task.new(:story => @story)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,19 +37,23 @@ class TasksController < ApplicationController
 
   # GET /stories/1/tasks/1/edit
   def edit
-    story = Story.find(params[:story_id])
-    @task = story.tasks.find(params[:id])
+    @story = Story.find(params[:story_id])
+    @task = @story.tasks.find(params[:id])
   end
 
   # POST /stories/1/tasks
   # POST /stories/1/tasks.xml
   def create
-    story = Story.find(params[:story_id])
+    @story = Story.find(params[:story_id])
     @task = Task.new(params[:task])
+    @story.tasks << @task
+    logger.info 'create'
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :notice => 'Task was successfully created.') }
+        logger.info 'created task successfully'
+        logger.info "redirecting to #{story_tasks_url}"
+        format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
@@ -61,12 +65,12 @@ class TasksController < ApplicationController
   # PUT /stories/1/tasks/1
   # PUT /stories/1/tasks/1.xml
   def update
-    story = Story.find(params[:story_id])
-    @task = story.tasks.find(params[:id])
+    @story = Story.find(params[:story_id])
+    @task = @story.tasks.find(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,8 +82,8 @@ class TasksController < ApplicationController
   # DELETE /stories/1/tasks/1
   # DELETE /stories/1/tasks/1.xml
   def destroy
-    story = Story.find(params[:story_id])
-    @task = story.tasks.find(params[:id])
+    @story = Story.find(params[:story_id])
+    @task = @story.tasks.find(params[:id])
     @task.destroy
 
     respond_to do |format|
