@@ -19,6 +19,8 @@ class Story
   referenced_in :release
   referenced_in :sprint, :inverse_of => :stories
   embeds_many :tasks
+  
+  attr_protected :tasks_effort_remaining, :tasks_estimate
 
   validates :title, :presence => true
   validates :description, :presence => true

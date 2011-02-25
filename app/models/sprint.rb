@@ -13,6 +13,8 @@ class Sprint
   references_many :stories
   referenced_in :release
 
+  attr_protected :story_count, :points_count
+
   validates :title, :presence => true
   validates :release, :presence => true
   validates :story_count, :numericality => { :greater_than_or_equal_to => 0 }, :presence => true
