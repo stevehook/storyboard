@@ -25,24 +25,24 @@ describe Sprint do
   end
   
   context "when adding a story to a sprint" do
-    let(:story) { Story.create(:title => 'test story') }
+    let(:story) { Story.create(:title => 'test story', :estimate => 5) }
   
     it "should associate the sprint with the story" do
       sprint.stories << story
       story.sprint.should_not be_nil
       story.sprint.should == sprint
     end
+    
+    it "should update the sprint#story_count" do
+      sprint.stories << story
+      sprint.refresh_counts
+      sprint.story_count.should == 1
+    end
+    
+    it "should update the sprint#points_count" do
+      sprint.stories << story
+      sprint.refresh_counts
+      sprint.points_count.should == 5
+    end
   end
-  
-  # context "when adding a story to a sprint" do
-  #   let(:story) { Story.create(:title => 'test story') }
-  # 
-  #   it "should associate the sprint with the story" do
-  #     story.sprint_id = sprint.id
-  #     puts story.sprint_id
-  #     story.save
-  #     story.sprint.should_not be_nil
-  #     story.sprint.should == sprint
-  #   end
-  # end
 end

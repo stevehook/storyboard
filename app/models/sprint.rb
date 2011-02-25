@@ -25,6 +25,6 @@ class Sprint
 
   def refresh_counts
     self.story_count = self.stories.length
-    self.points_count = self.stories.inject(0) { |n, story| story.estimate + n }
+    self.points_count = self.stories.inject(0) { |n, story| story.estimate.to_i + n }
   end
 end

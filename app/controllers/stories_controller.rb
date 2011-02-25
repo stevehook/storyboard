@@ -43,7 +43,7 @@ class StoriesController < ApplicationController
     @story = Story.new(params[:story])
 
     respond_to do |format|
-      if @story.save
+      if @story.update_sprint_and_save
         format.html { redirect_to(@story, :notice => 'Story was successfully created.') }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else
@@ -59,7 +59,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
 
     respond_to do |format|
-      if @story.update_attributes(params[:story])
+      if @story.update_sprint_and_save(params[:story])
         format.html { redirect_to(@story, :notice => 'Story was successfully updated.') }
         format.xml  { head :ok }
       else
