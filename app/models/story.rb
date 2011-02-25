@@ -17,7 +17,7 @@ class Story
   referenced_in :category
   referenced_in :project
   referenced_in :release
-  referenced_in :sprint, :inverse_of => :stories
+  referenced_in :_sprint, :inverse_of => :stories, :class_name => 'Sprint'
   embeds_many :tasks
   
   attr_protected :tasks_effort_remaining, :tasks_estimate
@@ -34,9 +34,22 @@ class Story
     self.priority = 0 if self.status == :done
   end
 
+  def sprint
+    self._sprint
+  end
+
+  def sprint_id
+    self._sprint_id
+  end
+
   def sprint=(new_sprint)
-    write_attribute(:sprint_id, new_sprint.id)
+    self._sprint = new_sprint
     self.release = new_sprint.release if new_sprint
+  end
+
+  def sprint_id=(id)
+    self._sprint_id = id
+    self.release = self.sprint.release if self.sprint
   end
 
   before_save :before_save

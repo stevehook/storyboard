@@ -10,7 +10,7 @@ class Sprint
   field :story_count, :data_type => Integer, :default => 0
   field :points_count, :data_type => Integer, :default => 0
   # key :title
-  references_many :stories
+  references_many :stories, :inverse_of => :_sprint
   referenced_in :release
 
   attr_protected :story_count, :points_count
