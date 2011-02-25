@@ -28,6 +28,10 @@ class Story
     # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
     self.sprint_id = nil if self.sprint_id == ''
 
+    refresh_counts
+  end
+  
+  def refresh_counts
     self.tasks_effort_remaining = self.tasks.inject(0) { |n, task| n + task.remaining.to_i }
     self.tasks_estimate = self.tasks.inject(0) { |n, task| n + task.estimate.to_i }
   end
