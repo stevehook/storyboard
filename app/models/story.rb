@@ -11,8 +11,10 @@ class Story
   field :status, :data_type => String, :default => :open
   field :tasks_estimate, :data_type => Integer
   field :tasks_effort_remaining, :data_type => Integer
+  field :priority, :data_type => Integer, :default => 10000
   STATUSES = [:open, :ready, :committed, :done, :rejected]
   #key :title
+  referenced_in :category
   referenced_in :project
   referenced_in :release
   referenced_in :sprint, :inverse_of => :stories
@@ -21,6 +23,7 @@ class Story
   validates :title, :presence => true
   validates :description, :presence => true
   validates :estimate, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 20 }, :presence => true
+  validates :priority, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
   before_save :before_save
