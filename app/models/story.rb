@@ -23,7 +23,7 @@ class Story
   validates :title, :presence => true
   validates :description, :presence => true
   validates :estimate, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 20 }, :presence => true
-  validates :priority, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 10000 }, :presence => true
+  validates :priority, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
   before_save :before_save

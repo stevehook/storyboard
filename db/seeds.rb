@@ -36,13 +36,18 @@ derek.update(:team => team1)
 mary.update(:team => team1)
 norman.update(:team => team1)
 
+storyboard_category = Category.create(:name => 'Storyboard')
+other_category = Category.create(:name => 'Other')
+
 Story.create(:title => 'Story list should look good',
   :description => 'Stories should be displayed in a styled table',
   :estimate => 1,
   :status => :done,
   :project => project_x,
   :release => release20,
-  :sprint => sprint1
+  :sprint => sprint1,
+  :category => storyboard_category,
+  :priority => 0
 )
 Story.create(:title => 'Home page should display the project backlog',
   :description => '/ URL should display backlog',
@@ -50,7 +55,9 @@ Story.create(:title => 'Home page should display the project backlog',
   :status => :done,
   :project => project_x,
   :release => release20,
-  :sprint => sprint1
+  :sprint => sprint1,
+  :category => storyboard_category,
+  :priority => 0
 )
 Story.create(:title => 'User can open a story form from the story list',
   :description => 'Left clicking anywhere in the story row should navigate to that list',
@@ -58,7 +65,9 @@ Story.create(:title => 'User can open a story form from the story list',
   :status => :done,
   :project => project_x,
   :release => release20,
-  :sprint => sprint1
+  :sprint => sprint1,
+  :category => storyboard_category,
+  :priority => 0
 )
 Story.create(:title => 'Story form should look good',
   :description => 'Individual stories should be displayed in a styled form with appropriate controls. We need a date picker.',
@@ -66,7 +75,9 @@ Story.create(:title => 'Story form should look good',
   :status => :done,
   :project => project_x,
   :release => release20,
-  :sprint => sprint1
+  :sprint => sprint1,
+  :category => storyboard_category,
+  :priority => 0
 )
 Story.create(:title => 'User should be able to create new stories',
   :description => 'Individual stories should be displayed in a styled form with appropriate controls. We need a date picker.',
@@ -74,7 +85,9 @@ Story.create(:title => 'User should be able to create new stories',
   :status => :done,
   :project => project_x,
   :release => release20,
-  :sprint => sprint1
+  :sprint => sprint1,
+  :category => storyboard_category,
+  :priority => 0
 )
 Story.create(:title => 'User should be able to update existing stories',
   :description => 'Individual stories should be displayed in a styled form with appropriate controls. We need a date picker.',
@@ -82,7 +95,9 @@ Story.create(:title => 'User should be able to update existing stories',
   :status => :done,
   :project => project_x,
   :release => release20,
-  :sprint => sprint1
+  :sprint => sprint1,
+  :category => storyboard_category,
+  :priority => 0
 )
 Story.create(:title => 'Each page needs a consistent header and menu',
   :description => 'We need to implement a layout that contains a search box, branding logo and menu',
@@ -90,7 +105,9 @@ Story.create(:title => 'Each page needs a consistent header and menu',
   :status => :committed,
   :project => project_x,
   :release => release20,
-  :sprint => sprint2
+  :sprint => sprint2,
+  :category => storyboard_category,
+  :priority => 1
 )
 Story.create(:title => 'User should be able to pick the current project from the menu bar',
   :description => 'As a user I need to be able to switch between different projects that are managed by the system',
@@ -98,7 +115,9 @@ Story.create(:title => 'User should be able to pick the current project from the
   :status => :committed,
   :project => project_x,
   :release => release20,
-  :sprint => sprint2
+  :sprint => sprint2,
+  :category => storyboard_category,
+  :priority => 2
 )
 Story.create(:title => 'Switch release from the menu bar',
   :description => 'As a user I should easily be able to switch between different releases of the selected project',
@@ -106,7 +125,9 @@ Story.create(:title => 'Switch release from the menu bar',
   :status => :committed,
   :project => project_x,
   :release => release20,
-  :sprint => sprint2
+  :sprint => sprint2,
+  :category => storyboard_category,
+  :priority => 3
 )
 Story.create(:title => 'The release drop-down in the menu bar should only display the releases for the selected project',
   :description => '',
@@ -114,44 +135,58 @@ Story.create(:title => 'The release drop-down in the menu bar should only displa
   :status => :committed,
   :project => project_x,
   :release => release20,
-  :sprint => sprint2
+  :sprint => sprint2,
+  :category => storyboard_category,
+  :priority => 4
 )
 Story.create(:title => 'We need to set up controller tests',
   :description => 'Just get these started',
   :estimate => 1,
   :status => :ready,
-  :project => project_x
+  :project => project_x,
+  :category => storyboard_category,
+  :priority => 5
 )
 Story.create(:title => 'We need to set up model tests',
   :description => 'Just get these started',
   :estimate => 5,
   :status => :ready,
-  :project => project_x
+  :project => project_x,
+  :category => storyboard_category,
+  :priority => 6
 )
 Story.create(:title => 'Implement a release dashboard',
   :description => 'Should display the sprints for the given release and the status of each one',
   :estimate => 10,
   :status => :open,
-  :project => project_x
+  :project => project_x,
+  :category => storyboard_category,
+  :priority => 10000
 )
 Story.create(:title => 'Task model',
   :description => 'As a sprint team member I need to be able to create tasks for each story during the sprint planning phase.',
   :estimate => 10,
   :status => :open,
-  :project => project_x
+  :project => project_x,
+  :category => storyboard_category,
+  :priority => 10000
 )
 Story.create(:title => 'Project/Release burndown chart',
   :description => 'As a sprint team member I need to be able to see a burndown chart for the release that I am working on to get an idea of project status.',
   :estimate => 10,
   :status => :open,
-  :project => project_x
+  :project => project_x,
+  :category => storyboard_category,
+  :priority => 10000
 )
 story = Story.create!(:title => 'Sprint burndown chart',
   :description => 'As a sprint team member I need to be able to see a burndown chart for the sprint that I am working on to get an idea of sprint status.',
   :estimate => 10,
   :status => :committed,
   :project => project_x,
-  :sprint => sprint2
+  :sprint => sprint2,
+  :category => storyboard_category,
+  :priority => 7
 )
 
 story.tasks.create!(:title => 'Investigate graphing tools', 
