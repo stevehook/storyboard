@@ -80,4 +80,16 @@ describe Story do
       story.priority.should == 0
     end
   end
+  
+  context "when a story is added to a sprint" do
+    let(:release) { Release.create(:title => 'Version 1.0') }
+    let(:sprint) { Sprint.create(:title => '1', :release => release) }
+    
+    it "should have be allocated to the same release as the sprint" do
+      story = Story.create(:title => 'test title', :description => 'test description')
+      story.sprint = sprint
+      story.release.should_not be_nil
+      story.release.should == release
+    end
+  end
 end

@@ -34,6 +34,11 @@ class Story
     self.priority = 0 if self.status == :done
   end
 
+  def sprint=(new_sprint)
+    write_attribute(:sprint_id, new_sprint.id)
+    self.release = new_sprint.release if new_sprint
+  end
+
   before_save :before_save
   def before_save
     # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
