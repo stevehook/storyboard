@@ -19,7 +19,6 @@ class Task
   before_save :before_save
   def before_save
     self.remaining = self.estimate if self.remaining.nil?
-    Rails.logger.info "before save #{self.remaining}"
     self.story.refresh_counts
     self.story.save
   end
