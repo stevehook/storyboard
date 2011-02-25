@@ -26,6 +26,12 @@ class Story
   validates :priority, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
+  # Need to override the status attr_accessor so that priority gets updated as required
+  def status=(val)
+    write_attribute(:status, val)
+    self.priority = 0 if self.status == :done
+  end
+
   before_save :before_save
   def before_save
     # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
