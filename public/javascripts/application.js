@@ -12,3 +12,8 @@ $(function() {
     if (node) { window.location = $(node).attr('data-href'); }
   });
 });
+
+
+$(function() {
+  $(".sortableList").sortable();
+});
