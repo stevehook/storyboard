@@ -1,0 +1,33 @@
+<% page_heading("Project Backlog") %>
+
+<table class='listTable' cellspacing='0'>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Estimate</th>
+    <th>Created on</th>
+    <th>Sprint</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+<% @stories.each do |story| %>
+  <tr data-href='<%= edit_story_path(story.id) %>'>
+    <td><%= story.title %></td>
+    <td><%= story.description %></td>
+    <td><%= story.estimate %></td>
+    <td><%= story.created_at.to_s(:date) %></td>
+    <td><%= story.sprint.title if story.sprint %></td>
+    <td><%= story.priority %></td>
+    <td><%= story.status %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<hr />
+<%= link_to 'New Story', new_story_path %>

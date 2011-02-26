@@ -34,6 +34,8 @@ class Story
     self.priority = 0 if self.status == :done
   end
 
+  # Need to override the sprint attribute so that we can coordinate the release value
+  # Is there a technique that we can use to generalise this?
   def sprint
     self._sprint
   end
