@@ -1,5 +1,6 @@
 <div class='listItem'>
-  <span class='listItemTitle'><%= story.title %></span><br/>
+  <span class='listItemTitle'><a href="<%= edit_story_path(story.id) %>"><%= story.title %></a></span>
+  <span class='listItemDetail'>&nbsp;&nbsp;&nbsp;&nbsp;<%= "priority #{story.priority}" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= "#{story.status}" %></span><br/>
   <span class='listItemDetail'><%= story.description %></span>
-  <span class='listItemDetail' style='float: right;'><%= "Priority #{story.priority}" %></span>
+  <span class='listItemDetail' style='float: right;'></span>
 </div>

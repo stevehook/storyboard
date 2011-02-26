@@ -12,11 +12,12 @@ body, p, ol, ul, td, textarea, input {
   border-bottom: 1px solid #BBB;
 }
 
-.listItemTitle {
+.listItemTitle, .listItemTitle a {
   font-size:   14px;
   font-weight: bold;
   line-height: 20px;
   color: #448;
+  text-decoration: none;
 }
 
 .pageTitle {
