@@ -13,7 +13,15 @@ $(function() {
   });
 });
 
-
+// TODO: Will need to apply this to the product backlog ONLY
 $(function() {
-  $(".sortableList").sortable();
+  $(".sortableList").sortable({
+    axis: 'y',
+    containment: 'parent',
+    cursor: 'move',
+    update: function(event, ui) {
+      // TODO: Make Ajax call to the server to update the priority and refresh the list
+      console.log('story has been reprioritised');
+    }
+  });
 });
