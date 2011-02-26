@@ -20,8 +20,17 @@ $(function() {
     containment: 'parent',
     cursor: 'move',
     update: function(event, ui) {
-      // TODO: Make Ajax call to the server to update the priority and refresh the list
-      console.log('story has been reprioritised');
+      var id = ui.item.attr('data-id');
+      var nextItem = ui.item.next();
+      if (nextItem) {
+        var new_priority = nextItem.attr('data-priority');
+        $.post('/stories/' +  id + '/reprioritise/' + new_priority, 
+          {},
+          function() {
+            console.log('callback');
+          }
+        );
+      }
     }
   });
 });
