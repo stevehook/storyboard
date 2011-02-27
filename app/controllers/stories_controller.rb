@@ -55,8 +55,9 @@ class StoriesController < ApplicationController
   
   # POST /stories/1/reprioritise/1
   def reprioritise
-    @story = Story.new(params[:story])
-    render :json => @story
+    @story = Story.find(params[:id])
+    @story.reprioritise(params[:priority].to_i)
+    render :json => Story.ascending(:priority)
   end
 
   # PUT /stories/1

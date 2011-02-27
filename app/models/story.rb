@@ -28,6 +28,35 @@ class Story
   validates :priority, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
+  def reprioritise(new_priority)
+    old_priority = self.priority
+    self.priority = new_priority
+    self.save
+    
+    # reorder the priorities of all the stories in the same project with priorities between priority and old_priority
+    if new_priority < old_priority
+      modified_stories = Story.where(:priority.gt => old_priority, :priority.lt => new_priority, :project_id => self.project_id).ascending(:priority)
+      modified_stories.each { |story| story.increment_priority }
+    else 
+      modified_stories = Story.where(:priority.gt => new_priority, :priority.lt => old_priority, :project_id => self.project_id).ascending(:priority)
+      modified_stories.each { |story| story.decrement_priority }
+    end
+  end
+  
+  def increment_priority
+    unless self.priority == 10000 or self.priority == 0
+      self.priority = self.priority + 1
+      self.save
+    end
+  end
+  
+  def decrement_priority
+    unless self.priority == 10000 or self.priority == 0
+      self.priority = self.priority - 1
+      self.save
+    end
+  end
+  
   # Need to override the status attr_accessor so that priority gets updated as required
   def status=(val)
     write_attribute(:status, val)
