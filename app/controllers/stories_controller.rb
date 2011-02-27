@@ -52,6 +52,12 @@ class StoriesController < ApplicationController
       end
     end
   end
+  
+  # POST /stories/1/reprioritise/1
+  def reprioritise
+    @story = Story.new(params[:story])
+    render :json => @story
+  end
 
   # PUT /stories/1
   # PUT /stories/1.xml

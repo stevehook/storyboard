@@ -24,7 +24,7 @@ $(function() {
       var nextItem = ui.item.next();
       if (nextItem) {
         var new_priority = nextItem.attr('data-priority');
-        $.post('/stories/' +  id + '/reprioritise/' + new_priority, 
+        $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
           {},
           function() {
             console.log('callback');

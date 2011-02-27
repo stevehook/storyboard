@@ -3,7 +3,11 @@ Storyboard::Application.routes.draw do
 
   resources :stories do
     resources :tasks
+    member do
+      post 'reprioritise'
+    end
   end
+  
   resources :projects do
     resources :releases
   end
