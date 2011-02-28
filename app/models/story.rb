@@ -30,31 +30,30 @@ class Story
   
   def reprioritise(new_priority)
     old_priority = self.priority
-    self.priority = new_priority
-    self.save
     
     # reorder the priorities of all the stories in the same project with priorities between priority and old_priority
     if new_priority < old_priority
-      modified_stories = Story.where(:priority.gt => old_priority, :priority.lt => new_priority, :project_id => self.project_id).ascending(:priority)
-      modified_stories.each { |story| story.increment_priority }
+      modified_stories = Story.where(:id.ne => self.id, :priority.lt => old_priority, :priority.gte => new_priority, 
+        :project_id => self.project_id).ascending(:priority)
+      modified_stories.each_with_index do |story, index| 
+        story.priority  = (1 + index + new_priority) if story.priority_writable?
+        story.save
+      end
     else 
-      modified_stories = Story.where(:priority.gt => new_priority, :priority.lt => old_priority, :project_id => self.project_id).ascending(:priority)
-      modified_stories.each { |story| story.decrement_priority }
+      modified_stories = Story.where(:id.ne => self.id, :priority.lte => new_priority, :priority.gt => old_priority, 
+        :project_id => self.project_id).ascending(:priority)
+      modified_stories.each_with_index do |story, index| 
+        story.priority  = (old_priority + index) if story.priority_writable?
+        story.save
+      end
     end
+
+    self.priority = new_priority
+    self.save
   end
   
-  def increment_priority
-    unless self.priority == 10000 or self.priority == 0
-      self.priority = self.priority + 1
-      self.save
-    end
-  end
-  
-  def decrement_priority
-    unless self.priority == 10000 or self.priority == 0
-      self.priority = self.priority - 1
-      self.save
-    end
+  def priority_writable?
+    (self.priority != 10000 and self.priority != 0)
   end
   
   # Need to override the status attr_accessor so that priority gets updated as required
