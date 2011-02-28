@@ -21,8 +21,6 @@ $(function() {
     cursor: 'move',
     update: function(event, ui) {
       var id = ui.item.attr('data-id');
-      console.log(event);
-      console.log(ui);
       var isMovingUp = ui.position.top < ui.originalPosition.top;
       // TODO: Need to get the previous item if we are moving the story down the list
       var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
@@ -30,9 +28,7 @@ $(function() {
         var new_priority = nextItem.attr('data-priority');
         $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
           {},
-          function() {
-            console.log('callback');
-          }
+          function(result) { $('.listPanel').html(result); }
         );
       }
     }

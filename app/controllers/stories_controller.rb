@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.xml
   def index
-    @stories = Story.ascending(:priority)
+    @stories = Story.product_backlog
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,7 +57,8 @@ class StoriesController < ApplicationController
   def reprioritise
     @story = Story.find(params[:id])
     @story.reprioritise(params[:priority].to_i)
-    render :json => Story.ascending(:priority)
+    @stories = Story.product_backlog
+    render :layout => false
   end
 
   # PUT /stories/1

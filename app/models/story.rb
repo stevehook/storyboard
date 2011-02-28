@@ -28,6 +28,10 @@ class Story
   validates :priority, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
+  def self.product_backlog
+    Story.where(:status.ne => :done, :status.ne => :rejected).ascending(:priority)
+  end
+  
   def reprioritise(new_priority)
     old_priority = self.priority
     
