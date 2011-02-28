@@ -29,7 +29,7 @@ class Story
   validates :status, :like => { :in => Story::STATUSES }
   
   def self.product_backlog
-    Story.where(:status.ne => :done, :status.ne => :rejected).ascending(:priority)
+    Story.where(:status.nin => [:done, :rejected]).ascending(:priority)
   end
   
   def reprioritise(new_priority)
