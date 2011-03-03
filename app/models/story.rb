@@ -82,7 +82,7 @@ class Story
   end
 
   def sprint_id=(id)
-    self._sprint_id = id
+    self._sprint_id = id.blank? ? nil : id
     self.release = self.sprint.release if self.sprint
   end
 
