@@ -9,4 +9,8 @@ module StoriesHelper
     end
     "<span class='statusBadge' style='background-color: #{colour};'>#{story.status}</span>"
   end
+  
+  def priority_badge(story)
+    "<span class='priorityBadge'>#{story.priority}</span>"
+  end
 end

@@ -27,6 +27,14 @@ body, p, ol, ul, td, textarea, input {
   -moz-border-radius: 8px;
 }
 
+.priorityBadge {
+  padding: 2px 5px;
+  background-color: #666;
+  color: #FFF;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+
 .pageTitle {
   padding: 5px;
   font: 140% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
