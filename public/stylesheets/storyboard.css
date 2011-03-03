@@ -20,6 +20,13 @@ body, p, ol, ul, td, textarea, input {
   text-decoration: none;
 }
 
+.statusBadge {
+  padding: 2px 5px;
+  color: #FFF;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+
 .pageTitle {
   padding: 5px;
   font: 140% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
