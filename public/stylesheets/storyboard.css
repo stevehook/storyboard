@@ -105,3 +105,20 @@ td {
   cursor: pointer;
 }
 
+.subHeading {
+  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;  
+  background-color: #DDD;
+  margin-bottom: 5px;
+}
+
+.releaseMainPanel {
+  float: left;
+  width: 70%;
+  min-width 400px;
+}
+
+.releaseSidePanel {
+  float: right;
+  width: 30%;
+  min-width 200px;
+}  

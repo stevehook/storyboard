@@ -1,5 +1,14 @@
 <% page_heading("Release - #{@release.title}") %>
-<%= render @release.sprints.sort_by { |sprint| sprint.start_date } %>
 
-<%= link_to 'Add Sprint', new_sprint_path(:parent => @release.id) %>
-<%= link_to 'Back', releases_path %>
+<div class='releaseMainPanel'>
+  <%= sub_heading "Sprints" %>
+  <%= render @release.sprints.sort_by { |sprint| sprint.start_date } %>
+  <%= link_to 'Add Sprint', new_sprint_path(:parent => @release.id) %>
+</div>
+
+<div class='releaseSidePanel'>
+  <%= sub_heading "Statistics" %>
+  <%= sub_heading "Burndown Chart" %>
+  <%= sub_heading "Velocity Chart" %>
+</div>
+
