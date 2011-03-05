@@ -108,7 +108,8 @@ td {
 .subHeading {
   font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;  
   background-color: #DDD;
-  margin-bottom: 5px;
+  margin: 2px 2px 4px 2px;
+  padding: 2px;
 }
 
 .releaseMainPanel {
