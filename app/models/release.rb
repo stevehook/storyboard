@@ -42,7 +42,7 @@ class Release
   
   def end_date
     coerce_properties
-    self.start_date + (self.sprints.length * self.sprint_length * ONE_DAY) if self.start_date && self.start_date != ''
+    self.start_date + (self.sprints.length * self.sprint_length * Project::ONE_DAY) if self.start_date && self.start_date != ''
   end
   
   def before_save

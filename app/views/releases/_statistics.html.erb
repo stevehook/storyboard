@@ -1,1 +1,6 @@
-<%= @release.title %>
+<table>
+  <tr><td>Start Date</td><td><%= @release.start_date.to_s(:date) %></td></tr>
+  <tr><td>End Date</td><td><%= @release.end_date.to_s(:date) %></td></tr>
+  <tr><td>Sprint Count</td><td><%= @release.sprints.length %></td></tr>
+  <tr><td>Sprint Length</td><td><%= @release.sprint_length %></td></tr>
+</table>
