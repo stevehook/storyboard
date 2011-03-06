@@ -1,3 +1,20 @@
 <% page_heading("Sprint - #{@sprint.title}") %>
 
-<%= render :partial => "stories/story_detail", :collection => @sprint.stories, :as => :story  %>
+<div class='releaseMainPanel'>
+  <div class='subPanel'>
+    <%= sub_heading "Stories" %>
+    <%= render :partial => "stories/story_detail", :collection => @sprint.stories, :as => :story  %>
+  </div>
+</div>
+
+<div class='releaseSidePanel'>
+  <div class='subPanel'>
+    <%= sub_heading "Statistics" %>
+    <%= render :partial => 'statistics', :object => @sprint %>
+  </div>
+  <div class='subPanel'>
+    <%= sub_heading "Burndown Chart" %>
+  </div>
+</div>
+
+

@@ -1,6 +1,6 @@
 <div id="velocityChart" style="height:300px; "></div>
 <script type="text/javascript" charset="utf-8">
   $(function() {
-    $.jqplot('velocityChart', <%= velocity_data(@release) %>, { });
+    $.jqplot('velocityChart', <%= velocity_data(@release) %>, { axes: { xaxis: { } }  });
   });
 </script>
