@@ -1,0 +1,23 @@
+- form_for(@release) do |f|
+  - if @release.errors.any?
+    %div#error_explanation
+      %h2= "#{pluralize(@release.errors.count, 'error')} prohibited this release from being saved:"
+      %ul
+      - @release.errors.full_messages.each do |msg|
+        %li= msg
+
+  = f.hidden_field :id
+  = f.hidden_field :project_id, :value => @project.id
+  %table
+    %tr
+      %td.labelCell= f.label :title
+      %td= f.text_field :title
+    %tr
+      %td.labelCell= f.label :sprint_length
+      %td= f.text_field :sprint_length
+    %tr
+      %td.labelCell= f.label :start_date
+      %td= f.text_field :start_date
+    %tr
+      %td
+      %td= f.submit

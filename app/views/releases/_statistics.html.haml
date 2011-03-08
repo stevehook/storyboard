@@ -1,0 +1,13 @@
+%table
+  %tr
+    %td Start Date
+    %td= @release.start_date.to_s(:date)
+  %tr
+    %td End Date 
+    %td= @release.end_date.to_s(:date)
+  %tr
+    %td Sprint Count
+    %td= @release.sprints.length
+  %tr
+    %td Sprint Length
+    %td= @release.sprint_length
