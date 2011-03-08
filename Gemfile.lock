@@ -51,6 +51,7 @@ GEM
     gherkin (2.2.9-x86-mingw32)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    haml (3.0.25)
     i18n (0.4.1)
     json (1.4.6)
     json (1.4.6-x86-mingw32)
@@ -122,6 +123,7 @@ DEPENDENCIES
   ZenTest (>= 4.4.2)
   bson_ext (>= 1.2.2)
   cucumber-rails (>= 0.3.2)
+  haml
   mongoid (>= 2.0.0.rc.7)
   rails (= 3.0.0)
   rspec-rails (>= 2.4.1)
