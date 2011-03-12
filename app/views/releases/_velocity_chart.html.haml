@@ -1,0 +1,6 @@
+%div#velocityChart.jqplot-target{ :style => "height: 300px" }
+:javascript  
+  $(function() {
+    $.jqplot('velocityChart', #{velocity_data(@release)}, { axes: { xaxis: { } }  });
+  });
+
