@@ -1,6 +1,0 @@
-<div id="burndownChart" style="height:300px; "></div>
-<script type="text/javascript" charset="utf-8">
-  $(function() {
-    $.jqplot('burndownChart', <%= burndown_data(@release) %>, { axes: { yaxis: { min: 0 } } });
-  });
-</script>

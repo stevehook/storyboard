@@ -1,0 +1,5 @@
+%div#burndownChart.jqplot-target{ :style => "height: 300px" }
+:javascript  
+  $(function() {
+    $.jqplot('burndownChart', #{burndown_data(@release)}, { axes: { xaxis: { } }  });
+  });
