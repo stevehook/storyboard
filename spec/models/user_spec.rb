@@ -8,6 +8,10 @@ describe User do
       user.errors[:name].any?.should be_false
       user.errors[:email].any?.should be_false
     end
+
+    it "password_hash should not be set" do
+      user.password_hash.should be_nil
+    end
   end
 
   context "when creating a new user with a name but no email" do
@@ -16,6 +20,21 @@ describe User do
       user.valid?.should be_false
       user.errors[:name].any?.should be_false
       user.errors[:email].any?.should be_true
+    end
+  end
+
+  context "when encrypting a password" do
+    let(:user) { 
+      user = User.create(:name => 'Fred', :password => 'secret')
+      user.encrypt_password
+      user
+    }
+    it "password_hash should be set" do
+      user.password_hash.should_not be_nil
+    end
+
+    it "password_salt should be set" do
+      user.password_salt.should_not be_nil
     end
   end
 end

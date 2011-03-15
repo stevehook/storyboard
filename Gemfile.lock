@@ -31,6 +31,8 @@ GEM
     activesupport (3.0.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    bcrypt-ruby (2.1.4)
+    bcrypt-ruby (2.1.4-x86-mingw32)
     bson (1.2.2)
     bson_ext (1.2.2)
     builder (2.1.2)
@@ -121,6 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest (>= 4.4.2)
+  bcrypt-ruby
   bson_ext (>= 1.2.2)
   cucumber-rails (>= 0.3.2)
   haml
