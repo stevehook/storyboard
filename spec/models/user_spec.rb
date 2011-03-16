@@ -37,4 +37,30 @@ describe User do
       user.password_salt.should_not be_nil
     end
   end
+
+  context "when authenticating user" do
+    before(:each) do
+      # Stub the User.find_by_email method
+      user = User.create(:name => 'Fred', :password => 'secret')
+      user.encrypt_password
+      User.stub(:find_by_email) do |email| 
+        email == 'Fred' ? user : nil
+      end
+    end
+
+    it "should pass valid credentials" do
+      user = User.authenticate('Fred', 'secret')
+      user.should_not be_nil
+    end
+
+    it "should reject missing user" do
+      user = User.authenticate('Bob', 'secret')
+      user.should be_nil
+    end
+
+    it "should reject wrong password" do
+      user = User.authenticate('Fred', 'wrong')
+      user.should be_nil
+    end
+  end
 end
