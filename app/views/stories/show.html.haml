@@ -1,0 +1,16 @@
+= page_heading "Story - #{@story.title}"
+%p#notice= notice
+%p
+  %b Title:
+  = @story.title
+
+%p
+  %b Description:
+  = @story.description
+
+%p
+  %b Estimate:
+  = @story.estimate
+
+= link_to 'Edit', edit_story_path(@story)
+= link_to 'Back', stories_path

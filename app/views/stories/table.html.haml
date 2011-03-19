@@ -1,0 +1,27 @@
+= page_heading 'Project Backlog'
+
+%table.listTable{ :cellspacing => '0' }
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Estimate
+      %th Created on
+      %th Sprint
+      %th Priority
+      %th Status
+      %th 
+
+  %tbody
+    - @stories.each do |story| %>
+      %tr{ :'data-href' => edit_story_path(story.id) }
+        %td= story.title
+        %td= story.description
+        %td= story.estimate
+        %td= story.created_at.to_s(:date)
+        %td= story.sprint.title if story.sprint
+        %td= story.priority
+        %td= story.status
+
+%hr
+= link_to 'New Story', new_story_path

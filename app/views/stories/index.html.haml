@@ -1,0 +1,8 @@
+= page_heading 'Project Backlog'
+
+%div.listPanel.sortableList
+  = render @stories.each
+
+%br
+
+= link_to 'New Story', new_story_path

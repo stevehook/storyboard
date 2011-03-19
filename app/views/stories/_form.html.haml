@@ -1,0 +1,30 @@
+- form_for(@story) do |f|
+  - if @story.errors.any?
+    %div#error_explanation
+      %h2= "#{ pluralize(@story.errors.count, 'error') } prohibited this story from being saved:"
+
+      %ul
+        - @story.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.hidden_field :id
+  %table
+    %tr
+      %td.labelCell= f.label :title
+      %td= f.text_field :title
+    %tr
+      %td.labelCell= f.label :description
+      %td= f.text_area :description
+    %tr
+      %td.labelCell= f.label :estimate
+      %td= f.text_field :estimate
+    %tr
+      %td.labelCell= f.label :status
+      %td= select_tag :story_status, options_for_select(Story::STATUSES, :selected => @story.status), { :name => 'story[status]' }
+    %tr
+      %td.labelCell= f.label :sprint
+      %td= f.collection_select :sprint_id, Sprint.all, :id, :title, { :include_blank => true }
+    %tr
+      %td
+      %td= f.submit
+

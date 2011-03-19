@@ -1,8 +1,0 @@
-<div class='listItem'>
-  <span class='listItemTitle'><%= story.title %></span><br/>
-  <span class='listItemDetail'><%= story.description %></span><br/>
-  <span class='listItemDetail'><%= "Priority #{story.priority}." %></span><br/>
-  <span class='listItemDetail'><%= "#{story.tasks.length} tasks, #{story.tasks_estimate} total hours, #{story.tasks_effort_remaining} remaining." %></span><br/>
-  <a href="<%= edit_story_path(story.id) %>">Edit</a>
-  <a href="<%= story_path(story.id) %>">View</a>
-</div>
