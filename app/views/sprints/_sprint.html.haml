@@ -1,0 +1,7 @@
+%div.listItem
+  %span.listItemTitle "Sprint #{ sprint.title }"
+  %br
+  %span.listItemDetail= "#{sprint.story_count} stories, #{sprint.points_count} total points"
+  %br
+  %a{ :href => edit_sprint_path(sprint.id) } Edit
+  %a{ :href => sprint_path(sprint.id) } View

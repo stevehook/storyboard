@@ -1,0 +1,16 @@
+= page_heading("Sprint - #{@sprint.title}")
+
+%div.releaseMainPanel
+  %div.subPanel
+    = sub_heading "Stories"
+    = render :partial => "stories/story_detail", :collection => @sprint.stories, :as => :story
+
+%div.releaseSidePanel
+  %div.subPanel
+    = sub_heading "Statistics"
+    = render :partial => 'statistics', :object => @sprint
+  %div.subPanel
+    = sub_heading "Burndown Chart"
+    = render :partial => 'burndown_chart', :object => @sprint
+
+

@@ -1,0 +1,18 @@
+- form_for(@sprint) do |f|
+  - if @sprint.errors.any?
+    %div#error_explanation
+      %h2= "#{ pluralize(@sprint.errors.count, "error") } prohibited this sprint from being saved:"
+      %ul
+        - @sprint.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.hidden_field :id
+  = f.hidden_field :release_id, :value => @release.id
+%table
+	%tr
+    %td.labelCell= f.label :title
+    %td= f.text_field :title
+  %tr
+	  %td
+		%td= f.submit
+
