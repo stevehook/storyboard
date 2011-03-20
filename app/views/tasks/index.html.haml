@@ -1,0 +1,27 @@
+= page_heading 'Task List'
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Status
+    %th Estimate
+    %th Remaining
+    %th 
+    %th 
+    %th 
+  </tr>
+
+  - @tasks.each do |task|
+    %tr
+      %td= task.title
+      %td= task.description
+      %td= task.status
+      %td= task.estimate
+      %td= task.remaining
+      %td= link_to 'Show', story_task_path(@story, task)
+      %td= link_to 'Edit', edit_story_task_path(@story, task)
+
+%br
+
+= link_to 'New Task', new_story_task_path(@story)

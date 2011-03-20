@@ -1,0 +1,20 @@
+- page_heading "Task - #{@task.title}"
+
+%p
+  %b Title:
+  = @task.title
+
+%p
+  %b Description:
+  = @task.description
+
+%p
+  %b Estimate:
+  = @task.estimate
+
+%p
+  %b Remaining:
+  = @task.remaining
+
+= link_to 'Edit', edit_story_task_path(@story, @task) |
+= link_to 'Back', story_tasks_path(@story)
