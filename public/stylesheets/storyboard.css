@@ -109,6 +109,16 @@ td {
   margin: 2px 2px 4px 2px;
 }
 
+.taskBoardMainPanel {
+}
+
+.taskBoardMainPanel .subPanel {
+  border-left: 1px solid #888;
+  float: left;
+  width: 24%;
+  height: 100%;
+}
+
 .subHeading {
   font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;  
   background-color: #DDD;
