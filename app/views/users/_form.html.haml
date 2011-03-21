@@ -1,0 +1,22 @@
+- form_for(@user) do |f|
+  - if @user.errors.any?
+    %div#error_explanation
+      %h2= pluralize(@user.errors.count, 'error') + 'prohibited this user from being saved:'
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.hidden_field :id
+  %table
+    %tr
+      %td.labelCell= f.label :name
+      %td= f.text_field :name
+    %tr  
+      %td.labelCell= f.label :email
+      %td= f.text_field :email
+    %tr  
+      %td.labelCell= f.label :team
+      %td= f.collection_select :team_id, Team.all, :id, :name, { :include_blank => true }
+    %tr
+      %td
+      %td= f.submit

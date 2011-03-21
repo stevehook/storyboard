@@ -1,0 +1,9 @@
+%div.listItem
+  %span.listItemTitle= user.name
+  %br
+  %span.listItemDetail= user.email
+  %br
+  %span.listItemDetail= "Member of #{ link_to(user.team.name, team_path(user.team)) }".html_safe if user.team
+  %br
+  %a{ :href => edit_user_path(user.id) } Edit
+  %a{ :href => user_path(user.id) } Show

@@ -1,7 +1,0 @@
-<div class='listItem'>
-  <span class='listItemTitle'><%= user.name %></span><br/>
-  <span class='listItemDetail'><%= user.email %></span><br/>
-  <span class='listItemDetail'><%= "Member of #{ link_to(user.team.name, team_path(user.team)) }".html_safe if user.team %></span><br/>
-  <a href="<%= edit_user_path(user.id) %>">Edit</a>
-  <a href="<%= user_path(user.id) %>">View</a>
-</div>

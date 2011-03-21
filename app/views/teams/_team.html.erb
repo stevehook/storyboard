@@ -1,9 +1,0 @@
-<div class='listItem'>
-  <span class='listItemTitle'><%= team.name %></span><br/>
-  <span class='listItemDetail'>Scrum Master: 
-    <%= link_to(team.scrum_master.name, user_path(team.scrum_master.id)) if team.scrum_master %></span><br/>
-  <span class='listItemDetail'>Product Owner: 
-    <%= link_to(team.product_owner.name, user_path(team.product_owner.id)) if team.product_owner %></span><br/>
-  <span class='listItemDetail'>Members: <%= team.members.collect { |p| link_to(p.name, user_path(p.id)) }.join(', ').html_safe %></span><br/>
-  <a href="<%= edit_team_path(team.id) %>">Edit</a>
-</div>
