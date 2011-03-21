@@ -42,12 +42,12 @@ class SprintsController < ApplicationController
     end
   end
 
-  # GET /sprints/1/plan
-  def plan
+  # GET /sprints/1/taskboard
+  def taskboard
     @sprint = Sprint.find(params[:id])
 
     respond_to do |format|
-      format.html # plan.html.haml
+      format.html # taskboard.html.haml
       format.xml  { render :xml => @sprint }
     end
   end

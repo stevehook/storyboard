@@ -22,7 +22,7 @@ Storyboard::Application.routes.draw do
 
   get "say/goodbye"
 
-  match 'sprints/:id/plan' => 'sprints#plan'
+  match 'sprints/:id/taskboard' => 'sprints#taskboard'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
