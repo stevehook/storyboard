@@ -134,4 +134,12 @@ td {
   float: right;
   width: 30%;
   min-width 200px;
-}  
+}
+
+.storyPanel {
+  border: 1px solid #BBB;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+}
