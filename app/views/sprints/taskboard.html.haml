@@ -1,16 +1,21 @@
 = page_heading("Task Board - Sprint - #{@sprint.title}")
 
 %div.taskBoardMainPanel
-  %div.subPanel
-    = sub_heading 'Stories'
-    = render :partial => 'taskboard_stories'
-  %div.subPanel
-    = sub_heading 'Not Started'
-
-  %div.subPanel
-    = sub_heading 'In Progress'
-
-  %div.subPanel
-    = sub_heading 'Done'
-
-    
+  %div.taskBoardHeader
+    %div.headerSubPanel
+      = sub_heading 'Stories'
+    %div.headerSubPanel
+      = sub_heading 'Not Started'
+    %div.headerSubPanel
+      = sub_heading 'In Progress'
+    %div.headerSubPanel
+      = sub_heading 'Done'
+  - @sprint.stories.each do |story|
+    %div.taskBoardRow
+      %div.subPanel
+        %div.storyPanel
+          %div.title= story.title
+          %div.description= story.description
+      %div.subPanel
+      %div.subPanel
+      %div.subPanel

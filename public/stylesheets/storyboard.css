@@ -106,16 +106,21 @@ td {
 }
 
 .subPanel {
-  margin: 2px 2px 4px 2px;
 }
 
 .taskBoardMainPanel {
 }
 
-.taskBoardMainPanel .subPanel {
+.taskBoardMainPanel .subPanel, .taskBoardMainPanel .headerSubPanel {
   border-left: 1px solid #888;
   float: left;
   width: 24.5%;
+}
+
+.taskBoardRow {
+  min-height: 100px;
+  width: 100%;
+  float: left;
 }
 
 .subHeading {
@@ -142,4 +147,5 @@ td {
   padding: 2px;
   border-radius: 6px;
   -moz-border-radius: 6px;
+  min-height: 92px;
 }
