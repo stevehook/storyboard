@@ -11,4 +11,12 @@ module ApplicationHelper
   def sub_heading(text)
     "<div class='subHeading'>#{text}</div>".html_safe
   end
+
+  def estimate_badge(model)
+    case model.class
+    when Story: "<span class='priorityBadge'>#{model.estimate}</span>".html_safe
+    when Task: "<span class='priorityBadge'>#{model.remaining}/#{model.estimate}</span>".html_safe
+    else ''
+    end
+  end
 end
