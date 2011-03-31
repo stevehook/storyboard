@@ -12,6 +12,19 @@ module ApplicationHelper
     "<div class='subHeading'>#{text}</div>".html_safe
   end
 
+  def status_badge(model)
+    colour = case model.status.to_sym
+      when :open then '#800'
+      when :not_started then '#800'
+      when :ready then '#E0981B'
+      when :in_progress then '#E0981B'
+      when :committed then '#080'
+      when :done then '#008'
+      when :rejected then '#888'
+    end
+    "<span class='statusBadge' style='background-color: #{colour};'>#{model.status.to_s.humanize}</span>".html_safe
+  end
+  
   def estimate_badge(model)
     case model.class
     when Story: "<span class='priorityBadge'>#{model.estimate}</span>".html_safe
