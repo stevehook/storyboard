@@ -149,3 +149,7 @@ td {
   -moz-border-radius: 6px;
   min-height: 92px;
 }
+
+.badgePanel {
+  float: right;
+}

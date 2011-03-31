@@ -1,7 +1,8 @@
 - story.tasks.select{|t| t.status == status}.each do |task|
   %div.taskPanel
     %div.title
+      %div.badgePanel
+        = estimate_badge(task)
+        = status_badge(task)
       = task.title
-      = estimate_badge(task)
-      = status_badge(task)
     %div.description= task.description

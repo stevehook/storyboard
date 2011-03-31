@@ -1,6 +1,7 @@
 %div.storyPanel
   %div.title
+    %div.badgePanel
+      = estimate_badge(story)
+      = status_badge(story)
     = story.title
-    = estimate_badge(story)
-    = status_badge(story)
   %div.description= story.description
