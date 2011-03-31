@@ -13,9 +13,7 @@
   - @sprint.stories.each do |story|
     %div.taskBoardRow
       %div.subPanel
-        %div.storyPanel
-          %div.title= story.title
-          %div.description= story.description
+        = render 'story_panel', :story => story
       %div.subPanel
         = render 'task_panels_for_story', :story => story, :status => :not_started
       %div.subPanel
