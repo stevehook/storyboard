@@ -38,5 +38,14 @@ $(function() {
 // TODO: Will need to apply this to the taskboard ONLY
 $(function() {
   $('.taskPanel').draggable({
+    axis: 'x',
+    stop: function(event, ui) {
+    }
+  });
+  $('.taskSubPanel').droppable({
+    drop: function(event, ui) {
+      ui.draggable.css('left', '');
+      ui.draggable.appendTo(event.target);
+    }
   });
 });

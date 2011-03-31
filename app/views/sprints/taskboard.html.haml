@@ -14,9 +14,9 @@
     %div.taskBoardRow
       %div.subPanel
         = render 'story_panel', :story => story
-      %div.subPanel
+      %div.subPanel.taskSubPanel
         = render 'task_panels_for_story', :story => story, :status => :not_started
-      %div.subPanel
+      %div.subPanel.taskSubPanel
         = render 'task_panels_for_story', :story => story, :status => :in_progress
-      %div.subPanel
+      %div.subPanel.taskSubPanel
         = render 'task_panels_for_story', :story => story, :status => :done
