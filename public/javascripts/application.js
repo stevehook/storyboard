@@ -34,3 +34,9 @@ $(function() {
     }
   });
 });
+
+// TODO: Will need to apply this to the taskboard ONLY
+$(function() {
+  $('.taskPanel').draggable({
+  });
+});
