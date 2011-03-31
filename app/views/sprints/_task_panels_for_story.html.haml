@@ -1,0 +1,4 @@
+- story.tasks.select{|t| t.status == status}.each do |task|
+  %div.taskPanel
+    %div.title= task.title
+    %div.description= task.description

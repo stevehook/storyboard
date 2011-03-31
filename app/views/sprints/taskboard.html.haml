@@ -17,17 +17,8 @@
           %div.title= story.title
           %div.description= story.description
       %div.subPanel
-        - story.tasks.select{|t| t.status == :not_started}.each do |task|
-          %div.taskPanel
-            %div.title= task.title
-            %div.description= task.description
+        = render 'task_panels_for_story', :story => story, :status => :not_started
       %div.subPanel
-        - story.tasks.select{|t| t.status == :in_progress}.each do |task|
-          %div.taskPanel
-            %div.title= task.title
-            %div.description= task.description
+        = render 'task_panels_for_story', :story => story, :status => :in_progress
       %div.subPanel
-        - story.tasks.select{|t| t.status == :done}.each do |task|
-          %div.taskPanel
-            %div.title= task.title
-            %div.description= task.description
+        = render 'task_panels_for_story', :story => story, :status => :done
