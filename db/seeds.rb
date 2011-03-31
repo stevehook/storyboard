@@ -193,27 +193,32 @@ story.tasks.create!(:title => 'Investigate graphing tools',
   :description => 'We need to decide on what technical approach we are going to take for rendering the burndown chart graphics in a Web application',
   :estimate => 7,
   :remaining => 4,
-  :status => :in_progress)
+  :status => :in_progress,
+  :assignee => derek)
 story.tasks.create!(:title => 'Implement burndown view', 
   :description => 'We will need a new view that should be accessible from the sprint#show view',
   :estimate => 7,
   :remaining => 0,
-  :status => :done)
+  :status => :done,
+  :assignee => derek)
 story.tasks.create!(:title => 'Implement action to render graph', 
   :description => 'We need to be able to render the graph on the burndown view',
   :estimate => 7,
   :remaining => 7,
-  :status => :not_started)
+  :status => :not_started,
+  :assignee => mary)
 story.tasks.create!(:title => 'Write test cases', 
   :description => '',
   :estimate => 7,
   :remaining => 7,
-  :status => :not_started)
+  :status => :not_started,
+  :assignee => norman)
 story.tasks.create!(:title => 'Run tests', 
   :description => '',
   :estimate => 14,
   :remaining => 14,
-  :status => :not_started)
+  :status => :not_started,
+  :assignee => norman)
 
 Sprint.all.each do |sprint|
   sprint.refresh_counts
