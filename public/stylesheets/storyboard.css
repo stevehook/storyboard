@@ -141,7 +141,7 @@ td {
   min-width 200px;
 }
 
-.storyPanel {
+.storyPanel, .taskPanel {
   border: 1px solid #BBB;
   margin: 2px;
   padding: 2px;
