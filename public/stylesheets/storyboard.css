@@ -12,7 +12,7 @@ body, p, ol, ul, td, textarea, input {
   border-bottom: 1px solid #BBB;
 }
 
-.listItemTitle, .listItemTitle a {
+.listItemTitle, .listItemTitle a, .storyPanel .title, .taskPanel .title  {
   font-size:   14px;
   font-weight: bold;
   line-height: 20px;
