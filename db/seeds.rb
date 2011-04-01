@@ -109,7 +109,7 @@ Story.create(:title => 'Each page needs a consistent header and menu',
   :category => storyboard_category,
   :priority => 1
 )
-Story.create(:title => 'User should be able to pick the current project from the menu bar',
+story = Story.create(:title => 'User should be able to pick the current project from the menu bar',
   :description => 'As a user I need to be able to switch between different projects that are managed by the system',
   :estimate => 3,
   :status => :committed,
@@ -128,8 +128,28 @@ Story.create(:title => 'Switch release from the menu bar',
   :category => storyboard_category,
   :priority => 3
 )
-Story.create(:title => 'The release drop-down in the menu bar should only display the releases for the selected project',
+
+story.tasks.create!(:title => 'Implement', 
   :description => '',
+  :estimate => 10,
+  :remaining => 0,
+  :status => :done,
+  :assignee => derek)
+story.tasks.create!(:title => 'Write test cases', 
+  :description => '',
+  :estimate => 4,
+  :remaining => 0,
+  :status => :done,
+  :assignee => mary)
+story.tasks.create!(:title => 'Run tests', 
+  :description => '',
+  :estimate => 4,
+  :remaining => 2,
+  :status => :in_progress,
+  :assignee => mary)
+
+story = Story.create(:title => 'The release drop-down in the menu bar should only display the releases for the selected project',
+  :description => 'Filter the contents of the drop-down - currently displays releases for all products',
   :estimate => 3,
   :status => :committed,
   :project => project_x,
@@ -138,6 +158,26 @@ Story.create(:title => 'The release drop-down in the menu bar should only displa
   :category => storyboard_category,
   :priority => 4
 )
+
+story.tasks.create!(:title => 'Implement',
+  :description => 'Write some code',
+  :estimate => 7,
+  :remaining => 7,
+  :status => :not_started,
+  :assignee => norman)
+story.tasks.create!(:title => 'Write test cases', 
+  :description => '',
+  :estimate => 7,
+  :remaining => 7,
+  :status => :not_started,
+  :assignee => mary)
+story.tasks.create!(:title => 'Run tests', 
+  :description => '',
+  :estimate => 7,
+  :remaining => 7,
+  :status => :not_started,
+  :assignee => mary)
+
 Story.create(:title => 'We need to set up controller tests',
   :description => 'Just get these started',
   :estimate => 1,
