@@ -76,6 +76,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def update_status
+    @story = Story.find(params[:story_id])
+    @task = @story.tasks.find(params[:id])
+    @task.status = params[:status].to_sym
+    @task.save
+    render :partial => 'sprints/task_panel', :layout => false, :locals => { :task => @task }
+  end
+
   # DELETE /stories/1/tasks/1
   # DELETE /stories/1/tasks/1.xml
   def destroy

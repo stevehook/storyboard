@@ -1,0 +1,8 @@
+%div.taskPanel{:'data-story-id' => task.story.id.to_s, :'data-id' => task.id.to_s}
+  %div.title
+    %div.badgePanel
+      = estimate_badge(task)
+      = status_badge(task)
+    = task.title
+  %div.description= task.description
+  %div.description= "Assigned to #{task.assignee_name}"

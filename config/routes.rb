@@ -23,6 +23,7 @@ Storyboard::Application.routes.draw do
   get "say/goodbye"
 
   match 'sprints/:id/taskboard' => 'sprints#taskboard'
+  match 'stories/:story_id/tasks/:id/update_status' => 'tasks#update_status'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

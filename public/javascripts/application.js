@@ -46,6 +46,16 @@ $(function() {
     drop: function(event, ui) {
       ui.draggable.css('left', '');
       ui.draggable.appendTo(event.target);
+      var newStatus = $(event.target).attr('data-status');
+      var storyId = ui.draggable.attr('data-story-id');
+      var id = ui.draggable.attr('data-id');
+      $.post('/stories/' + storyId + '/tasks/' + id + '/update_status?status=' + newStatus, 
+        {},
+        function(result) {
+          ui.draggable.replaceWith(result);
+          console.log('task update');
+        }
+      );
     }
   });
 });
