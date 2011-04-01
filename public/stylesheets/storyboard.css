@@ -117,6 +117,10 @@ td {
   width: 24.5%;
 }
 
+.taskSubPanel { 
+  min-height: 100px;
+}
+
 .taskBoardRow {
   min-height: 100px;
   width: 100%;

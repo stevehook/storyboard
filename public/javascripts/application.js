@@ -37,11 +37,7 @@ $(function() {
 
 // TODO: Will need to apply this to the taskboard ONLY
 $(function() {
-  $('.taskPanel').draggable({
-    axis: 'x',
-    stop: function(event, ui) {
-    }
-  });
+  $('.taskPanel').draggable({axis: 'x'});
   $('.taskSubPanel').droppable({
     drop: function(event, ui) {
       ui.draggable.css('left', '');
@@ -53,7 +49,7 @@ $(function() {
         {},
         function(result) {
           ui.draggable.replaceWith(result);
-          // TODO: Reinstate draggability on the replaced element
+          $('.taskPanel').draggable({axis: 'x'});
         }
       );
     }
