@@ -22,6 +22,9 @@ class Task
   def before_save
     self.assignee_name = self.assignee.name if self.assignee
 
+    self.remaining = 0 if self.status.to_sym == :done
+    self.remaining = 1 if self.status.to_sym != :done && self.remaining == 0
+
     self.remaining = self.estimate if self.remaining.nil?
     self.story.refresh_counts
     self.story.save
