@@ -37,6 +37,17 @@ $(function() {
 
 // TODO: Will need to apply this to the taskboard ONLY
 $(function() {
+  var resizeTaskboard = function() {
+    $('.taskBoardRow').each(function(index, row) {
+      var subPanels = $('.subPanel', row);
+      var maxHeight = 0;
+      subPanels.each(function(panelIndex, panel) {
+        maxHeight = Math.max(maxHeight, $(panel).height());
+      });
+      subPanels.css('min-height', maxHeight + 'px');
+    });
+  }
+  resizeTaskboard();
   $('.taskPanel').draggable({axis: 'x'});
   $('.taskSubPanel').droppable({
     drop: function(event, ui) {
@@ -50,8 +61,10 @@ $(function() {
         function(result) {
           ui.draggable.replaceWith(result);
           $('.taskPanel').draggable({axis: 'x'});
+          resizeTaskboard();
         }
       );
     }
   });
 });
+
