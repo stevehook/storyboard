@@ -53,7 +53,7 @@ $(function() {
         {},
         function(result) {
           ui.draggable.replaceWith(result);
-          console.log('task update');
+          // TODO: Reinstate draggability on the replaced element
         }
       );
     }

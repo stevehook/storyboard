@@ -122,10 +122,9 @@ Story.create(:title => 'User should be able to pick the current project from the
 Story.create(:title => 'Switch release from the menu bar',
   :description => 'As a user I should easily be able to switch between different releases of the selected project',
   :estimate => 3,
-  :status => :committed,
+  :status => :ready,
   :project => project_x,
   :release => release20,
-  :sprint => sprint2,
   :category => storyboard_category,
   :priority => 3
 )
@@ -171,14 +170,42 @@ Story.create(:title => 'Task model',
   :category => storyboard_category,
   :priority => 10000
 )
-Story.create(:title => 'Project/Release burndown chart',
+
+story = Story.create(:title => 'Project/Release burndown chart',
   :description => 'As a sprint team member I need to be able to see a burndown chart for the release that I am working on to get an idea of project status.',
   :estimate => 10,
-  :status => :open,
+  :status => :committed,
   :project => project_x,
+  :sprint => sprint2,
   :category => storyboard_category,
-  :priority => 10000
+  :priority => 8
 )
+
+story.tasks.create!(:title => 'Implement client-side', 
+  :description => 'Implement the client-side JavaScript needed to render the chart',
+  :estimate => 10, 
+  :remaining => 10,
+  :status => :not_started,
+  :assignee => norman)
+story.tasks.create!(:title => 'Extend model implementation', 
+  :description => 'Does the model contain the necessary statistics at the moment?',
+  :estimate => 7,
+  :remaining => 4,
+  :status => :in_progress,
+  :assignee => derek)
+story.tasks.create!(:title => 'Write test cases', 
+  :description => '',
+  :estimate => 7,
+  :remaining => 7,
+  :status => :not_started,
+  :assignee => mary)
+story.tasks.create!(:title => 'Run tests', 
+  :description => '',
+  :estimate => 7,
+  :remaining => 7,
+  :status => :not_started,
+  :assignee => mary)
+
 story = Story.create!(:title => 'Sprint burndown chart',
   :description => 'As a sprint team member I need to be able to see a burndown chart for the sprint that I am working on to get an idea of sprint status.',
   :estimate => 10,
