@@ -48,7 +48,7 @@ $(function() {
     });
   }
   resizeTaskboard();
-  $('.taskPanel').draggable({axis: 'x'});
+  $('.taskPanel').draggable({axis: 'x', revert: 'invalid'});
   $('.taskSubPanel').droppable({
     drop: function(event, ui) {
       ui.draggable.css('left', '');
