@@ -1,5 +1,5 @@
 %div#burndownChart{ :style => "height:300px; " }
 :javascript
   $(function() {
-    $.jqplot('burndownChart', <%= burndown_data(@sprint) %>, { axes: { yaxis: { min: 0 } } });
+    $.jqplot('burndownChart', #{burndown_data(@sprint)}, { axes: { yaxis: { min: 0 } } });
   });
