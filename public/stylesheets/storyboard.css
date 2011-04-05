@@ -147,11 +147,15 @@ td {
 
 .storyPanel, .taskPanel {
   border: 1px solid #BBB;
-  margin: 2px;
+  margin: 4px 6px 6px 4px;
   padding: 2px;
   border-radius: 6px;
   -moz-border-radius: 6px;
   min-height: 92px;
+  background-color: #EDEBB9;
+  -moz-box-shadow: 5px 5px 5px #ccc;
+  -webkit-box-shadow: 5px 5px 5px #ccc;
+  box-shadow: 5px 5px 5px #ccc;  
 }
 
 .badgePanel {
