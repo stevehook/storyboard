@@ -24,6 +24,10 @@ module ApplicationHelper
     end
     "<span class='statusBadge' style='background-color: #{colour};'>#{model.status.to_s.humanize}</span>".html_safe
   end
+
+  def assignee_badge(model)
+    "<span class='assigneeBadge'>#{model.assignee_name}</span>".html_safe
+  end
   
   def estimate_badge(model)
     case model.class

@@ -2,7 +2,7 @@
   %div.title
     %div.badgePanel
       = estimate_badge(task)
+      = assignee_badge(task)
       = status_badge(task)
     = link_to task.title, edit_story_task_path(task.story, task)
   %div.description= task.description
-  %div.description= "Assigned to #{task.assignee_name}"
