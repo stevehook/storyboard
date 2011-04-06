@@ -38,6 +38,7 @@ body, p, ol, ul, td, textarea, input {
   color: #FFF;
   border-radius: 8px;
   -moz-border-radius: 8px;
+  white-space: nowrap;
 }
 
 .priorityBadge {
