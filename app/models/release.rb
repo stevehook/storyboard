@@ -10,6 +10,7 @@ class Release
   # key :title
   references_many :sprints
   referenced_in :project
+  references_many :users
 
   validates :title, :presence => true
   validates :project, :presence => true

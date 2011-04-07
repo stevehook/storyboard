@@ -7,6 +7,8 @@
         - @team.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.hidden_field :id
+  %table
     %tr
       %td.labelCell= f.label :name
       %td= f.text_field :name

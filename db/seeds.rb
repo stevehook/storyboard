@@ -23,11 +23,11 @@ sprint7 = Sprint.create(:release => release20, :title => '7', :order => 7, :star
 sprint8 = Sprint.create(:release => release20, :title => '8', :order => 8, :start_date => Time.utc(2011, 'apr', 11), :end_date => Time.utc(2011, 'apr', 22))
 sprint9 = Sprint.create(:release => release20, :title => '9', :order => 9, :start_date => Time.utc(2011, 'apr', 25), :end_date => Time.utc(2011, 'may', 6))
 
-bob = User.create(:name => 'Bob', :email => 'bob@nocompany.com')
-alice = User.create(:name => 'Alice', :email => 'alice@nocompany.com')
-derek = User.create(:name => 'Derek', :email => 'derek@nocompany.com')
-mary = User.create(:name => 'Mary', :email => 'mary@nocompany.com')
-norman = User.create(:name => 'Norman', :email => 'norman@nocompany.com')
+bob = User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :release => release20, :project => project_x)
+alice = User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret')
+derek = User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :password => 'secret')
+mary = User.create!(:name => 'Mary', :email => 'mary@nocompany.com', :password => 'secret')
+norman = User.create!(:name => 'Norman', :email => 'norman@nocompany.com', :password => 'secret')
 
 team1 = Team.create(:name => 'Team 1', :product_owner => alice, :scrum_master => bob, :members => [bob, derek, mary, norman])
 

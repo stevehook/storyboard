@@ -10,6 +10,7 @@ class Project
   field :description, :data_type => String
   #key :title
   references_many :releases
+  references_many :users
 
   validates :title, :presence => true
   validates :sprint_length, :presence => true

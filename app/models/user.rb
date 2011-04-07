@@ -2,13 +2,15 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :project_id, :release_id
   attr_accessor :password
   field :name, :data_type => String
   field :email, :data_type => String
   field :password_hash,  :data_type => String
   field :password_salt, :data_type => String
   referenced_in :team, :inverse_of => :members
+  referenced_in :project
+  referenced_in :release
 
   validates_presence_of :name, :email
   validates_presence_of :password, :on => :create
@@ -23,6 +25,7 @@ class User
   before_save :before_save
   def before_save
     self.team_id = nil if self.team_id == ''
+    puts "release_id = #{ self.release_id }"
   end
 
   def self.authenticate(email, password)
