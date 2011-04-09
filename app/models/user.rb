@@ -25,7 +25,6 @@ class User
   before_save :before_save
   def before_save
     self.team_id = nil if self.team_id == ''
-    puts "release_id = #{ self.release_id }"
   end
 
   def self.authenticate(email, password)
