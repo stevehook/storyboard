@@ -93,6 +93,11 @@ td {
   min-height: 3em;
 }
 
+.flashMessage {
+  background-color: #444;
+  color: #DDD;
+}
+
 .menu {
   list-style-type: disc;
   list-style: none;

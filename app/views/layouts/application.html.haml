@@ -12,5 +12,8 @@
   %body
     = render(:partial => "shared/menu")
 
+    - flash.each do |name, message|
+      %div.flashMessage{:id => "flash_#{name}"}= message
+
     %div.pageTitle= yield :title
     = yield

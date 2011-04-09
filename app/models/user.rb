@@ -24,6 +24,7 @@ class User
 
   before_save :before_save
   def before_save
+    encrypt_password
     self.team_id = nil if self.team_id == ''
   end
 
@@ -34,5 +35,9 @@ class User
     else
       nil
     end
+  end
+
+  def self.find_by_email(email)
+    User.where(:email => email).first
   end
 end
