@@ -1,4 +1,6 @@
 Storyboard::Application.routes.draw do
+  get "sessions/new"
+
   resources :teams
 
   resources :stories do
