@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   context "when creating a new user with a name, email and password" do
-    let(:user) { User.create(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret') }
+    let(:user) { User.new(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret') }
     it "should be valid" do
       user.valid?.should be_true
       user.errors[:name].any?.should be_false
@@ -25,7 +25,7 @@ describe User do
 
   context "when encrypting a password" do
     let(:user) { 
-      user = User.create(:name => 'Fred', :password => 'secret')
+      user = User.new(:name => 'Fred', :password => 'secret')
       user.encrypt_password
       user
     }
@@ -41,7 +41,7 @@ describe User do
   context "when authenticating user" do
     before(:each) do
       # Stub the User.find_by_email method
-      user = User.create(:name => 'Fred', :password => 'secret')
+      user = User.new(:name => 'Fred', :password => 'secret')
       user.encrypt_password
       User.stub(:find_by_email) do |email| 
         email == 'Fred' ? user : nil
