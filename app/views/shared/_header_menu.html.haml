@@ -1,10 +1,6 @@
-%div.header
+%div.headerMenu
   %ul.menu
-    %li= link_to 'Users', users_path
-    %li= link_to 'Backlog', stories_path
-    %li
-      %a{ :href => releases_path } Release:
-      = select 'release', 'title', Release.all.collect { |r| [r.title, r.id] }
-    %li
-      %a{ :href => projects_path } Project:
-      = select 'project', 'title', Project.all.collect { |p| [p.title, p.id] }
+    %li= link_to 'Logout', log_out_path
+    %li= link_to 'Help', help_path
+    %li= link_to 'Projects', preferences_path
+    %li= link_to 'Change Project', projects_path

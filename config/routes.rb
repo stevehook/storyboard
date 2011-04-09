@@ -1,6 +1,8 @@
 Storyboard::Application.routes.draw do
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
+  get 'log_out' => 'sessions#destroy', :as => 'log_out'
+  get 'log_in' => 'sessions#new', :as => 'log_in'
+  get 'preferences' => 'sessions#preferences', :as => 'preferences'
+  get 'help' => 'sessions#help', :as => 'help'
   resources :sessions
 
   resources :teams

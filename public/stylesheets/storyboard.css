@@ -58,7 +58,6 @@ body, p, ol, ul, td, textarea, input {
 }
 
 .listTable {
-  
 }
 
 .listTable th {
@@ -90,12 +89,31 @@ td {
 .header {
   background-color: #444;
   display: block;
-  min-height: 3em;
+  min-height: 6em;
 }
 
 .flashMessage {
   background-color: #444;
   color: #DDD;
+}
+
+.headerTop {
+  min-height: 3em;
+}
+
+.headerTitle {
+  color: #FFF;
+  float: left;
+  font: 150% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  padding: .3em 0em 0em 2em;
+}
+
+.headerMenu {
+  float: right;
+}
+
+.headerTabs {
+  min-height: 3em;
 }
 
 .menu {
@@ -108,7 +126,7 @@ td {
   float: right;
   min-width: 4em;
   padding: 3px;
-  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
   text-align: center;
 }
 
@@ -121,6 +139,21 @@ td {
 .menu li:hover {
   background-color: #222;
   cursor: pointer;
+}
+
+.tabBar {
+  list-style-type: disc;
+  list-style: none;
+}
+
+.tabBar li {
+  float: left;
+}
+
+.tabBar li a {
+  color: #DDF;
+  font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  text-decoration: none;
 }
 
 .subPanel {
