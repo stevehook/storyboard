@@ -14,7 +14,9 @@
       %div.headerTop
         = render(:partial => 'shared/header_title')
         = render(:partial => 'shared/header_menu')
+      %br.clear
       = render(:partial => 'shared/header_tabs')
+      %br.clear
 
     - flash.each do |name, message|
       %div.flashMessage{:id => "flash_#{name}"}= message

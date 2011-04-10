@@ -89,7 +89,7 @@ td {
 .header {
   background-color: #444;
   display: block;
-  min-height: 6em;
+ # min-height: 6em;
 }
 
 .flashMessage {
@@ -98,14 +98,14 @@ td {
 }
 
 .headerTop {
-  min-height: 3em;
+#  min-height: 3em;
 }
 
 .headerTitle {
   color: #FFF;
   float: left;
   font: 150% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  padding: .3em 0em 0em 2em;
+  padding: .3em 0em .3em 2em;
 }
 
 .headerMenu {
@@ -113,7 +113,11 @@ td {
 }
 
 .headerTabs {
-  min-height: 3em;
+#  min-height: 3em;
+}
+
+.clear {
+  clear: both;
 }
 
 .menu {
@@ -124,8 +128,7 @@ td {
 .menu li {
   color: #DDF;
   float: right;
-  min-width: 4em;
-  padding: 3px;
+  padding: .3em 1em;
   font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
   text-align: center;
 }
@@ -148,6 +151,17 @@ td {
 
 .tabBar li {
   float: left;
+  font: 120% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  padding: .3em 1em;
+}
+
+.tabBar li.selected {
+  background-color: #555;
+}
+
+.tabBar li:hover {
+  background-color: #222;
+  cursor: pointer;
 }
 
 .tabBar li a {
