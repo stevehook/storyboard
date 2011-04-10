@@ -104,7 +104,7 @@ td {
 .headerTitle {
   color: #FFF;
   float: left;
-  font: 150% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  font: 170% "Trebuchet MS", Verdana, sans-serif;
   padding: .3em 0em .3em 2em;
 }
 
@@ -113,7 +113,6 @@ td {
 }
 
 .headerTabs {
-#  min-height: 3em;
 }
 
 .clear {
@@ -147,6 +146,10 @@ td {
 .tabBar {
   list-style-type: disc;
   list-style: none;
+}
+
+.tabBarRight {
+  float: right;
 }
 
 .tabBar li {
