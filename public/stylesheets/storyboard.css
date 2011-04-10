@@ -158,13 +158,13 @@ td {
   padding: .3em 1em;
 }
 
-.tabBar li.selected {
-  background-color: #555;
-}
-
 .tabBar li:hover {
   background-color: #222;
   cursor: pointer;
+}
+
+.tabBar li.selected {
+  background-color: #555;
 }
 
 .tabBar li a {
