@@ -10,7 +10,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tag
   %body
-    %div.header
+    %div#header.header
       %div.headerTop
         = render(:partial => 'shared/header_title')
         = render(:partial => 'shared/header_menu')
@@ -18,11 +18,11 @@
       = render(:partial => 'shared/header_tabs')
       %br.clear
 
-    - flash.each do |name, message|
-      %div.flashMessage{:id => "flash_#{name}"}= message
+      %div.pageTitle= yield :title
+      - flash.each do |name, message|
+        %div.flashMessage{:id => "flash_#{name}"}= message
 
     %div.clear
-    %div.document
-      %div.pageTitle= yield :title
+    %div#document.document
       %div.pageBody
         = yield

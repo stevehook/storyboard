@@ -47,6 +47,11 @@ $(function() {
       subPanels.css('min-height', maxHeight + 'px');
     });
   }
+  var positionDocument = function() {
+    var document = $('#document');
+    var header = $('#header');
+    document.css('margin-top', header.height() + 'px');
+  }
   resizeTaskboard();
   $('.taskPanel').draggable({axis: 'x', revert: 'invalid'});
   $('.taskSubPanel').droppable({
@@ -66,5 +71,7 @@ $(function() {
       );
     }
   });
+  positionDocument();
+  $(window).resize(positionDocument);
 });
 
