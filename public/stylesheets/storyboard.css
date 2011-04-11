@@ -1,10 +1,13 @@
-body { background-color: #fff; color: #333; }
-
 body, p, ol, ul, td, textarea, input {
   font-family: arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
   margin: 0px;
+}
+
+body {
+  background-color: #fff; 
+  color: #333;
 }
 
 .listItem {
@@ -89,7 +92,15 @@ td {
 .header {
   background-color: #444;
   display: block;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1000;
  # min-height: 6em;
+}
+
+.document {
+  margin-top: 6em;
 }
 
 .flashMessage {

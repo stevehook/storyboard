@@ -21,6 +21,8 @@
     - flash.each do |name, message|
       %div.flashMessage{:id => "flash_#{name}"}= message
 
-    %div.pageTitle= yield :title
-    %div.pageBody
-      = yield
+    %div.clear
+    %div.document
+      %div.pageTitle= yield :title
+      %div.pageBody
+        = yield
