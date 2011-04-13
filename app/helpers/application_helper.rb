@@ -37,12 +37,8 @@ module ApplicationHelper
     end
   end
 
-  def logged_in?
-   session['user_id']
-  end
-
   def login_or_logout_link
-   if logged_in?
+   if user_session.logged_in?
      link_to 'Logout', logout_path
    else
      link_to 'Login', login_path
