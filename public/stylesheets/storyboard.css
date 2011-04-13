@@ -240,3 +240,8 @@ td {
 .badgePanel {
   float: right;
 }
+
+/* forms */
+.formPanel {
+  padding: 2em;
+}
