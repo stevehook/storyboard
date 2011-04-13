@@ -9,9 +9,33 @@ class UserSession
 
   def login(user)
     @session[:user_id] = user.id
+    self.current_project = user.project
+    self.current_release = user.release
   end
 
   def logout
     @session[:user_id] = nil
+    @session[:project_title] = nil
+    @session[:project_id] = nil
+    @session[:release_title] = nil
+    @session[:release_id] = nil
+  end
+
+  def current_project_title
+    @session[:project_title] || 'Storyboard'
+  end
+
+  def current_release_title
+    @session[:release_title]
+  end
+
+  def current_project=(project)
+    @session[:project_id] = project.nil? ? nil : project.id
+    @session[:project_title] = project.nil? ? nil : project.title
+  end
+
+  def current_release=(release)
+    @session[:release_id] = release.nil? ? nil : release.id
+    @session[:release_title] = release.nil? ? nil : release.title
   end
 end

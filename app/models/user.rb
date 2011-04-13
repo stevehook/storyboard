@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :project_id, :release_id
+  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :project_id, :release_id, :project, :release
   attr_accessor :password
   field :name, :data_type => String
   field :email, :data_type => String

@@ -44,4 +44,12 @@ module ApplicationHelper
      link_to 'Login', login_path
    end
   end
+
+  def project_header_title
+    if user_session.current_release_title.nil? 
+      user_session.current_project_title
+    else
+      "#{ user_session.current_project_title } - #{ user_session.current_release_title }"
+    end
+  end
 end
