@@ -1,9 +1,9 @@
 %div.headerTabs
   %ul.tabBar
-    %li.selected= link_to 'Project', projects_path
-    %li= link_to 'Release', releases_path
-    %li= link_to 'Backlog', stories_path
-    %li= link_to 'Sprints', stories_path
-    %li= link_to 'Tasks', stories_path
+    %li{ :class => user_session.current_tab == :projects ? 'selected' : ''}= link_to 'Project', projects_path
+    %li{ :class => user_session.current_tab == :releases ? 'selected' : ''}= link_to 'Release', releases_path
+    %li{ :class => user_session.current_tab == :backlog ? 'selected' : ''}= link_to 'Backlog', stories_path
+    %li{ :class => user_session.current_tab == :sprints ? 'selected' : ''}= link_to 'Sprints', stories_path
+    %li{ :class => user_session.current_tab == :tasks ? 'selected' : ''}= link_to 'Tasks', stories_path
   %ul.tabBar.tabBarRight
-    %li= link_to 'Admin', teams_path
+    %li{ :class => user_session.current_tab == :admin ? 'selected' : ''}= link_to 'Admin', teams_path

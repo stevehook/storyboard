@@ -9,8 +9,11 @@ describe SessionsController do
     end
   end
 
-  def destroy
-    session[:user_id] = nil
-    redirect_to root_url, :notice => "Logged out!"
+  describe "GET 'destroy'" do
+    it "should be successful" do
+      get 'destroy'
+      response.should be_redirect
+      redirect_to root_url, :notice => "Logged out!"
+    end
   end
 end

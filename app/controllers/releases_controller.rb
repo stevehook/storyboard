@@ -1,4 +1,10 @@
 class ReleasesController < ApplicationController
+  before_filter :set_tab
+
+  def set_tab
+    user_session.current_tab = :releases
+  end
+
   # GET /releases
   # GET /releases.xml
   def index
@@ -9,7 +15,7 @@ class ReleasesController < ApplicationController
       format.xml  { render :xml => @releases }
     end
   end
-  
+
   # GET /releases/1
   # GET /releases/1.xml
   def show

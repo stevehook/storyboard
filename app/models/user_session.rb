@@ -19,6 +19,7 @@ class UserSession
     @session[:project_id] = nil
     @session[:release_title] = nil
     @session[:release_id] = nil
+    @session[:tab] = nil
   end
 
   def current_project_title
@@ -37,5 +38,13 @@ class UserSession
   def current_release=(release)
     @session[:release_id] = release.nil? ? nil : release.id
     @session[:release_title] = release.nil? ? nil : release.title
+  end
+
+  def current_tab
+    @session[:tab]
+  end
+
+  def current_tab=(tab)
+    @session[:tab] = tab
   end
 end

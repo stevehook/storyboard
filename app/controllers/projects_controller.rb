@@ -1,4 +1,10 @@
 class ProjectsController < ApplicationController
+  before_filter :set_tab
+
+  def set_tab
+    user_session.current_tab = :projects
+  end
+
   # GET /projects
   # GET /projects.xml
   def index
