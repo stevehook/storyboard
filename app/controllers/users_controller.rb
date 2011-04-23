@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  before_filter :set_tab
+
+  def set_tab
+    user_session.current_tab = :admin
+  end
+
   # GET /users
   # GET /users.xml
   def index

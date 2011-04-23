@@ -19,7 +19,7 @@ class UserSession
     @session[:project_id] = nil
     @session[:release_title] = nil
     @session[:release_id] = nil
-    @session[:tab] = nil
+    @session[:tab] = :projects
   end
 
   def current_project_title

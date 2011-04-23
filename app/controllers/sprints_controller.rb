@@ -1,4 +1,9 @@
 class SprintsController < ApplicationController
+  before_filter :set_tab
+
+  def set_tab
+    user_session.current_tab = :sprints
+  end
 
   # GET /sprints/new
   # GET /sprints/new.xml
@@ -44,6 +49,7 @@ class SprintsController < ApplicationController
 
   # GET /sprints/1/taskboard
   def taskboard
+    user_session.current_tab = :tasks
     @sprint = Sprint.find(params[:id])
 
     respond_to do |format|

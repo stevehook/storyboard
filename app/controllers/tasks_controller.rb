@@ -1,4 +1,10 @@
 class TasksController < ApplicationController
+  before_filter :set_tab
+
+  def set_tab
+    user_session.current_tab = :tasks
+  end
+
   # GET /stories/1/tasks
   # GET /stories/1/tasks.xml
   def index
