@@ -47,4 +47,9 @@ class UserSession
   def current_tab=(tab)
     @session[:tab] = tab
   end
+
+  def current_user
+    user_id = @session[:user_id]
+    user_id.nil? ? nil : User.find(user_id)
+  end
 end

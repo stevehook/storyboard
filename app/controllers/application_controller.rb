@@ -5,4 +5,9 @@ class ApplicationController < ActionController::Base
     @user_session ||= UserSession.new(session)
   end
   helper_method :user_session
+
+  # required by cancan
+  def current_user
+    user_session.current_user
+  end
 end
