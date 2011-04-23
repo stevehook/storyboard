@@ -2,30 +2,31 @@ require 'spec_helper'
 
 describe StoriesController do
   before(:each) do
-    #fixtures :all
-    #@story = stories(:one)
+    # TODO: Setup current_user so that authorisation rules pass
     @new_story_attributes = { :title => 'test title', :description => 'test description', :estimate => 2 }
+    controller.stub(:current_user).and_return(User.new)
   end
-  
+
   describe "GET index" do
     before(:each) do
       get :index
     end
-  
+
     it "should succeed and set stories to a non-nil value" do
       response.should be_success
       assigns[:stories].should_not be_nil
     end
   end
-  
+
   describe "GET new" do
     it "should succeed and set story to a non-nil value" do
       get :new
+      puts response
       response.should be_success
       assigns[:story].should_not be_nil
     end
   end
-  
+
   describe "POST create" do
     it "should succeed and create a new story" do 
       original_count = Story.count
@@ -35,9 +36,9 @@ describe StoriesController do
       # TODO: Assert redirect location
     end
   end
- 
+
   # TODO: Need to work out how to do fixtures/mock the database with rspec to complete the remaining tests
-  
+
   # it "should show story" do
   #   get :show, :id => @story.to_param
   #   assert_response :success
