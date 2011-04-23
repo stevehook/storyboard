@@ -1,4 +1,6 @@
 class SprintsController < ApplicationController
+  load_and_authorize_resource
+
   before_filter :set_tab
 
   def set_tab
@@ -21,7 +23,6 @@ class SprintsController < ApplicationController
   # POST /sprints
   # POST /sprints.xml
   def create
-    @sprint = Sprint.new(params[:sprint])
     @release = Release.find(@sprint.release_id)
     @release.create_sprint(@sprint)
 
@@ -39,8 +40,6 @@ class SprintsController < ApplicationController
   # GET /sprints/1
   # GET /sprints/1.xml
   def show
-    @sprint = Sprint.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @sprint }
@@ -50,8 +49,6 @@ class SprintsController < ApplicationController
   # GET /sprints/1/taskboard
   def taskboard
     user_session.current_tab = :tasks
-    @sprint = Sprint.find(params[:id])
-
     respond_to do |format|
       format.html # taskboard.html.haml
       format.xml  { render :xml => @sprint }

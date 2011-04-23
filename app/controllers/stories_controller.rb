@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  load_and_authorize_resource
+
   before_filter :set_tab
 
   def set_tab
@@ -19,8 +21,6 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.xml
   def show
-    @story = Story.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @story }
@@ -40,14 +40,11 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story = Story.find(params[:id])
   end
 
   # POST /stories
   # POST /stories.xml
   def create
-    @story = Story.new(params[:story])
-
     respond_to do |format|
       if @story.update_sprint_and_save
         format.html { redirect_to(@story, :notice => 'Story was successfully created.') }
@@ -61,7 +58,6 @@ class StoriesController < ApplicationController
   
   # POST /stories/1/reprioritise/1
   def reprioritise
-    @story = Story.find(params[:id])
     @story.reprioritise(params[:priority].to_i)
     @stories = Story.product_backlog
     render :layout => false
@@ -70,8 +66,6 @@ class StoriesController < ApplicationController
   # PUT /stories/1
   # PUT /stories/1.xml
   def update
-    @story = Story.find(params[:id])
-
     respond_to do |format|
       if @story.update_sprint_and_save(params[:story])
         format.html { redirect_to(@story, :notice => 'Story was successfully updated.') }
@@ -86,7 +80,6 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.xml
   def destroy
-    @story = Story.find(params[:id])
     @story.destroy
 
     respond_to do |format|

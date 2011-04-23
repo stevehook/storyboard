@@ -1,4 +1,6 @@
 class ReleasesController < ApplicationController
+  load_and_authorize_resource
+
   before_filter :set_tab
 
   def set_tab
@@ -19,8 +21,6 @@ class ReleasesController < ApplicationController
   # GET /releases/1
   # GET /releases/1.xml
   def show
-    @release = Release.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @release }
@@ -42,7 +42,6 @@ class ReleasesController < ApplicationController
 
   # GET /releases/1/edit
   def edit
-    @release = Release.find(params[:id])
     @project = @release.project
   end
 
@@ -67,8 +66,6 @@ class ReleasesController < ApplicationController
   # PUT /releases/1
   # PUT /releases/1.xml
   def update
-    @release = Release.find(params[:id])
-
     respond_to do |format|
       if @release.update_attributes(params[:release])
         format.html { redirect_to(@release, :notice => 'Release was successfully updated.') }
@@ -83,7 +80,6 @@ class ReleasesController < ApplicationController
   # DELETE /releases/1
   # DELETE /releases/1.xml
   def destroy
-    @release = Release.find(params[:id])
     @release.destroy
 
     respond_to do |format|
