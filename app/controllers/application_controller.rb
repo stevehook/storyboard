@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
   def current_user
     user_session.current_user
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "You are not allowed to do that."
+    redirect_to root_url
+  end
 end
