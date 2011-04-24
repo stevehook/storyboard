@@ -89,6 +89,7 @@ describe StoriesController do
       it "should redirect" do
         get :edit, :id => @story.id
         response.should be_redirect
+        flash.should_not be_empty
       end
     end
   end
