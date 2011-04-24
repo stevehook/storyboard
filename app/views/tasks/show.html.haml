@@ -16,5 +16,6 @@
   %b Remaining:
   = @task.remaining
 
-= link_to 'Edit', edit_story_task_path(@story, @task) |
+- if can? :manage, @story
+  = link_to 'Edit', edit_story_task_path(@story, @task) |
 = link_to 'Back', story_tasks_path(@story)

@@ -7,5 +7,6 @@
   %br
   %span.listItemDetail= "#{story.tasks.length} tasks, #{story.tasks_estimate} total hours, #{story.tasks_effort_remaining} remaining."
   %br
-  %a{ :href => edit_story_path(story.id) } Edit
+  - if can? :manage, story
+    %a{ :href => edit_story_path(story.id) } Edit
   %a{ :href => story_path(story.id) } View

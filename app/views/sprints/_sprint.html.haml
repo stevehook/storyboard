@@ -3,5 +3,6 @@
   %br
   %span.listItemDetail= "#{sprint.story_count} stories, #{sprint.points_count} total points"
   %br
-  %a{ :href => edit_sprint_path(sprint.id) } Edit
+  - if can? :manage, sprint
+    %a{ :href => edit_sprint_path(sprint.id) } Edit
   %a{ :href => sprint_path(sprint.id) } View

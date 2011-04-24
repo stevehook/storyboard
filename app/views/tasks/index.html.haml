@@ -24,4 +24,5 @@
 
 %br
 
-= link_to 'New Task', new_story_task_path(@story)
+- if can? :manage, @story
+  = link_to 'New Task', new_story_task_path(@story)

@@ -4,7 +4,8 @@
   %div.subPanel
     = sub_heading "Sprints"
     = render @release.sprints.sort_by { |sprint| sprint.start_date }
-    = link_to 'Add Sprint', new_sprint_path(:parent => @release.id)
+    - if can? :manage, @release
+      = link_to 'Add Sprint', new_sprint_path(:parent => @release.id)
 
 %div.releaseSidePanel
   %div.subPanel

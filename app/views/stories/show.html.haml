@@ -12,5 +12,6 @@
   %b Estimate:
   = @story.estimate
 
-= link_to 'Edit', edit_story_path(@story)
+- if can? :manage, @story
+  = link_to 'Edit', edit_story_path(@story)
 = link_to 'Back', stories_path

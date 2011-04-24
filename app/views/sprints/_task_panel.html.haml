@@ -4,5 +4,6 @@
       = estimate_badge(task)
       = assignee_badge(task)
       = status_badge(task)
-    = link_to task.title, edit_story_task_path(task.story, task)
+    - if can? :manage, task
+      = link_to task.title, edit_story_task_path(task.story, task)
   %div.description= task.description

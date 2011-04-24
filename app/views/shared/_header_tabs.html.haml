@@ -6,4 +6,5 @@
     %li{ :class => user_session.current_tab == :sprints ? 'selected' : ''}= link_to 'Sprints', stories_path
     %li{ :class => user_session.current_tab == :tasks ? 'selected' : ''}= link_to 'Tasks', stories_path
   %ul.tabBar.tabBarRight
-    %li{ :class => user_session.current_tab == :admin ? 'selected' : ''}= link_to 'Admin', teams_path
+    -if can? :manage, User
+      %li{ :class => user_session.current_tab == :admin ? 'selected' : ''}= link_to 'Admin', teams_path
