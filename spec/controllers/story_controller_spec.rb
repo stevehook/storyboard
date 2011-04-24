@@ -21,7 +21,6 @@ describe StoriesController do
   describe "GET new" do
     it "should succeed and set story to a non-nil value" do
       get :new
-      puts response
       response.should be_success
       assigns[:story].should_not be_nil
     end
@@ -37,6 +36,31 @@ describe StoriesController do
     end
   end
 
+  describe "GET show" do
+    before(:each) do
+      @story = Story.new
+      Story.stub(:find).and_return(@story)
+    end
+
+    it "should succeed and show a story" do
+      get :show, :id => @story.id
+      response.should be_success
+      assigns[:story].should_not be_nil
+    end
+  end
+
+  describe "GET edit" do
+    before(:each) do
+      @story = Story.new
+      Story.stub(:find).and_return(@story)
+    end
+
+    it "should succeed and show a story" do
+      get :edit, :id => @story.id
+      response.should be_success
+      assigns[:story].should_not be_nil
+    end
+  end
   # TODO: Need to work out how to do fixtures/mock the database with rspec to complete the remaining tests
 
   # it "should show story" do
