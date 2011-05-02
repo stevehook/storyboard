@@ -1,6 +1,5 @@
 %div.listItem
   %span.listItemTitle= project.title
   %br
-  - if can? :manage, project
-    %a{ :href => edit_project_path(project.id) } Edit
-  %a{ :href => project_path(project.id) } View
+  %div.listSubItem
+    = render :collection => project.releases, :partial => 'projects/release'

@@ -3,6 +3,7 @@ Storyboard::Application.routes.draw do
   get 'login' => 'sessions#new', :as => 'login'
   get 'preferences' => 'sessions#preferences', :as => 'preferences'
   get 'help' => 'sessions#help', :as => 'help'
+  get 'select/:id' => 'sessions#select', :as => 'select'
   resources :sessions
 
   resources :teams

@@ -17,5 +17,16 @@ class SessionsController < ApplicationController
     user_session.logout
     redirect_to root_url, :notice => "Logged out!"
   end
+
+  def select
+    release = Release.find(params[:id])
+    if release
+      # TODO: Set the session
+      redirect_to release_path(release)
+    else
+      flash.now.alert = "Invalid release"
+      redirect_to projects_path
+    end
+  end
 end
 
