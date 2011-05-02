@@ -9,6 +9,10 @@ class UserSession
 
   def login(user)
     @session[:user_id] = user.id
+    set_current_project(user)
+  end
+
+  def set_current_project(user)
     self.current_project = user.project
     self.current_release = user.release
   end
