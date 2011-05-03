@@ -21,7 +21,6 @@ class SessionsController < ApplicationController
   def select
     release = Release.find(params[:id])
     if release
-      # TODO: Set the session
       user = user_session.current_user
       if user
         user.project = release.project
@@ -29,7 +28,7 @@ class SessionsController < ApplicationController
         user.save!
         user_session.set_current_project(user)
       end
-      redirect_to release_path(release)
+      redirect_to release_path(release.id)
     else
       flash.now.alert = "Invalid release"
       redirect_to projects_path
