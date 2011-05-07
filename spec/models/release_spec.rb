@@ -114,6 +114,10 @@ describe Release do
         sprint3.status.should == :not_started
       end
 
+      it "current_sprint should be 'Sprint 1'" do
+        release.current_sprint.should == sprint1
+      end
+
       context "after finishing first sprint" do
         before(:each) do
           release.finish_sprint_and_start_next(sprint1)
@@ -129,6 +133,10 @@ describe Release do
 
         it "sprint 3 should be not_started" do
           sprint3.status.should == :not_started
+        end
+
+        it "current_sprint should be 'Sprint 2'" do
+          release.current_sprint.should == sprint2
         end
       end
     end

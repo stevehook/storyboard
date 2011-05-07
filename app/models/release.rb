@@ -46,12 +46,14 @@ class Release
   def start_sprints
     first_sprint = self.sprints.min_by { |sprint| sprint.order }
     first_sprint.status = :in_progress
+    self.current_sprint = first_sprint
   end
   
   def finish_sprint_and_start_next(finishing_sprint)
     starting_sprint = self.sprints.select { |sprint| sprint.order == finishing_sprint.order + 1 }.first
     starting_sprint.status = :in_progress if starting_sprint
     finishing_sprint.status = :finished
+    self.current_sprint = starting_sprint
   end
   
   def end_date
