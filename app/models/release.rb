@@ -7,10 +7,12 @@ class Release
   field :sprint_length, :data_type => Integer, :default => Project::DEFAULT_SPRINT_LENGTH
   field :description, :data_type => String
   field :start_date, :data_type => Date, :default => Time.new
+
   # key :title
   references_many :sprints
   referenced_in :project
   references_many :users
+  referenced_in :current_sprint, :class_name => 'Sprint'
 
   validates :title, :presence => true
   validates :project, :presence => true
@@ -39,6 +41,17 @@ class Release
     # TODO: There must be a better way to do this... why don't mongoid/rails allow us to put string values into non-string fields?
     self.sprint_length = self.sprint_length.to_i if self.sprint_length.class == String
     self.start_date = Time.parse(self.start_date) if self.start_date.class == String    
+  end
+
+  def start_sprints
+    first_sprint = self.sprints.min_by { |sprint| sprint.order }
+    first_sprint.status = :in_progress
+  end
+  
+  def finish_sprint_and_start_next(finishing_sprint)
+    starting_sprint = self.sprints.select { |sprint| sprint.order == finishing_sprint.order + 1 }.first
+    starting_sprint.status = :in_progress if starting_sprint
+    finishing_sprint.status = :finished
   end
   
   def end_date

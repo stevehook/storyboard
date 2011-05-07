@@ -9,6 +9,9 @@ class Sprint
   field :end_date, :data_type => Date
   field :story_count, :data_type => Integer, :default => 0
   field :points_count, :data_type => Integer, :default => 0
+  STATUSES = [:not_started, :in_progress, :finished]
+  field :status, :data_type => String, :default => :not_started
+  
   # key :title
   references_many :stories, :inverse_of => :_sprint
   referenced_in :release
@@ -28,5 +31,10 @@ class Sprint
   def refresh_counts
     self.story_count = self.stories.length
     self.points_count = self.stories.inject(0) { |n, story| story.estimate.to_i + n }
+  end
+
+  def finish
+    #TODO: Close off the stories and mark any unfinished ones as failed
+    self.release.finish_sprint_and_start_next(self)
   end
 end
