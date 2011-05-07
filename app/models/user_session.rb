@@ -62,6 +62,6 @@ class UserSession
 
   def current_user
     user_id = @session[:user_id]
-    user_id.nil? ? nil : User.find(user_id)
+    user_id.nil? ? nil : User.first(:conditions => { :id => user_id })
   end
 end
