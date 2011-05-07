@@ -9,10 +9,10 @@ class Release
   field :start_date, :data_type => Date, :default => Time.new
 
   # key :title
-  references_many :sprints
+  references_many :sprints, :inverse_of => :release
   referenced_in :project
   references_many :users
-  referenced_in :current_sprint, :class_name => 'Sprint'
+  belongs_to :current_sprint, :class_name => 'Sprint'
 
   validates :title, :presence => true
   validates :project, :presence => true

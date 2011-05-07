@@ -14,7 +14,8 @@ class Sprint
   
   # key :title
   references_many :stories, :inverse_of => :_sprint
-  referenced_in :release
+  referenced_in :release, :inverse_of => :sprints
+  # has_one :current_release, :inverse_of => :current_sprint, :class_name => 'Release'
 
   attr_protected :story_count, :points_count
 

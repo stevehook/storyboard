@@ -13,8 +13,8 @@ release12 = Release.create(:title => 'Version 1.2', :order => 3, :start_date => 
 release20 = Release.create(:title => 'Version 2.0', :order => 4, :start_date => Time.utc(2011, 'jan', 3), :project => project_x)
 release30 = Release.create(:title => 'Version 3.0', :order => 5, :start_date => Time.utc(2011, 'oct', 4), :project => project_x)
 
-sprint1 = Sprint.create(:release => release20, :title => '1', :order => 1, :start_date => Time.utc(2011, 'jan', 3), :end_date => Time.utc(2011, 'jan', 15))
-sprint2 = Sprint.create(:release => release20, :title => '2', :order => 2, :start_date => Time.utc(2011, 'jan', 17), :end_date => Time.utc(2011, 'jan', 28))
+sprint1 = Sprint.create(:release => release20, :status => :finished, :title => '1', :order => 1, :start_date => Time.utc(2011, 'jan', 3), :end_date => Time.utc(2011, 'jan', 15))
+sprint2 = Sprint.create(:release => release20, :status => :in_progress, :title => '2', :order => 2, :start_date => Time.utc(2011, 'jan', 17), :end_date => Time.utc(2011, 'jan', 28))
 sprint3 = Sprint.create(:release => release20, :title => '3', :order => 3, :start_date => Time.utc(2011, 'jan', 31), :end_date => Time.utc(2011, 'feb', 11))
 sprint4 = Sprint.create(:release => release20, :title => '4', :order => 4, :start_date => Time.utc(2011, 'feb', 14), :end_date => Time.utc(2011, 'feb', 25))
 sprint5 = Sprint.create(:release => release20, :title => '5', :order => 5, :start_date => Time.utc(2011, 'feb', 28), :end_date => Time.utc(2011, 'mar', 11))
@@ -23,7 +23,8 @@ sprint7 = Sprint.create(:release => release20, :title => '7', :order => 7, :star
 sprint8 = Sprint.create(:release => release20, :title => '8', :order => 8, :start_date => Time.utc(2011, 'apr', 11), :end_date => Time.utc(2011, 'apr', 22))
 sprint9 = Sprint.create(:release => release20, :title => '9', :order => 9, :start_date => Time.utc(2011, 'apr', 25), :end_date => Time.utc(2011, 'may', 6))
 
-release20.update(:current_sprint => sprint2)
+release20.current_sprint = sprint2
+release20.update
 
 bob = User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :release => release20, :project => project_x)
 alice = User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret', :release => release20, :project => project_x)
