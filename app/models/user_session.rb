@@ -34,6 +34,14 @@ class UserSession
     @session[:release_title]
   end
 
+  def current_project_id
+    @session[:project_id]
+  end
+
+  def current_release_id
+    @session[:release_id]
+  end
+
   def current_project=(project)
     @session[:project_id] = project.nil? ? nil : project.id
     @session[:project_title] = project.nil? ? nil : project.title

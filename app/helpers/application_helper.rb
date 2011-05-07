@@ -52,4 +52,24 @@ module ApplicationHelper
       "#{ user_session.current_project_title } - #{ user_session.current_release_title }"
     end
   end
+
+  def current_project_path
+    project_path(user_session.current_project_id)
+  end
+
+  def current_release_path
+    release_path(user_session.current_release_id)
+  end
+
+  def current_backlog_path
+    ''
+  end
+
+  def current_sprint_path
+    ''
+  end
+
+  def current_sprint_tasks_path
+    ''
+  end
 end
