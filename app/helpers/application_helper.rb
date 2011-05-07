@@ -62,14 +62,17 @@ module ApplicationHelper
   end
 
   def current_backlog_path
-    ''
+    # TODO: Restrict the set of stories to the current project
+    stories_path
   end
 
   def current_sprint_path
+    # TODO:
     ''
   end
 
   def current_sprint_tasks_path
+    # TODO:
     ''
   end
 end
