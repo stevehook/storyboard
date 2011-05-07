@@ -23,6 +23,8 @@ sprint7 = Sprint.create(:release => release20, :title => '7', :order => 7, :star
 sprint8 = Sprint.create(:release => release20, :title => '8', :order => 8, :start_date => Time.utc(2011, 'apr', 11), :end_date => Time.utc(2011, 'apr', 22))
 sprint9 = Sprint.create(:release => release20, :title => '9', :order => 9, :start_date => Time.utc(2011, 'apr', 25), :end_date => Time.utc(2011, 'may', 6))
 
+release20.update(:current_sprint => sprint2)
+
 bob = User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :release => release20, :project => project_x)
 alice = User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret', :release => release20, :project => project_x)
 derek = User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :password => 'secret', :release => release20, :project => project_x)
