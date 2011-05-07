@@ -55,6 +55,15 @@ class SprintsController < ApplicationController
     throw 'No current sprint'
   end
 
+  def current_sprint_tasks
+    if user_session.current_release_id
+      current_release = Release.find(user_session.current_release_id)
+      sprint = current_release.current_sprint || current_release.first_sprint
+      return redirect_to(:action => :taskboard, :id => sprint.id) if sprint
+    end
+    throw 'No current sprint'
+  end
+
   # GET /sprints/1/taskboard
   def taskboard
     user_session.current_tab = :tasks
