@@ -66,10 +66,10 @@ module ApplicationHelper
     stories_path
   end
 
-  def current_sprint_path
-    current_sprint_path
-    # TODO: What if the current sprint is nil?
-  end
+  # def current_sprint_path
+  #   current_sprint_path
+  #   # TODO: What if the current sprint is nil?
+  # end
 
   def current_sprint_tasks_path
     # TODO:
