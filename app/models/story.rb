@@ -19,6 +19,8 @@ class Story
   referenced_in :release
   referenced_in :_sprint, :inverse_of => :stories, :class_name => 'Sprint'
   embeds_many :tasks
+
+  scope :in_project, lambda { |project_id| where('project_id = ?', project_id) }
   
   attr_protected :tasks_effort_remaining, :tasks_estimate
 

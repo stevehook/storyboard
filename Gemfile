@@ -6,7 +6,7 @@ gem 'rails', '>= 3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'mongoid', '>= 2.0.0.rc.7'
+gem 'mongoid', '>= 2.0.1'
 gem 'bson_ext', '>= 1.2.2'
 gem 'haml'
 gem 'bcrypt-ruby', :require => 'bcrypt'
