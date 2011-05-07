@@ -67,8 +67,8 @@ module ApplicationHelper
   end
 
   def current_sprint_path
-    # TODO:
-    ''
+    current_sprint_path
+    # TODO: What if the current sprint is nil?
   end
 
   def current_sprint_tasks_path

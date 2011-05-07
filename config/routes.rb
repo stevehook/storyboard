@@ -1,8 +1,9 @@
 Storyboard::Application.routes.draw do
-  get 'logout' => 'sessions#destroy', :as => 'logout'
-  get 'login' => 'sessions#new', :as => 'login'
-  get 'preferences' => 'sessions#preferences', :as => 'preferences'
-  get 'help' => 'sessions#help', :as => 'help'
+  get 'sessions/logout' => 'sessions#destroy', :as => 'logout'
+  get 'sessions/login' => 'sessions#new', :as => 'login'
+  get 'sessions/preferences' => 'sessions#preferences', :as => 'preferences'
+  get 'sessions/help' => 'sessions#help', :as => 'help'
+  get 'sprints/current_sprint' => 'sprints#current_sprint', :as => 'current_sprint'
   get 'select/:id' => 'sessions#select', :as => 'select'
   resources :sessions
 

@@ -1,10 +1,11 @@
 %div.headerTabs
   %ul.tabBar
-    %li{ :class => user_session.current_tab == :projects ? 'selected' : ''}= link_to 'Project', current_project_path
-    %li{ :class => user_session.current_tab == :backlog ? 'selected' : ''}= link_to 'Backlog', current_backlog_path
-    %li{ :class => user_session.current_tab == :releases ? 'selected' : ''}= link_to 'Release', current_release_path
-    %li{ :class => user_session.current_tab == :sprints ? 'selected' : ''}= link_to 'Current Sprint', current_sprint_path
-    %li{ :class => user_session.current_tab == :tasks ? 'selected' : ''}= link_to 'Task Board', current_sprint_tasks_path
+    -if user_session.current_release_id
+      %li{ :class => user_session.current_tab == :projects ? 'selected' : ''}= link_to 'Project', current_project_path
+      %li{ :class => user_session.current_tab == :backlog ? 'selected' : ''}= link_to 'Backlog', current_backlog_path
+      %li{ :class => user_session.current_tab == :releases ? 'selected' : ''}= link_to 'Release', current_release_path
+      %li{ :class => user_session.current_tab == :sprints ? 'selected' : ''}= link_to 'Current Sprint', current_sprint_path
+      %li{ :class => user_session.current_tab == :tasks ? 'selected' : ''}= link_to 'Task Board', current_sprint_tasks_path
   %ul.tabBar.tabBarRight
     -if can? :manage, User
       %li{ :class => user_session.current_tab == :admin ? 'selected' : ''}= link_to 'Admin', teams_path
