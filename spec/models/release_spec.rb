@@ -114,6 +114,10 @@ describe Release do
         sprint3.status.should == :not_started
       end
 
+      it "first_sprint should be 'Sprint 1'" do
+        release.first_sprint.should == sprint1
+      end
+
       it "current_sprint should be 'Sprint 1'" do
         release.current_sprint.should == sprint1
       end

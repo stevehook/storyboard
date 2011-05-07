@@ -43,10 +43,14 @@ class Release
     self.start_date = Time.parse(self.start_date) if self.start_date.class == String    
   end
 
+  def first_sprint
+    self.sprints.min_by { |sprint| sprint.order }
+  end
+
   def start_sprints
-    first_sprint = self.sprints.min_by { |sprint| sprint.order }
-    first_sprint.status = :in_progress
-    self.current_sprint = first_sprint
+    starting_sprint = first_sprint   
+    starting_sprint.status = :in_progress if starting_sprint
+    self.current_sprint = starting_sprint
   end
   
   def finish_sprint_and_start_next(finishing_sprint)
