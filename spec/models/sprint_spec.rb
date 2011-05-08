@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Sprint do
-  let(:release) { Release.create(:title => 'test release') }
+  let(:project) { Project.create(:title => 'test project') }
+  let(:release) { Release.create(:title => 'test release', :project => project) }
   let(:sprint) { Sprint.create(:title => 'test sprint', :description => 'test description') }
 
   it "should be valid if mandatory attributes are specified" do
