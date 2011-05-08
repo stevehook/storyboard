@@ -11,6 +11,7 @@ gem 'bson_ext', '>= 1.2.2'
 gem 'haml'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'cancan', :require => 'cancan'
+gem 'SystemTimer', '>= 1.2.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
