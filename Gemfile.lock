@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    SystemTimer (1.2.3)
     ZenTest (4.5.0)
     abstract (1.0.0)
     actionmailer (3.0.7)
@@ -125,7 +124,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  SystemTimer (>= 1.2.0)
   ZenTest (>= 4.4.2)
   bcrypt-ruby
   bson_ext (>= 1.2.2)
