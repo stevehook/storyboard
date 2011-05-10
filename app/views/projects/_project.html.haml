@@ -1,5 +1,5 @@
 %div.listItem
-  %span.listItemTitle= project.title
+  %span.listItemMainTitle.listItemTitle= project.title
   %br
   %div.listSubItem
     = render :collection => project.releases, :partial => 'projects/release'

@@ -23,6 +23,11 @@ body {
   text-decoration: none;
 }
 
+.listItemMainTitle {
+  font-size:   16px;
+  line-height: 24px;
+}
+
 .assigneeBadge {
   margin-left: 8px;
   margin-top: 5px;
