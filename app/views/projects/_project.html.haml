@@ -1,5 +1,2 @@
 %div.listItem
-  %span.listItemMainTitle.listItemTitle= project.title
-  %br
-  %div.listSubItem
-    = render :collection => project.releases, :partial => 'projects/release'
+  = link_to project.title, project_path(project)

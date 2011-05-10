@@ -6,6 +6,7 @@ Storyboard::Application.routes.draw do
   get 'sprints/current_sprint' => 'sprints#current_sprint', :as => 'current_sprint'
   get 'sprints/current_sprint_tasks' => 'sprints#current_sprint_tasks', :as => 'current_sprint_tasks'
   get 'select/:id' => 'sessions#select', :as => 'select'
+  get 'projects/select' => 'projects#select', :as => 'project_select'
   resources :sessions
 
   resources :teams

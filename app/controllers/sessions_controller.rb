@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
       redirect_to release_path(release.id)
     else
       flash.now.alert = "Invalid release"
-      redirect_to projects_path
+      redirect_to project_select_path
     end
   end
 end
