@@ -6,3 +6,4 @@
   - if can? :manage, sprint
     %a{ :href => edit_sprint_path(sprint.id) } Edit
   %a{ :href => sprint_path(sprint.id) } View
+  %a{ :href => taskboard_path(sprint.id) } Taskboard

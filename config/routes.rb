@@ -32,7 +32,7 @@ Storyboard::Application.routes.draw do
 
   get "say/goodbye"
 
-  match 'sprints/:id/taskboard' => 'sprints#taskboard'
+  match 'sprints/:id/taskboard' => 'sprints#taskboard', :as => :taskboard
   match 'stories/:story_id/tasks/:id/update_status' => 'tasks#update_status'
 
   root :to => "stories#index"
