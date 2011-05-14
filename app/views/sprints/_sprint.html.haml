@@ -1,9 +1,9 @@
 %div.listItem
-  %span.listItemTitle "Sprint #{ sprint.title }"
+  %span.listItemTitle 
+    = link_to "Sprint #{ sprint.title }", sprint_path(sprint.id)
   %br
   %span.listItemDetail= "#{sprint.story_count} stories, #{sprint.points_count} total points"
   %br
   - if can? :manage, sprint
-    %a{ :href => edit_sprint_path(sprint.id) } Edit
-  %a{ :href => sprint_path(sprint.id) } View
-  %a{ :href => taskboard_path(sprint.id) } Taskboard
+    = link_to 'Edit', edit_sprint_path(sprint.id)
+  = link_to 'Taskboard', taskboard_path(sprint.id)
