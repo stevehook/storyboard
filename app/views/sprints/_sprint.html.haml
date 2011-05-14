@@ -1,6 +1,7 @@
 %div.listItem
   %span.listItemTitle 
     = link_to "Sprint #{ sprint.title }", sprint_path(sprint.id)
+    = status_badge(sprint)
   %br
   %span.listItemDetail= "#{sprint.story_count} stories, #{sprint.points_count} total points"
   %br

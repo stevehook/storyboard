@@ -20,6 +20,7 @@ module ApplicationHelper
       when :in_progress then '#E0981B'
       when :committed then '#080'
       when :done then '#008'
+      when :finished then '#008'
       when :rejected then '#888'
     end
     "<span class='statusBadge' style='background-color: #{colour};'>#{model.status.to_s.humanize}</span>".html_safe
