@@ -11,11 +11,11 @@ class Sprint
   field :points_count, :data_type => Integer, :default => 0
   STATUSES = [:not_started, :in_progress, :finished]
   field :status, :data_type => String, :default => :not_started
+  field :goal, :data_type => String
   
   # key :title
   references_many :stories, :inverse_of => :_sprint
   referenced_in :release, :inverse_of => :sprints
-  # has_one :current_release, :inverse_of => :current_sprint, :class_name => 'Release'
 
   attr_protected :story_count, :points_count
 
