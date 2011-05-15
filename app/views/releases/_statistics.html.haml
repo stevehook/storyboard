@@ -1,5 +1,8 @@
 %table
   %tr
+    %td Project
+    %td= link_to @release.project.title, project_path(@release.project)
+  %tr
     %td Start Date
     %td= @release.start_date.to_s(:date)
   %tr

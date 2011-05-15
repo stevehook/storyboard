@@ -1,5 +1,11 @@
 %table
   %tr
+    %td Project
+    %td= link_to @sprint.release.project.title, project_path(@sprint.release.project)
+  %tr
+    %td Release
+    %td= link_to @sprint.release.title, release_path(@sprint.release)
+  %tr
     %td Start Date
     %td= @sprint.start_date.to_s(:date)
   %tr
