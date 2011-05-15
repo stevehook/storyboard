@@ -8,3 +8,5 @@
   - if can? :manage, sprint
     = link_to 'Edit', edit_sprint_path(sprint.id)
   = link_to 'Taskboard', taskboard_path(sprint.id)
+  - if sprint.can_delete
+    = button_to 'Delete', sprint, :method => :delete

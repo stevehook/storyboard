@@ -38,4 +38,8 @@ class Sprint
     #TODO: Close off the stories and mark any unfinished ones as failed
     self.release.finish_sprint_and_start_next(self)
   end
+
+  def can_delete
+    self.story_count == 0 && self.status == :not_started && self.release.sprints.length == self.order
+  end
 end

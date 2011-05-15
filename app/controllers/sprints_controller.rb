@@ -72,4 +72,14 @@ class SprintsController < ApplicationController
       format.xml  { render :xml => @sprint }
     end
   end
+
+  def destroy
+    release = @sprint.release
+    @sprint.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(release) }
+      format.xml  { head :ok }
+    end
+  end
 end
