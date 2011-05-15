@@ -6,4 +6,4 @@
       = status_badge(task)
     - if can? :manage, task
       = link_to task.title, edit_story_task_path(task.story, task)
-  %div.description= task.description
+  %div.description= truncate(task.description, :length => 250, :omission => '...')

@@ -1,5 +1,6 @@
 %div.listItem
-  %span.listItemTitle= story.title
+  %span.listItemTitle
+    = link_to story.title, story_path(story.id)
   %br
   %span.listItemDetail= story.description
   %br
@@ -9,4 +10,3 @@
   %br
   - if can? :manage, story
     %a{ :href => edit_story_path(story.id) } Edit
-  %a{ :href => story_path(story.id) } View

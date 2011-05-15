@@ -4,4 +4,4 @@
       = estimate_badge(story)
       = status_badge(story)
     = story.title
-  %div.description= story.description
+  %div.description= truncate(story.description, :length => 250, :omission => '...')
