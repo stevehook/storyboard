@@ -64,6 +64,25 @@ class SprintsController < ApplicationController
     throw 'No current sprint'
   end
 
+  # GET /stories/1/edit
+  def edit
+    @release = @sprint.release
+  end
+
+  # PUT /releases/1
+  # PUT /releases/1.xml
+  def update
+    respond_to do |format|
+      if @sprint.update_attributes(params[:sprint])
+        format.html { redirect_to(@sprint.release, :notice => 'Sprint was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @release.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /sprints/1/taskboard
   def taskboard
     user_session.current_tab = :tasks
