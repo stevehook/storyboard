@@ -3,7 +3,9 @@
 %div.releaseMainPanel
   %div.subPanel
     = sub_heading 'Sprint Goal'
-    = @sprint.goal
+    = truncate(@sprint.goal, :length => 250, :omission => '...')
+    %br
+    = link_to 'Edit', edit_sprint_path(@sprint.id)
   %div.subPanel
     = sub_heading 'Stories'
     = render :partial => 'stories/story_detail', :collection => @sprint.stories, :as => :story
