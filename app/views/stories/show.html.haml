@@ -1,17 +1,34 @@
 = page_heading "Story - #{@story.title}"
-%p#notice= notice
-%p
-  %b Title:
-  = @story.title
 
-%p
-  %b Description:
-  = @story.description
+%div.releaseMainPanel
+  %div.subPanel
+    = sub_heading 'Details'
 
-%p
-  %b Estimate:
-  = @story.estimate
+    %table
+      %tr
+        %td Title:
+        %td= @story.title
+      %tr
+        %td Description:
+        %td= @story.description
+      %tr
+        %td Estimate:
+        %td= @story.estimate
+      %tr
+        %td
+        %td
+          -if @story.sprint
+            = "#{ @story.status } in "
+            = link_to "Sprint #{ @story.sprint.title }", sprint_path(@story.sprint)
+          -else
+            = @story.status
+    - if can? :manage, @story
+      = link_to 'Edit', edit_story_path(@story)
 
-- if can? :manage, @story
-  = link_to 'Edit', edit_story_path(@story)
-= link_to 'Back', stories_path
+  %div.subPanel
+    = sub_heading 'Tasks'
+
+%div.releaseSidePanel
+  %div.subPanel
+    = sub_heading 'History'
+    = render :partial => 'history', :object => @story
