@@ -27,6 +27,7 @@
 
   %div.subPanel
     = sub_heading 'Tasks'
+    = render :partial => 'stories/task_detail', :collection => @story.tasks, :as => :task
 
 %div.releaseSidePanel
   %div.subPanel
