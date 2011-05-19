@@ -2,9 +2,8 @@
   - if @task.errors.any?
     %div#error_explanation
       %h2= "#{ pluralize(@task.errors.count, 'error') } prohibited this task from being saved:"
-
       %ul
-        - @task.errors.full_messages.each do |msg| %
+        - @task.errors.full_messages.each do |msg|
           %li= msg
 
   %table
