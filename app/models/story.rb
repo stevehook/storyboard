@@ -19,6 +19,7 @@ class Story
   referenced_in :release
   referenced_in :_sprint, :inverse_of => :stories, :class_name => 'Sprint'
   embeds_many :tasks
+  embeds_many :history, :class_name => 'StoryHistoryItem'
 
   scope :in_project, lambda { |project_id| where('project_id = ?', project_id) }
   
@@ -92,8 +93,8 @@ class Story
   def before_save
     # TODO: Remove this workaround - see https://github.com/mongoid/mongoid/issues/690
     self.sprint_id = nil if self.sprint_id == ''
-
     refresh_counts
+    write_history
   end
   
   def refresh_counts
@@ -108,5 +109,11 @@ class Story
       self.sprint.save!
     end
     self.save
+  end
+
+  def write_history
+    if self.status_changed?
+      self.history << StoryHistoryItem.new(:title => 'Status changed', :user => User.current)
+    end
   end
 end

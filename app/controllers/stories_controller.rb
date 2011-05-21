@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
   load_and_authorize_resource
-
   before_filter :set_tab
+  before_filter :set_current_user
 
   def set_tab
     user_session.current_tab = :backlog

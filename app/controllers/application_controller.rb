@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  def set_current_user
+    User.current = current_user
+  end
+
   protect_from_forgery
 
   def user_session

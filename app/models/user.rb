@@ -40,4 +40,12 @@ class User
   def self.find_by_email(email)
     User.where(:email => email).first
   end
+  
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end  
 end
