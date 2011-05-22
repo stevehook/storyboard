@@ -4,26 +4,18 @@
   %div.subPanel
     = sub_heading 'Details'
 
-    %table
-      %tr
-        %td Title:
-        %td= @story.title
-      %tr
-        %td Description:
-        %td= @story.description
-      %tr
-        %td Estimate:
-        %td= @story.estimate
-      %tr
-        %td
-        %td
-          -if @story.sprint
-            = "#{ @story.status } in "
-            = link_to "Sprint #{ @story.sprint.title }", sprint_path(@story.sprint)
-          -else
-            = @story.status
-    - if can? :manage, @story
-      = link_to 'Edit', edit_story_path(@story)
+    %div.listItem
+      %div.listItemTitle= @story.title
+      %div.listItemDetail= @story.description
+      %div.listItemDetail= "Estimate: #{@story.estimate}"
+      %div.listItemDetail
+        -if @story.sprint
+          = "#{ @story.status } in "
+          = link_to "Sprint #{ @story.sprint.title }", sprint_path(@story.sprint)
+        -else
+          = @story.status
+      - if can? :manage, @story
+        = link_to 'Edit', edit_story_path(@story)
 
   %div.subPanel
     = sub_heading 'Tasks'
@@ -32,4 +24,4 @@
 %div.releaseSidePanel
   %div.subPanel
     = sub_heading 'History'
-    = render :partial => 'history', :collection => @story.history, :as => :history
+    = render :partial => 'history', :collection => @story.history.sort{|h1, h2| h2.created_at <=> h1.created_at}, :as => :history
