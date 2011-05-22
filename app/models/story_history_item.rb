@@ -6,4 +6,5 @@ class StoryHistoryItem
   include Mongoid::Timestamps
   field :title
   referenced_in :user
+  embedded_in :story
 end

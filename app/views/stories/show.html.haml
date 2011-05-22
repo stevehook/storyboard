@@ -32,4 +32,4 @@
 %div.releaseSidePanel
   %div.subPanel
     = sub_heading 'History'
-    = render :partial => 'history', :object => @story
+    = render :partial => 'history', :collection => @story.history, :as => :history

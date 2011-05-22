@@ -1,0 +1,6 @@
+%div.listItem
+  %span.listItemTitle= history.title
+  %br
+  -if history.user
+    %span.listItemDetail= "by #{history.user.name} " 
+  %span.listItemDetail= time_ago_in_words(history.created_at) + ' ago'

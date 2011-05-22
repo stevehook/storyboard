@@ -113,7 +113,7 @@ class Story
 
   def write_history
     if self.status_changed?
-      self.history << StoryHistoryItem.new(:title => 'Status changed', :user => User.current)
+      self.history << StoryHistoryItem.new(:title => "Status changed to #{self.status}", :user => User.current)
     end
   end
 end
