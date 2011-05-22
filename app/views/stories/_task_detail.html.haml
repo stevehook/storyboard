@@ -1,8 +1,9 @@
 %div.listItem
   %span.listItemTitle
     = link_to task.title, story_task_path(task.story.id, task.id)
-  %br
-  %span.listItemDetail= task.description
-  %br
+  -if !task.description.nil? && !task.description.empty?
+    %br
+    %span.listItemDetail= task.description
   - if can? :manage, task.story
+    %br
     %a{ :href => edit_story_task_path(task.story.id, task.id) } Edit
