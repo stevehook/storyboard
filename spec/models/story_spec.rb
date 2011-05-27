@@ -106,10 +106,23 @@ describe Story do
   end
 
   context "when a story is done" do
+    before(:each) do
+      @story = Story.create(:title => 'test title', :description => 'test description')
+      @story.status = :done
+      @story.before_save
+    end
+    
     it "should have a priority of 0" do
-      story = Story.create(:title => 'test title', :description => 'test description')
-      story.status = :done
-      story.priority.should == 0
+      @story.priority.should == 0
+    end
+    
+    it "should have 1 history item" do
+      @story.status_changed?.should == true
+      @story.history.length.should == 1
+    end
+    
+    it "first history item should have correct title" do
+      @story.history[0].title.should == 'Status changed to done'
     end
   end
   
@@ -123,5 +136,7 @@ describe Story do
       story.release.should_not be_nil
       story.release.should == release
     end
+
+    # TODO: Need to create a history item when a story is added to a sprint
   end
 end

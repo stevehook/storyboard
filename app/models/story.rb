@@ -115,5 +115,8 @@ class Story
     if self.status_changed?
       self.history << StoryHistoryItem.new(:title => "Status changed to #{self.status}", :user => User.current)
     end
+
+    # TODO: Need to create a history item when a story is added to a sprint
+    # TODO: Need to create a history item when a story is newly created
   end
 end
