@@ -20,7 +20,7 @@
   %div.subPanel
     = sub_heading 'Tasks'
     = render :partial => 'stories/task_detail', :collection => @story.tasks, :as => :task
-    %div.listitem
+    %div.listItem
       = link_to 'New Task', new_story_task_path(@story)
 
 %div.releaseSidePanel
