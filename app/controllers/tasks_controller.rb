@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   def create
     respond_to do |format|
       if @story.save
-        format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully created.') }
+        format.html { redirect_to(@story, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(@story, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
