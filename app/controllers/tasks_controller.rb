@@ -48,7 +48,7 @@ class TasksController < ApplicationController
     @story.tasks << @task
 
     respond_to do |format|
-      if @task.save
+      if @story.save
         format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
