@@ -112,14 +112,16 @@ class Story
   end
 
   def write_history
-    if self.status_changed?
-      self.history << StoryHistoryItem.new(:title => "Status changed to #{self.status}", :user => User.current)
-    end
-
     if self.new_record?
       self.history << StoryHistoryItem.new(:title => "Story created", :user => User.current)
     end
+
+    if self.status_changed?
+      self.history << StoryHistoryItem.new(:title => "Status changed to #{self.status}", :user => User.current)
+    end
     
-    # TODO: Need to create a history item when a story is added to a sprint
+    if !self._sprint.nil? && self._sprint_id_changed? 
+      self.history << StoryHistoryItem.new(:title => "Added to sprint #{self.sprint.title}", :user => User.current)
+    end
   end
 end

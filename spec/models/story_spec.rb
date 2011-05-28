@@ -123,23 +123,33 @@ describe Story do
       @story.history.length.should == 2
     end
     
-    it "first history item should have correct title" do
+    it "second history item should have correct title" do
       # TODO: Can we rely on the status changed history item being the first?
-      @story.history[0].title.should == 'Status changed to done'
+      @story.history[1].title.should == 'Status changed to done'
     end
   end
   
   context "when a story is added to a sprint" do
-    let(:release) { Release.create(:title => 'Version 1.0') }
-    let(:sprint) { Sprint.create(:title => '1', :release => release) }
-    
-    it "should have be allocated to the same release as the sprint" do
-      story = Story.create(:title => 'test title', :description => 'test description')
-      story.sprint = sprint
-      story.release.should_not be_nil
-      story.release.should == release
+    before(:each) do
+      @release = Release.create(:title => 'Version 1.0')
+      @sprint = Sprint.create(:title => '1', :release => @release)
+      @story = Story.create(:title => 'test title', :description => 'test description')
+      @story.sprint = @sprint
+      @story.before_save
     end
 
-    # TODO: Need to create a history item when a story is added to a sprint
+    it "should have be allocated to the same release as the sprint" do
+      @story.release.should_not be_nil
+      @story.release.should == @release
+    end
+
+    it "should have 2 history items" do
+      @story.history.length.should == 2
+    end
+    
+    it "second history item should have correct title" do
+      # TODO: Can we rely on the status changed history item being the first?
+      @story.history[1].title.should == 'Added to sprint 1'
+    end
   end
 end
