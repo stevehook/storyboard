@@ -2,7 +2,7 @@
   %span.listItemTitle 
     = link_to "Sprint #{ sprint.title }", sprint_path(sprint.id)
     = status_badge(sprint)
-  - if !sprint.goal.nil?
+  - if sprint.goal
     %br
     %span.listItemDetail= "Goal: #{ sprint.goal }"
   %br
