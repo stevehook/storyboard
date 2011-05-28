@@ -44,9 +44,6 @@ class TasksController < ApplicationController
   # POST /stories/1/tasks
   # POST /stories/1/tasks.xml
   def create
-    @task = Task.new(params[:task])
-    @story.tasks << @task
-
     respond_to do |format|
       if @story.save
         format.html { redirect_to(story_tasks_url, :notice => 'Task was successfully created.') }
