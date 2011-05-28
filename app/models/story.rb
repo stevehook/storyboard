@@ -112,8 +112,9 @@ class Story
   end
 
   def write_history
+    # Have to set the created_at time explicitly - workaround for mongoid issue 922 
     if self.new_record?
-      self.history << StoryHistoryItem.new(:title => "Story created", :user => User.current)
+      self.history << StoryHistoryItem.new(:title => "Story created", :user => User.current, :created_at => Time.now.utc)
     end
 
     if self.status_changed?
