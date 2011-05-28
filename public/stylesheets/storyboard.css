@@ -15,7 +15,7 @@ body {
   border-bottom: 1px solid #BBB;
 }
 
-.listItemTitle, .listItemTitle a, .storyPanel .title, .taskPanel .title a, .taskPanel .title  {
+.listItemTitle, .listItemTitle a, .storyPanel .title a, .taskPanel .title a, .taskPanel .title  {
   font-size:   14px;
   font-weight: bold;
   line-height: 20px;

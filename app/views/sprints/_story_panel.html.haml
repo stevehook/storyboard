@@ -3,5 +3,6 @@
     %div.badgePanel
       = estimate_badge(story)
       = status_badge(story)
-    = story.title
+    = link_to story.title, story_path(story)
   %div.description= truncate(story.description, :length => 250, :omission => '...')
+  = link_to 'New Task', new_story_task_path(story)
