@@ -11,6 +11,7 @@ describe Story do
   context "when creating a new valid story" do
     before(:each) do
       @story = Story.create(:title => 'test title', :description => 'test description', :estimate => 2)
+      @story.before_save
     end
 
     it "should be valid if mandatory attributes are specified" do
@@ -25,18 +26,19 @@ describe Story do
     end
 
     it "should have a default priority of 10000" do
-      @story = Story.create(:title => 'test title', :description => 'test description')
       @story.priority.should == 10000
     end
     
     it "should have a default status of open" do
-      @story = Story.create(:title => 'test title', :description => 'test description')
       @story.status.should == :open
     end
 
-    it "should have no history items" do
-      @story = Story.create(:title => 'test title', :description => 'test description')
-      @story.history.length.should == 0
+    it "should have 1 history item" do
+      @story.history.length.should == 1
+    end
+
+    it "first history item should have correct title" do
+      @story.history[0].title.should == 'Story created'
     end
   end
 
@@ -116,12 +118,13 @@ describe Story do
       @story.priority.should == 0
     end
     
-    it "should have 1 history item" do
+    it "should have 2 history items" do
       @story.status_changed?.should == true
-      @story.history.length.should == 1
+      @story.history.length.should == 2
     end
     
     it "first history item should have correct title" do
+      # TODO: Can we rely on the status changed history item being the first?
       @story.history[0].title.should == 'Status changed to done'
     end
   end
