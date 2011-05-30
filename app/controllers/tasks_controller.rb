@@ -8,17 +8,6 @@ class TasksController < ApplicationController
     user_session.current_tab = :tasks
   end
 
-  # GET /stories/1/tasks
-  # GET /stories/1/tasks.xml
-  def index
-    @tasks = @story.tasks
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @tasks }
-    end
-  end
-
   # GET /stories/1/tasks/1
   # GET /stories/1/tasks/1.xml
   def show
