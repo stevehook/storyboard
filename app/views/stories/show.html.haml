@@ -7,13 +7,6 @@
     %div.listItem
       %div.listItemTitle= @story.title
       %div.listItemDetail= @story.description
-      %div.listItemDetail= "Estimate: #{@story.estimate}"
-      %div.listItemDetail
-        -if @story.sprint
-          = "#{ @story.status } in "
-          = link_to "Sprint #{ @story.sprint.title }", sprint_path(@story.sprint)
-        -else
-          = @story.status
       - if can? :manage, @story
         = link_to 'Edit', edit_story_path(@story)
 
@@ -24,6 +17,10 @@
       = link_to 'New Task', new_story_task_path(@story)
 
 %div.releaseSidePanel
+  %div.subPanel
+    = sub_heading 'Statistics'
+    = render :partial => 'statistics', :object => @sprint
+
   %div.subPanel
     = sub_heading 'History'
     = render :partial => 'history', :collection => @story.history.sort{|h1, h2| h2.created_at <=> h1.created_at}, :as => :history
