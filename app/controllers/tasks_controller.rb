@@ -44,13 +44,17 @@ class TasksController < ApplicationController
   # POST /stories/1/tasks
   # POST /stories/1/tasks.xml
   def create
-    respond_to do |format|
-      if @story.save
-        format.html { redirect_to(@story, :notice => 'Task was successfully created.') }
-        format.xml  { render :xml => @task, :status => :created, :location => @task }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+    if params[:cancel]
+      redirect_to(@story) 
+    else
+      respond_to do |format|
+        if @story.save
+          format.html { redirect_to(@story, :notice => 'task was successfully created.') }
+          format.xml  { render :xml => @task, :status => :created, :location => @task }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -58,13 +62,17 @@ class TasksController < ApplicationController
   # PUT /stories/1/tasks/1
   # PUT /stories/1/tasks/1.xml
   def update
-    respond_to do |format|
-      if @task.update_attributes(params[:task])
-        format.html { redirect_to(@story, :notice => 'Task was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+    if params[:cancel]
+      redirect_to(@story) 
+    else
+      respond_to do |format|
+        if @task.update_attributes(params[:task])
+          format.html { redirect_to(@story, :notice => 'Task was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

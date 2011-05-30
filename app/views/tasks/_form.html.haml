@@ -24,4 +24,6 @@
       %td= f.text_field :remaining
     %tr.actions
       %td
-      %td= f.submit
+      %td
+        = f.submit 
+        = f.submit 'Cancel', :name => 'cancel'
