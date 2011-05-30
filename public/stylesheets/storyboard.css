@@ -15,6 +15,10 @@ body {
   border-bottom: 1px solid #BBB;
 }
 
+.noBorder {
+  border-bottom: none;
+}
+
 .listItemTitle, .listItemTitle a, .storyPanel .title a, .taskPanel .title a, .taskPanel .title  {
   font-size:   14px;
   font-weight: bold;

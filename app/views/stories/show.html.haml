@@ -4,7 +4,7 @@
   %div.subPanel
     = sub_heading 'Details'
 
-    %div.listItem
+    %div.listItem.noBorder
       %div.listItemTitle= @story.title
       %div.listItemDetail= @story.description
       - if can? :manage, @story
@@ -13,7 +13,7 @@
   %div.subPanel
     = sub_heading 'Tasks'
     = render :partial => 'stories/task_detail', :collection => @story.tasks, :as => :task
-    %div.listItem
+    %div.listItem.noBorder
       = link_to 'New Task', new_story_task_path(@story)
 
 %div.releaseSidePanel
