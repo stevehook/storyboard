@@ -2,9 +2,10 @@
   %tr
     %td Status
     %td= status_badge(@story)
-  %tr
-    %td Sprint
-    %td= link_to @story.sprint.title, sprint_path(@story.sprint)
+  -if @story.sprint
+    %tr
+      %td Sprint
+      %td= link_to @story.sprint.title, sprint_path(@story.sprint)
   %tr
     %td Original Estimate (story points)
     %td= @story.estimate
