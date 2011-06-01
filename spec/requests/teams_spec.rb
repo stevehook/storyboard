@@ -1,11 +1,24 @@
 require 'spec_helper'
 
-describe "Teams" do
-  describe "GET /teams" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get teams_path
-      response.status.should be(200)
+describe 'Teams', :type => :request do
+  describe 'GET /teams' do
+    before(:each) do
+      Team.create(:name => 'Team 1')
+    end
+
+    it 'shows the list of teams' do
+      visit teams_path
+      page.should have_content('Team List')
+    end
+
+    it 'shows Team 1' do
+      visit teams_path
+      page.should have_content('Team 1')
+    end
+
+    it 'does not show Team 2' do
+      visit teams_path
+      page.should_not have_content('Team 2')
     end
   end
 end
