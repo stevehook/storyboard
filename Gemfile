@@ -29,5 +29,5 @@ group :development, :test do
   gem "rspec-rails", ">= 2.4.1"
   gem "ZenTest", ">= 4.4.2"
   gem "cucumber-rails", ">= 0.3.2"
-  gem "webrat", ">= 0.7.2"
+  gem "capybara"
 end
