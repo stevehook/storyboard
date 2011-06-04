@@ -26,8 +26,9 @@ gem 'cancan', :require => 'cancan'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem "rspec-rails", ">= 2.4.1"
-  gem "ZenTest", ">= 4.4.2"
-  gem "cucumber-rails", ">= 0.3.2"
-  gem "capybara"
+  gem 'rspec-rails', '>= 2.4.1'
+  gem 'ZenTest', '>= 4.4.2'
+  gem 'cucumber-rails', '>= 0.3.2'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
