@@ -4,7 +4,6 @@ describe 'Teams', :type => :request do
   describe 'GET /teams' do
     before(:each) do
       # TODO: the following line should not be necessary - why is DatabaseCleaner not working here?
-      Team.delete_all
       Team.create(:name => 'Team 1')
       visit teams_path
     end
