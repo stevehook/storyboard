@@ -34,4 +34,18 @@ describe 'Projects', :type => :request do
       page.should have_content('New Project')
     end
   end
+
+  describe 'GET /projects/:id' do
+    before(:each) do
+      @project = Project.create(:title => 'Project X')
+      Project.create(:title => 'Project Y')
+      Project.create(:title => 'Project Z')
+      visit project_path(@project)
+    end
+
+    it 'shows the project' do
+      page.status_code.should == 200
+      page.should have_content('Project - Project X')
+    end
+  end
 end
