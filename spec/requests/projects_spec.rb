@@ -1,20 +1,16 @@
 require 'spec_helper'
+require 'requests/request_spec_helpers'
 
 describe 'Projects', :type => :request do
+  include RequestSpecHelpers
+
   describe 'GET /projects' do
     before(:each) do
       project = Project.create(:title => 'Project X')
       Project.create(:title => 'Project Y')
       Project.create(:title => 'Project Z')
-
-      # We need to 'grant' permissions UserSession#current_user in order to bypass authorisation rules
-      # (Note: this will only work with the RackTest driver)
       release = Release.create(:title => 'Version 1.0', :order => 1, :start_date => Time.utc(2010, 'feb', 12), :project => project)
-      user = User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :release => release, :project => project)
-      session = UserSession.new({})
-      session.login(user)
-      UserSession.stub(:new).and_return(session)
-
+      logon(project, release)
       visit projects_path
     end
 
@@ -41,8 +37,9 @@ describe 'Projects', :type => :request do
       Project.create(:title => 'Project Y')
       Project.create(:title => 'Project Z')
       Release.create(:title => 'Version 1.0', :order => 1, :start_date => Time.utc(2010, 'feb', 12), :project => @project)
-      Release.create(:title => 'Version 2.0', :order => 2, :start_date => Time.utc(2011, 'jan', 3), :project => @project)
+      @release = Release.create(:title => 'Version 2.0', :order => 2, :start_date => Time.utc(2011, 'jan', 3), :project => @project)
       Release.create(:title => 'Version 3.0', :order => 3, :start_date => Time.utc(2011, 'oct', 4), :project => @project)
+      logon(@project, @release)
       visit project_path(@project)
     end
 
@@ -64,6 +61,13 @@ describe 'Projects', :type => :request do
       link = find_link('Version 2.0')
       link.click
       page.should have_content('Release - Version 2.0')
+    end
+
+    it 'clicking on the New Release link should open a new release form' do
+      page.status_code.should == 200
+      link = find_link('addRelease')
+      link.click
+      page.should have_content('New Release')
     end
   end
 end
