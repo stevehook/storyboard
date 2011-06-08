@@ -1,6 +1,6 @@
 %div.listItem
-  %span.listItemTitle= release.title
-  %br
+  %span.listItemTitle
+    %a{:href => release_path(release)}= release.title
   - if can? :manage, release
-    %a{:href => edit_release_path(release)} Edit
-  %a{:href => release_path(release)} View
+    %br
+      %a{:href => edit_release_path(release)} Edit
