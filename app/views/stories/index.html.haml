@@ -2,8 +2,6 @@
 
 %div.listPanel.sortableList
   = render @stories.each
-
-%br
-
 - if can? :manage, Story
-  = link_to 'New Story', new_story_path
+  %div.listItem.noBorder
+    = link_to 'Add Story', new_story_path

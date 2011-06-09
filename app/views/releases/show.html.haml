@@ -5,7 +5,8 @@
     = sub_heading "Sprints"
     = render @release.sprints.sort_by { |sprint| sprint.start_date }
     - if can? :manage, @release
-      = link_to 'Add Sprint', new_sprint_path(:parent => @release.id)
+      %div.listItem.noBorder
+        = link_to 'Add Sprint', new_sprint_path(:parent => @release.id)
 
 %div.releaseSidePanel
   %div.subPanel
