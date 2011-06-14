@@ -1,6 +1,9 @@
 %div.listItem
   %span.listItemTitle
     %a{:href => release_path(release)}= release.title
+    %br
+  %span.listItemDetail
+    = "#{ release.start_date.to_s(:date) } to #{ release.end_date.to_s(:date) }"
   - if can? :manage, release
     %br
       %a{:href => edit_release_path(release)} Edit
