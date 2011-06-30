@@ -6,12 +6,16 @@ User.delete_all
 Team.delete_all
 
 project_x = Project.create(:title => 'Project X')
+project_y = Project.create(:title => 'Project Y')
 
 release10 = Release.create(:title => 'Version 1.0', :order => 1, :start_date => Time.utc(2010, 'feb', 12), :project => project_x)
 release11 = Release.create(:title => 'Version 1.1', :order => 2, :start_date => Time.utc(2010, 'jun', 25), :project => project_x)
 release12 = Release.create(:title => 'Version 1.2', :order => 3, :start_date => Time.utc(2010, 'sep', 2), :project => project_x)
 release20 = Release.create(:title => 'Version 2.0', :order => 4, :start_date => Time.utc(2011, 'jan', 3), :project => project_x)
 release30 = Release.create(:title => 'Version 3.0', :order => 5, :start_date => Time.utc(2011, 'oct', 4), :project => project_x)
+
+release10Y = Release.create(:title => 'Version 1.0', :order => 1, :start_date => Time.utc(2010, 'feb', 12), :project => project_y)
+release20Y = Release.create(:title => 'Version 2.0', :order => 2, :start_date => Time.utc(2011, 'jun', 28), :project => project_y)
 
 sprint1 = Sprint.create(:release => release20, :status => :finished, :title => '1', :order => 1, :start_date => Time.utc(2011, 'jan', 3), :end_date => Time.utc(2011, 'jan', 15))
 sprint2 = Sprint.create(:release => release20, :status => :in_progress, :title => '2', :order => 2, :start_date => Time.utc(2011, 'jan', 17), :end_date => Time.utc(2011, 'jan', 28))
@@ -289,6 +293,35 @@ story.tasks.create!(:title => 'Run tests',
   :remaining => 14,
   :status => :not_started,
   :assignee => norman)
+
+Story.create!(:title => 'Implement single-sign on',
+  :description => "As a user I don't want to have to worry about logging on to this Web site and remembering yet another password",
+  :estimate => 10,
+  :status => :ready,
+  :project => project_y,
+  :priority => 1
+)
+Story.create!(:title => 'Implement SEO consultants recommendations',
+  :description => 'We want to make sure that people can find our Web site',
+  :estimate => 5,
+  :status => :ready,
+  :project => project_y,
+  :priority => 2
+)
+Story.create!(:title => 'Restyle the user interface to look better in modern browsers',
+  :description => 'As a user I expect to see rounded corners, gradient backgrounds and box shadows applied tastefully',
+  :estimate => 3,
+  :status => :ready,
+  :project => project_y,
+  :priority => 3
+)
+Story.create!(:title => 'Support IE 10',
+  :description => 'Apparently somebody in marketing is using it...',
+  :estimate => 20,
+  :status => :open,
+  :project => project_y,
+  :priority => 10000
+)
 
 Sprint.all.each do |sprint|
   sprint.refresh_counts
