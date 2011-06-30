@@ -19,7 +19,7 @@ body {
   border-bottom: none;
 }
 
-.listItemTitle, .listItemTitle a, .storyPanel .title a, .taskPanel .title a, .taskPanel .title  {
+.listItemTitle, .listItemTitle a, .storyPanel .title a, .taskPanel .title a, .taskPanel .title, .storyPanel .title  {
   font-size:   14px;
   font-weight: bold;
   line-height: 20px;
