@@ -21,7 +21,7 @@ class Story
   embeds_many :tasks
   embeds_many :history, :class_name => 'StoryHistoryItem'
 
-  scope :in_project, lambda { |project_id| where('project_id = ?', project_id) }
+  scope :in_project, lambda { |project_id| where(:project_id => project_id) }
   
   attr_protected :tasks_effort_remaining, :tasks_estimate
 
@@ -31,8 +31,8 @@ class Story
   validates :priority, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
-  def self.product_backlog
-    Story.where(:status.nin => [:done, :rejected]).ascending(:priority)
+  def self.product_backlog(project_id)
+    Story.in_project(project_id).where(:status.nin => [:done, :rejected]).ascending(:priority)
   end
   
   def reprioritise(new_priority)

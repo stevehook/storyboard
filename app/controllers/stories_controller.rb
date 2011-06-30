@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.xml
   def index
-    @stories = Story.product_backlog
+    @stories = Story.product_backlog(user_session.current_project_id)
 
     respond_to do |format|
       format.html # index.html.erb
