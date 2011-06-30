@@ -7,6 +7,12 @@ $(document).ajaxSend(function(e, xhr, options) {
   xhr.setRequestHeader("X-CSRF-Token", token);
 });
 
+// Automatically set focus to the first field on a form
+$(function() {
+  $("input:text:visible:first").focus();
+});
+
+
 // TODO: Will need to generalise this into some kind of plugin for lists at some stage in the future...
 $(function() {
   var tbody = $('.listTable tbody');
