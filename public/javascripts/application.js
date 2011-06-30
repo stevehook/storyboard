@@ -13,6 +13,13 @@ $(function() {
 });
 
 
+$(function() {
+  $(".listFilterPanel select").change(function() {
+    
+  });
+});
+
+
 // TODO: Will need to generalise this into some kind of plugin for lists at some stage in the future...
 $(function() {
   var tbody = $('.listTable tbody');
