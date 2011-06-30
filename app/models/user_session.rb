@@ -8,6 +8,7 @@ class UserSession
   end
 
   def login(user)
+    Rails.logger.info 'UserSession#login'
     @session[:user_id] = user.id
     set_current_project(user)
   end
@@ -18,6 +19,7 @@ class UserSession
   end
 
   def logout
+    Rails.logger.info 'UserSession#logout'
     @session[:user_id] = nil
     @session[:project_title] = nil
     @session[:project_id] = nil

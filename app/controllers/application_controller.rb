@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You are not allowed to do that."
-    redirect_to root_url
+    redirect_to root_url if !current_user
   end
 end
