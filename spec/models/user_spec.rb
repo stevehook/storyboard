@@ -43,13 +43,21 @@ describe User do
       # Stub the User.find_by_email method
       user = User.new(:name => 'Fred', :password => 'secret')
       user.encrypt_password
-      User.stub(:find_by_email) do |email| 
+      User.stub(:find_by_name) do |email| 
         email == 'Fred' ? user : nil
+      end
+      User.stub(:find_by_email) do |email| 
+        email == 'fred@no.com' ? user : nil
       end
     end
 
-    it "should pass valid credentials" do
+    it "should pass valid credentials by name" do
       user = User.authenticate('Fred', 'secret')
+      user.should_not be_nil
+    end
+
+    it "should pass valid credentials by email" do
+      user = User.authenticate('fred@no.com', 'secret')
       user.should_not be_nil
     end
 
