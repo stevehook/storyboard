@@ -1,5 +1,7 @@
 = page_heading 'Project Backlog'
 
+= render 'filter'
+
 %div.listPanel.sortableList
   = render @stories.each
 - if can? :manage, Story

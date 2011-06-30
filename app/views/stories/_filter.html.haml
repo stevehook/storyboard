@@ -1,0 +1,3 @@
+%div.filterPanel
+  %span Status:
+  =select_tag :status, options_for_select([:''] + Story::STATUSES), { :name => 'status' }
