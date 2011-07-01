@@ -3,7 +3,8 @@
 = render 'filter'
 
 %div.listPanel.sortableList
-  = render @stories.each
+  - @stories.each do |story|
+    = render story
 - if can? :manage, Story
   %div.listItem.noBorder
     = link_to 'Add Story', new_story_path

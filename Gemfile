@@ -12,6 +12,7 @@ gem 'bson_ext', '>= 1.2.2'
 gem 'haml'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'cancan', :require => 'cancan'
+gem "will_paginate", "~> 3.0.pre2"
 
 # Use unicorn as the web server
 # gem 'unicorn'

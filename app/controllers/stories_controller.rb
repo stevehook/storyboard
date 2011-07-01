@@ -11,6 +11,7 @@ class StoriesController < ApplicationController
   # GET /stories.xml
   def index
     @story_filter = params[:story_filter] ? StoryFilter.new(params[:story_filter]) : StoryFilter.new
+    @story_filter.page = params[:page]
     @stories = Story.product_backlog(user_session.current_project_id, @story_filter)
 
     respond_to do |format|

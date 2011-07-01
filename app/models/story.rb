@@ -39,7 +39,8 @@ class Story
     else
       hash[:status.nin] = [:done, :rejected]
     end
-    Story.in_project(project_id).where(hash).ascending(:priority)
+    page = filter && filter.page ? filter.page : 1
+    Story.in_project(project_id).where(hash).ascending(:priority).paginate(:page => page, :per_page => 2)
   end
   
   def reprioritise(new_priority)
