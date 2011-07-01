@@ -11,6 +11,7 @@ class StoriesController < ApplicationController
   # GET /stories.xml
   def index
     @stories = Story.product_backlog(user_session.current_project_id)
+    @story_filter = StoryFilter.new
 
     respond_to do |format|
       format.html # index.html.erb
