@@ -10,6 +10,10 @@ class StoryFilter
     end
   end
   
+  def attributes
+    { :status => self.status }
+  end
+
   def persisted?
     false
   end  

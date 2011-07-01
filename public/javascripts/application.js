@@ -16,7 +16,7 @@ $(function() {
 $(function() {
   $(".listFilterPanel select").change(function() {
     var $this = $(this);
-    console.log(this.name + ': ' + $this.val());
+    $('#story_filter_form').submit();
   });
 });
 

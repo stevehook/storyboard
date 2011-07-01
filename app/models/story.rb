@@ -31,8 +31,15 @@ class Story
   validates :priority, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10000 }, :presence => true
   validates :status, :like => { :in => Story::STATUSES }
   
-  def self.product_backlog(project_id)
-    Story.in_project(project_id).where(:status.nin => [:done, :rejected]).ascending(:priority)
+  def self.product_backlog(project_id, filter = nil)
+    #TODO: Will need to refactor to generalise the filter handling code to deal with many filter parameters
+    hash = {}
+    if filter && filter.status
+      hash[:status] = filter.status
+    else
+      hash[:status.nin] = [:done, :rejected]
+    end
+    Story.in_project(project_id).where(hash).ascending(:priority)
   end
   
   def reprioritise(new_priority)

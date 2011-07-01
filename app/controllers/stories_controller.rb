@@ -10,8 +10,8 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.xml
   def index
-    @stories = Story.product_backlog(user_session.current_project_id)
-    @story_filter = StoryFilter.new
+    @story_filter = params[:story_filter] ? StoryFilter.new(params[:story_filter]) : StoryFilter.new
+    @stories = Story.product_backlog(user_session.current_project_id, @story_filter)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,11 +21,10 @@ class StoriesController < ApplicationController
 
   # POST /stories/filter
   def filter
-    #TODO: Skip loading the resource?
     @story_filter = StoryFilter.new(params[:story_filter])
-    #TODO: Redirect to the story#index passing the given parameters in the URL
-    filter_params = @story_filter.to_params
-    redirect_to stories_path, filter_params
+    filter_params = @story_filter.attributes
+    logger.info "filter_params #{filter_params}"
+    redirect_to stories_path(filter_params)
   end
 
   # GET /stories/1
