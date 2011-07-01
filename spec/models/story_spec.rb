@@ -153,13 +153,21 @@ describe Story do
     end
   end
 
-  context "when reading the product backlog" do
+  context "when reading the project backlog" do
     before(:each) do
       @project1 = Project.create!(:title => 'Project 1')
       @project2 = Project.create!(:title => 'Project 2')
-      @story11 = Story.create!(:title => 'story 1.1', :description => 'test', :project => @project1, :priority => 2, :estimate => 1)
-      @story12 = Story.create!(:title => 'story 1.2', :description => 'test', :project => @project1, :priority => 1, :estimate => 1)
+      @story11 = Story.create!(:title => 'story 1.1', :description => 'test', :project => @project1, :priority => 2, :estimate => 1, :status => :open)
+      @story12 = Story.create!(:title => 'story 1.2', :description => 'test', :project => @project1, :priority => 1, :estimate => 1, :status => :ready)
+      @story13 = Story.create!(:title => 'story 1.3', :description => 'test', :project => @project1, :priority => 10000, :estimate => 1, :status => :rejected)
       @story21 = Story.create!(:title => 'story 2.1', :description => 'test', :project => @project2, :estimate => 1)
+    end
+    
+    it "the project backlog can be filtered by status" do
+      filter = StoryFilter.new(:status => :ready)
+      backlog = Story.product_backlog(@project1.id, filter)
+      backlog.size.should == 1
+      backlog[0].id.should == @story12.id
     end
     
     it "the project backlog for Project 1 contain only the Project 1 stories in priority order" do
