@@ -34,7 +34,7 @@ class Story
   def self.product_backlog(project_id, filter = nil)
     #TODO: Will need to refactor to generalise the filter handling code to deal with many filter parameters
     hash = {}
-    if filter && filter.status
+    if filter && filter.status && filter.status != ''
       hash[:status] = filter.status
     else
       hash[:status.nin] = [:done, :rejected]
