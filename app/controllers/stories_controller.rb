@@ -11,7 +11,6 @@ class StoriesController < ApplicationController
   # GET /stories.xml
   def index
     @story_filter = params[:story_filter] ? StoryFilter.new(params[:story_filter]) : StoryFilter.new
-    logger.info @story_filter
     @stories = Story.product_backlog(user_session.current_project_id, @story_filter)
 
     respond_to do |format|
@@ -24,7 +23,6 @@ class StoriesController < ApplicationController
   def filter
     @story_filter = StoryFilter.new(params[:story_filter])
     filter_params = @story_filter.attributes
-    logger.info "filter_params #{filter_params}"
     redirect_to stories_path({:story_filter => filter_params})
   end
 

@@ -46,6 +46,12 @@ class SprintsController < ApplicationController
     end
   end
 
+  # GET /sprints/1/planning
+  def planning
+    @story_filter = params[:story_filter] ? StoryFilter.new(params[:story_filter]) : StoryFilter.new
+    @stories = Story.product_backlog(user_session.current_project_id, @story_filter)
+  end
+
   def current_sprint
     if user_session.current_release_id
       current_release = Release.find(user_session.current_release_id)

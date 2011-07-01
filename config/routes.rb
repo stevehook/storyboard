@@ -3,6 +3,7 @@ Storyboard::Application.routes.draw do
   get 'sessions/login' => 'sessions#new', :as => 'login'
   get 'sessions/preferences' => 'sessions#preferences', :as => 'preferences'
   get 'sessions/help' => 'sessions#help', :as => 'help'
+  get 'sprints/:id/planning' => 'sprints#planning', :as => 'sprint_planning'
   get 'sprints/current_sprint' => 'sprints#current_sprint', :as => 'current_sprint'
   get 'sprints/current_sprint_tasks' => 'sprints#current_sprint_tasks', :as => 'current_sprint_tasks'
   get 'select/:id' => 'sessions#select', :as => 'select'
