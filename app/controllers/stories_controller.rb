@@ -19,6 +19,15 @@ class StoriesController < ApplicationController
     end
   end
 
+  # POST /stories/filter
+  def filter
+    #TODO: Skip loading the resource?
+    @story_filter = StoryFilter.new(params[:story_filter])
+    #TODO: Redirect to the story#index passing the given parameters in the URL
+    filter_params = @story_filter.to_params
+    redirect_to stories_path, filter_params
+  end
+
   # GET /stories/1
   # GET /stories/1.xml
   def show
