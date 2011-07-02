@@ -3,4 +3,5 @@
     %span Status:
     = select_tag :story_filter_status, options_for_select([''] + Story::STATUSES, :selected => @story_filter.status), { :name => 'story_filter[status]' }
     %span.paginationPanel
-      = will_paginate
+      = will_paginate(:previous_label => '< Previous', :next_label => 'Next >')
+      
