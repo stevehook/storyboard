@@ -21,8 +21,11 @@
       %td.labelCell= f.label :status
       %td= select_tag :story_status, options_for_select(Story::STATUSES, :selected => @story.status), { :name => 'story[status]' }
     %tr
+      %td.labelCell= f.label :project
+      %td= text_field_tag('story[project[title]]', @story.project ? @story.project.title : '', :disabled => true)
+    %tr
       %td.labelCell= f.label :sprint
-      %td= f.collection_select :sprint_id, Sprint.all, :id, :title, { :include_blank => true }
+      %td= text_field_tag('story[sprint[title]]', @story.sprint ? @story.sprint.title : '', :disabled => true)
     %tr
       %td
       %td= f.submit

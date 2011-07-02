@@ -39,7 +39,7 @@ class StoriesController < ApplicationController
   # GET /stories/new
   # GET /stories/new.xml
   def new
-    @story = Story.new
+    @story = Story.new(:project_id => user_session.current_project_id)
 
     respond_to do |format|
       format.html # new.html.erb
