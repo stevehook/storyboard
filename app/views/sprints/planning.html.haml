@@ -1,17 +1,17 @@
 = page_heading "Planning Sprint - #{@sprint.title}"
 
-%div.releaseMainPanel
+%div.leftPanel
   %div.subPanel
     = sub_heading 'Project Backlog'
     %div.listPanel
       - @stories.each do |story|
         = render story
-    - if can? :manage, Story
-      %div.listItem.noBorder
-        = link_to 'Add Story', new_story_path
-%div.releaseSidePanel
+%div.rightPanel
   %div.subPanel
     = sub_heading 'Committed Stories'
+    %div.listPanel
+      - @sprint.stories.each do |story|
+        = render story
   %div.subPanel
     = sub_heading 'Statistics'
 

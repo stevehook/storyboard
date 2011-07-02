@@ -229,6 +229,18 @@ td {
   padding: 2px;
 }
 
+.leftPanel {
+  float: left;
+  width: 50%;
+  min-width 300px;
+}
+
+.rightPanel {
+  float: right;
+  width: 50%;
+  min-width 300px;
+}
+
 .releaseMainPanel {
   float: left;
   width: 70%;
