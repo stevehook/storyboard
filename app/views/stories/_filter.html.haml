@@ -2,5 +2,5 @@
   - form_for(@story_filter, :html => { :id => 'story_filter_form' }, :url => filter_stories_path) do |f|
     %span Status:
     = select_tag :story_filter_status, options_for_select([''] + Story::STATUSES, :selected => @story_filter.status), { :name => 'story_filter[status]' }
-    %div.paginationPanel
+    %span.paginationPanel
       = will_paginate
