@@ -72,11 +72,18 @@ $(function() {
         $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
           {},
           function(result) { $(this).html(result); 
+            // TODO: Update list
             // TODO: Update points total
           }
         );
       } else {
         console.log('uncommitting story ' + id);
+        $.post('/stories/' +  id + '/uncommit', 
+          {},
+          function(result) { $(this).html(result); 
+            // TODO: Update list
+          }
+        );
       }
     }
   });

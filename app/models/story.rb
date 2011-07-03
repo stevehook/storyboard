@@ -66,6 +66,18 @@ class Story
     self.priority = new_priority
     self.save
   end
+
+  def commit(sprint_id)
+    self.status = :committed
+    self.sprint_id = sprint_id
+    self.save
+  end
+  
+  def uncommit
+    self.status = :ready
+    self.sprint_id = nil
+    self.save
+  end
   
   def priority_writable?
     (self.priority != 10000 and self.priority != 0)
