@@ -8,6 +8,7 @@ body, p, ol, ul, td, textarea, input {
 body {
   background-color: #fff; 
   color: #333;
+  min-width: 1000px;
 }
 
 .listItem {
@@ -50,7 +51,6 @@ body {
   color: #FFF;
   border-radius: 8px;
   -moz-border-radius: 8px;
-  white-space: nowrap;
 }
 
 .priorityBadge {
@@ -114,6 +114,7 @@ td {
   top: 0px;
   width: 100%;
   z-index: 1000;
+  min-width: 1000px;
 }
 
 .document {
@@ -205,6 +206,7 @@ td {
 }
 
 .taskBoardMainPanel {
+  min-width: 1200;
 }
 
 .taskBoardMainPanel .subPanel, .taskBoardMainPanel .headerSubPanel {
