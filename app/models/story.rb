@@ -37,7 +37,7 @@ class Story
     if filter && filter.status && filter.status != ''
       hash[:status] = filter.status
     else
-      hash[:status.nin] = [:done, :rejected]
+      hash[:status.nin] = [:done, :rejected, :committed]
     end
     page = filter && filter.page ? filter.page : 1
     Story.in_project(project_id).where(hash).ascending(:priority).paginate(:page => page, :per_page => 8)
