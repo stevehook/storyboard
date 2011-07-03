@@ -13,8 +13,9 @@
   %div.subPanel
     = sub_heading 'Tasks'
     = render :partial => 'stories/task_detail', :collection => @story.tasks, :as => :task
-    %div.listItem.noBorder
-      = link_to 'New Task', new_story_task_path(@story)
+    - if @story.status == :committed && can?(:manage, @story)
+      %div.listItem.noBorder
+        = link_to 'New Task', new_story_task_path(@story)
 
 %div.releaseSidePanel
   %div.subPanel
