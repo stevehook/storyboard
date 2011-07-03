@@ -55,6 +55,33 @@ $(function() {
   });
 });
 
+// TODO: Will need to apply this to the sprint planning page ONLY
+$(function() {
+  $(".dragSource .listItem").draggable({
+    cursor: 'move',
+    revert: 'invalid',
+    update: function(event, ui) {
+    }
+  });
+  $(".dragTarget").droppable({
+    drop: function(event, ui) {
+      console.log(event);
+      console.log(ui.draggable.attr('data-id'));
+      console.log(this);
+      var id = ui.draggable.attr('data-id');
+      var new_status = $(this).attr('data-status');
+      console.log('setting story ' + id + ' to status ' + new_status);
+      $.post('/stories/' +  id + '/set_status?status=' + new_status, 
+        {},
+        function(result) { $(this).html(result); 
+          // TODO: Update points total
+        }
+      );
+    }
+  });
+  // TODO: Support moving in the opposite direction
+});
+
 // TODO: Will need to apply this to the taskboard ONLY
 $(function() {
   var resizeTaskboard = function() {

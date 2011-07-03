@@ -3,13 +3,13 @@
 %div.leftPanel
   %div.subPanel
     = sub_heading 'Project Backlog'
-    %div.listPanel
+    %div.listPanel.dragSource.dragTarget{ :'data-status' => 'ready' }
       - @stories.each do |story|
         = render story
 %div.rightPanel
   %div.subPanel
     = sub_heading 'Committed Stories'
-    %div.listPanel
+    %div.listPanel.dragTarget.dragSource{ :'data-status' => 'committed' }
       - @sprint.stories.each do |story|
         = render story
   %div.subPanel

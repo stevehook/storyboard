@@ -1,4 +1,4 @@
-%div.listItem{ :'data-id' => story.id, :'data-priority' => story.priority }
+%div.listItem{ :'data-id' => story.id, :'data-priority' => story.priority, :'data-status' => story.status }
   %div.badgePanel
     = priority_badge(story)
     = status_badge(story)
