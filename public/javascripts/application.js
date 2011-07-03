@@ -65,18 +65,19 @@ $(function() {
   });
   $(".dragTarget").droppable({
     drop: function(event, ui) {
-      console.log(event);
-      console.log(ui.draggable.attr('data-id'));
-      console.log(this);
       var id = ui.draggable.attr('data-id');
-      var new_status = $(this).attr('data-status');
-      console.log('setting story ' + id + ' to status ' + new_status);
-      $.post('/stories/' +  id + '/set_status?status=' + new_status, 
-        {},
-        function(result) { $(this).html(result); 
-          // TODO: Update points total
-        }
-      );
+      var sprint_id = $(this).attr('data-sprint');
+      if (sprint_id) {
+        console.log('committing story ' + id + ' to sprint ' + sprint_id);
+        $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
+          {},
+          function(result) { $(this).html(result); 
+            // TODO: Update points total
+          }
+        );
+      } else {
+        console.log('uncommitting story ' + id);
+      }
     }
   });
   // TODO: Support moving in the opposite direction

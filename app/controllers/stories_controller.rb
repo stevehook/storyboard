@@ -65,6 +65,20 @@ class StoriesController < ApplicationController
     end
   end
   
+  # POST /stories/:id/commit?sprint_id=:sprint_id
+  def commit
+    @story.commit(params[:sprint_id])
+    @stories = @story.sprint.stories
+    render :layout => false
+  end
+  
+  # POST /stories/:id/uncommit
+  def uncommit
+    @story.uncommit(params[:sprint_id])
+    @stories = Story.product_backlog
+    render :layout => false
+  end
+  
   # POST /stories/1/reprioritise/1
   def reprioritise
     @story.reprioritise(params[:priority].to_i)

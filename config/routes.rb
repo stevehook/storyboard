@@ -17,6 +17,8 @@ Storyboard::Application.routes.draw do
     resources :tasks
     member do
       post 'reprioritise'
+      post 'commit'
+      post 'uncommit'
     end
   end
 

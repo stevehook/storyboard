@@ -9,7 +9,7 @@
 %div.rightPanel
   %div.subPanel
     = sub_heading 'Committed Stories'
-    %div.listPanel.dragTarget.dragSource{ :'data-status' => 'committed' }
+    %div.listPanel.dragTarget.dragSource{ :'data-status' => 'committed', :'data-sprint' => @sprint.id.to_s }
       - @sprint.stories.each do |story|
         = render story
   %div.subPanel
