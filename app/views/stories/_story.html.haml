@@ -1,10 +1,10 @@
 %div.listItem{ :'data-id' => story.id, :'data-priority' => story.priority }
-  %span.listItemTitle
-    %a{ :href => story_path(story.id) }= story.title
-  %span.listItemDetail
+  %div.badgePanel
     = priority_badge(story)
     = status_badge(story)
-    = sprint_badge(story)
+    = points_badge(story)
+  %span.listItemTitle
+    %a{ :href => story_path(story.id) }= story.title
   %br
   %span.listItemDetail= story.description
   %span.listItemDetail{ :style => 'float: right;' }
