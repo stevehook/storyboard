@@ -70,13 +70,13 @@ class Story
   def commit(sprint_id)
     self.status = :committed
     self.sprint_id = sprint_id
-    self.save
+    self.update_sprint_and_save
   end
   
   def uncommit
     self.status = :ready
     self.sprint_id = nil
-    self.save
+    self.update_sprint_and_save
   end
   
   def priority_writable?

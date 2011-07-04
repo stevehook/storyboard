@@ -69,13 +69,16 @@ class StoriesController < ApplicationController
   def commit
     @story.commit(params[:sprint_id])
     @stories = @story.sprint.stories
+    @points_count = @story.sprint.points_count
     render :layout => false
   end
   
   # POST /stories/:id/uncommit
   def uncommit
+    sprint = @story.sprint
     @story.uncommit
     @stories = Story.product_backlog(user_session.current_project_id)
+    @points_count = sprint.points_count
     render :layout => false
   end
   

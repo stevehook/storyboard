@@ -8,8 +8,8 @@ module ApplicationHelper
     content_for(:title, text)
   end
 
-  def sub_heading(text)
-    "<div class='subHeading'>#{text}</div>".html_safe
+  def sub_heading(text, id = nil)
+    id ? "<div id='#{id}' class='subHeading'>#{text}</div>".html_safe : "<div class='subHeading'>#{text}</div>".html_safe
   end
 
   def status_badge(model)

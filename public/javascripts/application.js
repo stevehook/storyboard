@@ -76,9 +76,9 @@ $(function() {
         $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
           {},
           function(result) {
-            console.log(result);
             target.html(result); 
-            // TODO: Update points total
+            var updated_count = $('#updated_points_count', target);
+            $('#points_count').html('Total points ' + updated_count.val());
           }
         );
       } else {
@@ -87,13 +87,13 @@ $(function() {
           {},
           function(result) {
             target.html(result); 
-            // TODO: Update list
+            var updated_count = $('#updated_points_count', target);
+            $('#points_count').html('Total points ' + updated_count.val());
           }
         );
       }
     }
   });
-  // TODO: Support moving in the opposite direction
 });
 
 // TODO: Will need to apply this to the taskboard ONLY
