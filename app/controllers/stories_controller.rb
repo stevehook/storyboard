@@ -74,7 +74,7 @@ class StoriesController < ApplicationController
   
   # POST /stories/:id/uncommit
   def uncommit
-    @story.uncommit(params[:sprint_id])
+    @story.uncommit
     @stories = Story.product_backlog
     render :layout => false
   end

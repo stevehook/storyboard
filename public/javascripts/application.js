@@ -65,14 +65,19 @@ $(function() {
   });
   $(".dragTarget").droppable({
     drop: function(event, ui) {
+      ui.draggable.css('left', '');
+      ui.draggable.css('position', '');
+      ui.draggable.appendTo(event.target);
       var id = ui.draggable.attr('data-id');
-      var sprint_id = $(this).attr('data-sprint');
+      var target = $(this);
+      var sprint_id = target.attr('data-sprint');
       if (sprint_id) {
         console.log('committing story ' + id + ' to sprint ' + sprint_id);
         $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
           {},
-          function(result) { $(this).html(result); 
-            // TODO: Update list
+          function(result) {
+            console.log(result);
+            target.html(result); 
             // TODO: Update points total
           }
         );
@@ -80,7 +85,8 @@ $(function() {
         console.log('uncommitting story ' + id);
         $.post('/stories/' +  id + '/uncommit', 
           {},
-          function(result) { $(this).html(result); 
+          function(result) {
+            target.html(result); 
             // TODO: Update list
           }
         );
