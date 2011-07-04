@@ -75,7 +75,7 @@ class StoriesController < ApplicationController
   # POST /stories/:id/uncommit
   def uncommit
     @story.uncommit
-    @stories = Story.product_backlog
+    @stories = Story.product_backlog(user_session.current_project_id)
     render :layout => false
   end
   
