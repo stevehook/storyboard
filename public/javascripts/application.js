@@ -57,10 +57,28 @@ $(function() {
 
 // TODO: Will need to apply this to the sprint planning page ONLY
 $(function() {
-  $(".dragSource .listItem").draggable({
-    cursor: 'move',
-    revert: 'invalid',
-    update: function(event, ui) {
+// jQuery('.workout-event').live("mouseover", function() { 
+//   if (!$(this).data("init")) { 
+//     $(this).data("init", true); 
+//     jQuery(this).draggable({
+//       cancel: 'a.ui-icon',
+//       revert: 'invalid',
+//       containment: 'ul.calendar',
+//       helper: 'clone',
+//       cursor: 'move'
+//     });
+//   }
+// });
+  
+  $('.dragSource .listItem').live('mouseover', function(event) {
+    if (!$(this).data('initdrag')) {
+      $(this).data("initdrag", true); 
+      $(this).draggable({
+        cursor: 'move',
+        revert: 'invalid',
+        update: function(event, ui) {
+        }
+      });
     }
   });
   $(".dragTarget").droppable({
