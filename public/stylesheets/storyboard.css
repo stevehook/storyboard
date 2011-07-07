@@ -11,6 +11,10 @@ body {
   min-width: 1000px;
 }
 
+.dragTarget {
+  min-height: 200px;
+}
+
 .listItem {
   padding: 2px 5px;
   border-bottom: 1px solid #BBB;
