@@ -13,4 +13,9 @@
   %div.subPanel
     = sub_heading "Total points #{@sprint.points_count}", :points_count
 
+:javascript
+  $('.pagination a').live('click', function () {  
+    $.getScript(this.href);  
+    return false;  
+  });
 
