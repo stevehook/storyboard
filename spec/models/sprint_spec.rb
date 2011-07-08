@@ -48,7 +48,7 @@ describe Sprint do
   end
   
   context "when a sprint is in_progress" do
-    before(:all) do
+    before(:each) do
       sprint.status = :in_progress
       sprint.release = release
     end
@@ -60,10 +60,54 @@ describe Sprint do
     it "should be finishable" do
       sprint.can_finish?.should == true
     end
+
+    context "when finishing the sprint with incomplete stories" do
+      let(:story) { Story.create(:title => 'test story', :estimate => 5, :status => :committed) }
+
+      before(:each) do
+        sprint.stories << story
+        story.tasks << Task.new(:title => 'test task 2', :status => :in_progress, :estimate => 7, :remaining => 3)
+        sprint.finish
+      end
+
+      it "the incomplete story should be removed from the sprint" do
+        story.sprint.should be_nil
+      end
+
+      it "the incomplete story should be set back to the ready status" do
+        story.status.should == :ready
+      end
+
+      it "the sprint should have status finished" do
+        sprint.status.should == :finished
+      end
+    end
+
+    context "when finishing the sprint with a complete story" do
+      let(:story) { Story.create(:title => 'test story', :estimate => 5, :status => :committed) }
+
+      before(:each) do
+        sprint.stories << story
+        story.tasks << Task.new(:title => 'test task 2', :status => :done, :estimate => 7, :remaining => 0)
+        sprint.finish
+      end
+
+      it "the complete story should be remain in the sprint" do
+        story.sprint_id.should == sprint.id
+      end
+
+      it "the complete story should be set to the done status" do
+        story.status.should == :done
+      end
+
+      it "the sprint should have status finished" do
+        sprint.status.should == :finished
+      end
+    end
   end
   
   context "when a sprint is not_started" do
-    before(:all) do
+    before(:each) do
       sprint.status = :not_started
       sprint.release = release
     end
@@ -78,7 +122,7 @@ describe Sprint do
   end
   
   context "when a sprint is finished" do
-    before(:all) do
+    before(:each) do
       sprint.status = :finished
       sprint.release = release
     end
