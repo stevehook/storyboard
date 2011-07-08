@@ -49,14 +49,11 @@ class SprintsController < ApplicationController
   # GET /sprints/1/planning
   def planning
     @story_filter = params[:story_filter] ? StoryFilter.new(params[:story_filter]) : StoryFilter.new
+    @story_filter.page = params[:page]
     @stories = Story.product_backlog(user_session.current_project_id, @story_filter)
     respond_to do |format|
       format.html
-      format.js {
-        render :update do |page|
-          page.replace 'planningBacklog', :partial => 'planning_backlog'
-        end
-      }
+      format.js { render :partial => 'planning_backlog' }
     end
   end
 

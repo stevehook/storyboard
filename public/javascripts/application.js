@@ -142,3 +142,17 @@ $(function() {
   $(window).resize(positionDocument);
 });
 
+$.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(function() {
+  $('#planningBacklog .pagination a').live('click', function () {  
+    $.get(this.href, function(result) {
+        console.log(result);
+        console.log($('#planningBacklog'));
+        $('#planningBacklog').html(result); 
+      });  
+    return false;  
+  });
+});
