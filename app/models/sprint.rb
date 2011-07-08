@@ -39,7 +39,11 @@ class Sprint
     self.release.finish_sprint_and_start_next(self)
   end
 
-  def can_delete
+  def can_delete?
     self.story_count == 0 && self.status == :not_started && self.release.sprints.length == self.order
+  end
+
+  def can_finish?
+    self.status == :in_progress
   end
 end
