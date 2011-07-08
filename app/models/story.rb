@@ -125,12 +125,13 @@ class Story
   def update_sprint_and_save(attributes = nil)
     previous_sprint = self.sprint
     self.attributes = attributes if attributes
-    self.save
+    result = self.save
     sprint = self.sprint || previous_sprint
     if sprint
       sprint.refresh_counts
       sprint.save!
     end
+    result
   end
 
   def write_history
