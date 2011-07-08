@@ -70,7 +70,7 @@ class StoriesController < ApplicationController
     @story.commit(params[:sprint_id])
     @stories = @story.sprint.stories
     @points_count = @story.sprint.points_count
-    render :layout => false
+    render :layout => false, :template => 'stories/commit.html.haml'
   end
   
   # POST /stories/:id/uncommit
@@ -79,14 +79,14 @@ class StoriesController < ApplicationController
     @story.uncommit
     @stories = Story.product_backlog(user_session.current_project_id)
     @points_count = sprint.points_count
-    render :layout => false
+    render :layout => false, :template => 'stories/uncommit.html.haml'
   end
   
-  # POST /stories/1/reprioritise/1
+  # POST /stories/1/reprioritise?priority=1
   def reprioritise
     @story.reprioritise(params[:priority].to_i)
-    @stories = Story.product_backlog
-    render :layout => false
+    @stories = Story.product_backlog(user_session.current_project_id)
+    render :layout => false, :template => 'stories/reprioritise.html.haml'
   end
 
   # PUT /stories/1

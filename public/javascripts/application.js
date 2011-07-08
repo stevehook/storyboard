@@ -58,6 +58,7 @@ $(function() {
               var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
               if (nextItem) {
                 var new_priority = nextItem.attr('data-priority');
+                console.log(new_priority);
                 $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
                   {},
                   function(result) { $('.listPanel').html(result); }
