@@ -7,6 +7,11 @@ $(document).ajaxSend(function(e, xhr, options) {
   xhr.setRequestHeader("X-CSRF-Token", token);
 });
 
+// This ensures that all Ajax calls request format js
+$.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
 // Automatically set focus to the first field on a form
 $(function() {
   $("input:text:visible:first").focus();
@@ -19,7 +24,6 @@ $(function() {
     $('#story_filter_form').submit();
   });
 });
-
 
 // TODO: Will need to generalise this into some kind of plugin for lists at some stage in the future...
 $(function() {
@@ -127,51 +131,61 @@ $(function() {
   };
 })(jQuery);
 
-// TODO: Will need to apply this to the taskboard ONLY
-$(function() {
-  var resizeTaskboard = function() {
-    $('.taskBoardRow').each(function(index, row) {
-      var subPanels = $('.subPanel', row);
-      var maxHeight = 0;
-      subPanels.each(function(panelIndex, panel) {
-        maxHeight = Math.max(maxHeight, $(panel).height());
-      });
-      subPanels.css('min-height', maxHeight + 'px');
-    });
-  }
-  var positionDocument = function() {
-    var document = $('#document');
-    var header = $('#header');
-    document.css('margin-top', header.height() + 'px');
-  }
-  resizeTaskboard();
-  $('.taskPanel').draggable({axis: 'x', revert: 'invalid'});
-  $('.taskSubPanel').droppable({
-    drop: function(event, ui) {
-      ui.draggable.css('left', '');
-      ui.draggable.appendTo(event.target);
-      var newStatus = $(event.target).attr('data-status');
-      var storyId = ui.draggable.attr('data-story-id');
-      var id = ui.draggable.attr('data-id');
-      $.post('/stories/' + storyId + '/tasks/' + id + '/update_status?status=' + newStatus, 
-        {},
-        function(result) {
-          ui.draggable.replaceWith(result);
-          $('.taskPanel').draggable({axis: 'x'});
+// taskBoard plugin - used on the taskboard page to enable drag and drop of tasks between different
+// status columns
+(function($) {
+  var defaults = {};
+  $.fn.taskBoard = function() {        
+    return this.each(function() {
+      if (this.taskBoard) { return false; }
+      var self = {   
+        initialize: function() {
+          var resizeTaskboard = function() {
+            $('.taskBoardRow').each(function(index, row) {
+              var subPanels = $('.subPanel', row);
+              var maxHeight = 0;
+              subPanels.each(function(panelIndex, panel) {
+                maxHeight = Math.max(maxHeight, $(panel).height());
+              });
+              subPanels.css('min-height', maxHeight + 'px');
+            });
+          }
+          var positionDocument = function() {
+            var document = $('#document');
+            var header = $('#header');
+            document.css('margin-top', header.height() + 'px');
+          }
           resizeTaskboard();
+          $('.taskPanel').draggable({axis: 'x', revert: 'invalid'});
+          $('.taskSubPanel').droppable({
+            drop: function(event, ui) {
+              ui.draggable.css('left', '');
+              ui.draggable.appendTo(event.target);
+              var newStatus = $(event.target).attr('data-status');
+              var storyId = ui.draggable.attr('data-story-id');
+              var id = ui.draggable.attr('data-id');
+              $.post('/stories/' + storyId + '/tasks/' + id + '/update_status?status=' + newStatus, 
+                {},
+                function(result) {
+                  ui.draggable.replaceWith(result);
+                  $('.taskPanel').draggable({axis: 'x'});
+                  resizeTaskboard();
+                }
+              );
+            }
+          });
+          positionDocument();
+          $(window).resize(positionDocument);
         }
-      );
-    }
-  });
-  positionDocument();
-  $(window).resize(positionDocument);
-});
-
-$.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-})
+      };
+      this.taskBoard = self;
+      self.initialize();      
+    });
+  };
+})(jQuery);
 
 $(function() {
+  // TODO: Move to sprint planning plugin?
   $('#planningBacklog .pagination a').live('click', function () {  
     $.get(this.href, function(result) {
         console.log(result);
