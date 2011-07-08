@@ -121,7 +121,11 @@ class Story
     self.tasks_effort_remaining = self.tasks.inject(0) { |n, task| n + task.remaining.to_i }
     self.tasks_estimate = self.tasks.inject(0) { |n, task| n + task.estimate.to_i }
   end
-  
+
+  def has_incomplete_tasks?
+    self.tasks.any? { |task| task.status != :done }
+  end
+
   def update_sprint_and_save(attributes = nil)
     previous_sprint = self.sprint
     self.attributes = attributes if attributes

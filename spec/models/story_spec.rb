@@ -128,6 +128,32 @@ describe Story do
       @story.history[1].title.should == 'Status changed to done'
     end
   end
+
+  context "when a story has incomplete tasks" do
+    before(:each) do
+      @story = Story.create(:title => 'test title', :description => 'test description')
+      @story.status = :committed
+      @story.tasks << Task.new(:title => 'test task 1', :status => :done, :estimate => 7, :remaining => 0)
+      @story.tasks << Task.new(:title => 'test task 2', :status => :not_started, :estimate => 7, :remaining => 7)
+    end
+
+    it "the story should not be complete" do
+      @story.has_incomplete_tasks?.should == true
+    end
+  end
+
+  context "when a story has 2 complete tasks" do
+    before(:each) do
+      @story = Story.create(:title => 'test title', :description => 'test description')
+      @story.status = :committed
+      @story.tasks << Task.new(:title => 'test task 1', :status => :done, :estimate => 7, :remaining => 0)
+      @story.tasks << Task.new(:title => 'test task 2', :status => :done, :estimate => 7, :remaining => 0)
+    end
+
+    it "the story should be complete" do
+      @story.has_incomplete_tasks?.should == false
+    end
+  end
   
   context "when a story is added to a sprint" do
     before(:each) do
