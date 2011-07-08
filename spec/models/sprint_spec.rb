@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Sprint do
   let(:project) { Project.create(:title => 'test project') }
   let(:release) { Release.create(:title => 'test release', :project => project) }
-  let(:sprint) { Sprint.create(:title => 'test sprint', :description => 'test description') }
+  let(:sprint) { Sprint.create(:title => 'test sprint', :description => 'test description', :order => 1) }
 
   it "should be valid if mandatory attributes are specified" do
     sprint.release = release
@@ -44,6 +44,51 @@ describe Sprint do
       sprint.stories << story
       sprint.refresh_counts
       sprint.points_count.should == 5
+    end
+  end
+  
+  context "when a sprint is in_progress" do
+    before(:all) do
+      sprint.status = :in_progress
+      sprint.release = release
+    end
+
+    it "should not be deletable" do
+      sprint.can_delete?.should == false
+    end
+
+    it "should be finishable" do
+      sprint.can_finish?.should == true
+    end
+  end
+  
+  context "when a sprint is not_started" do
+    before(:all) do
+      sprint.status = :not_started
+      sprint.release = release
+    end
+
+    it "should be deletable" do
+      sprint.can_delete?.should == true
+    end
+
+    it "should not be finishable" do
+      sprint.can_finish?.should == false
+    end
+  end
+  
+  context "when a sprint is finished" do
+    before(:all) do
+      sprint.status = :finished
+      sprint.release = release
+    end
+
+    it "should not be deletable" do
+      sprint.can_delete?.should == false
+    end
+
+    it "should not be finishable" do
+      sprint.can_finish?.should == false
     end
   end
 end
