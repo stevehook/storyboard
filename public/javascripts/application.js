@@ -33,27 +33,66 @@ $(function() {
   });
 });
 
-// TODO: Will need to apply this to the product backlog ONLY
-$(function() {
-  $(".sortableList").sortable({
-    axis: 'y',
-    containment: 'parent',
-    cursor: 'move',
-    update: function(event, ui) {
-      var id = ui.item.attr('data-id');
-      var isMovingUp = ui.position.top < ui.originalPosition.top;
-      // TODO: Need to get the previous item if we are moving the story down the list
-      var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
-      if (nextItem) {
-        var new_priority = nextItem.attr('data-priority');
-        $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
-          {},
-          function(result) { $('.listPanel').html(result); }
-        );
-      }
-    }
-  });
-});
+// productBacklog plugin - used only on the product backlog page
+(function($) 
+{
+  var defaults = {};
+  $.fn.productBacklog = function() 
+  {        
+    console.log('script...');
+    return this.each(function() 
+    {
+      if (this.productBacklog) { return false; }
+      var self = 
+      {   
+        initialize: function()
+        {
+          $(".sortableList").sortable({
+            axis: 'y',
+            containment: 'parent',
+            cursor: 'move',
+            update: function(event, ui) {
+              var id = ui.item.attr('data-id');
+              var isMovingUp = ui.position.top < ui.originalPosition.top;
+              // TODO: Need to get the previous item if we are moving the story down the list
+              var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
+              if (nextItem) {
+                var new_priority = nextItem.attr('data-priority');
+                $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
+                  {},
+                  function(result) { $('.listPanel').html(result); }
+                );
+              }
+            }
+          });
+        }
+      };
+      this.productBacklog = self;
+      self.initialize();      
+    });
+  };
+})(jQuery);
+
+// $(function() {
+//   $(".sortableList").sortable({
+//     axis: 'y',
+//     containment: 'parent',
+//     cursor: 'move',
+//     update: function(event, ui) {
+//       var id = ui.item.attr('data-id');
+//       var isMovingUp = ui.position.top < ui.originalPosition.top;
+//       // TODO: Need to get the previous item if we are moving the story down the list
+//       var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
+//       if (nextItem) {
+//         var new_priority = nextItem.attr('data-priority');
+//         $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
+//           {},
+//           function(result) { $('.listPanel').html(result); }
+//         );
+//       }
+//     }
+//   });
+// });
 
 // TODO: Will need to apply this to the sprint planning page ONLY
 $(function() {

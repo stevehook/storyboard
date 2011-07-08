@@ -2,9 +2,11 @@
 
 = render 'filter'
 
-%div.listPanel.sortableList
+%div#productBacklog.listPanel.sortableList
   - @stories.each do |story|
     = render story
 - if can? :manage, Story
   %div.listItem.noBorder
     = link_to 'Add Story', new_story_path
+:javascript
+  $('#productBacklog').productBacklog();
