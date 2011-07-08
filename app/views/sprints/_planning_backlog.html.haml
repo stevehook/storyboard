@@ -1,3 +1,4 @@
 %div#planningBacklog.listPanel.dragSource.dragTarget{ :'data-status' => 'ready' }
   - @stories.each do |story|
     = render story
+  = will_paginate @stories
