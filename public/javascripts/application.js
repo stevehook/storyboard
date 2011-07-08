@@ -123,6 +123,14 @@ $(function() {
               }
             }
           });
+          $('#planningBacklog .pagination a').live('click', function () {  
+            $.get(this.href, function(result) {
+                console.log(result);
+                console.log($('#planningBacklog'));
+                $('#planningBacklog').html(result); 
+              });  
+            return false;  
+          });
         }
       };
       this.sprintPlanning = self;
@@ -184,14 +192,3 @@ $(function() {
   };
 })(jQuery);
 
-$(function() {
-  // TODO: Move to sprint planning plugin?
-  $('#planningBacklog .pagination a').live('click', function () {  
-    $.get(this.href, function(result) {
-        console.log(result);
-        console.log($('#planningBacklog'));
-        $('#planningBacklog').html(result); 
-      });  
-    return false;  
-  });
-});
