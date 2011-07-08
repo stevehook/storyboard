@@ -34,19 +34,13 @@ $(function() {
 });
 
 // productBacklog plugin - used only on the product backlog page
-(function($) 
-{
+(function($) {
   var defaults = {};
-  $.fn.productBacklog = function() 
-  {        
-    console.log('script...');
-    return this.each(function() 
-    {
+  $.fn.productBacklog = function() {        
+    return this.each(function() {
       if (this.productBacklog) { return false; }
-      var self = 
-      {   
-        initialize: function()
-        {
+      var self = {   
+        initialize: function() {
           $(".sortableList").sortable({
             axis: 'y',
             containment: 'parent',
@@ -58,7 +52,6 @@ $(function() {
               var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
               if (nextItem) {
                 var new_priority = nextItem.attr('data-priority');
-                console.log(new_priority);
                 $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
                   {},
                   function(result) { $('.listPanel').html(result); }
@@ -74,73 +67,65 @@ $(function() {
   };
 })(jQuery);
 
-// $(function() {
-//   $(".sortableList").sortable({
-//     axis: 'y',
-//     containment: 'parent',
-//     cursor: 'move',
-//     update: function(event, ui) {
-//       var id = ui.item.attr('data-id');
-//       var isMovingUp = ui.position.top < ui.originalPosition.top;
-//       // TODO: Need to get the previous item if we are moving the story down the list
-//       var nextItem = isMovingUp ? ui.item.next() : ui.item.prev();
-//       if (nextItem) {
-//         var new_priority = nextItem.attr('data-priority');
-//         $.post('/stories/' +  id + '/reprioritise?priority=' + new_priority, 
-//           {},
-//           function(result) { $('.listPanel').html(result); }
-//         );
-//       }
-//     }
-//   });
-// });
-
-// TODO: Will need to apply this to the sprint planning page ONLY
-$(function() {
-  $('.dragSource .listItem').live('mouseover', function(event) {
-    $this = $(this);
-    if (!$this.data('initdrag')) {
-      $this.data("initdrag", true); 
-      $this.draggable({
-        cursor: 'move',
-        revert: 'invalid',
-        update: function(event, ui) {
+// sprintPlanning plugin - used on the sprint planning page to enable the drag and drop operations
+// between backlog and committed lists
+(function($) {
+  var defaults = {};
+  $.fn.sprintPlanning = function() {        
+    return this.each(function() {
+      if (this.sprintPlanning) { return false; }
+      var self = {   
+        initialize: function() {
+          $('.dragSource .listItem').live('mouseover', function(event) {
+            $this = $(this);
+            if (!$this.data('initdrag')) {
+              $this.data("initdrag", true); 
+              $this.draggable({
+                cursor: 'move',
+                revert: 'invalid',
+                update: function(event, ui) {
+                }
+              });
+            }
+          });
+          $(".dragTarget").droppable({
+            drop: function(event, ui) {
+              ui.draggable.css('left', '');
+              ui.draggable.css('position', '');
+              ui.draggable.appendTo(event.target);
+              var id = ui.draggable.attr('data-id');
+              var target = $(this);
+              var sprint_id = target.attr('data-sprint');
+              if (sprint_id) {
+                console.log('committing story ' + id + ' to sprint ' + sprint_id);
+                $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
+                  {},
+                  function(result) {
+                    target.html(result); 
+                    var updated_count = $('#updated_points_count', target);
+                    $('#points_count').html('Total points ' + updated_count.val());
+                  }
+                );
+              } else {
+                console.log('uncommitting story ' + id);
+                $.post('/stories/' +  id + '/uncommit', 
+                  {},
+                  function(result) {
+                    target.html(result); 
+                    var updated_count = $('#updated_points_count', target);
+                    $('#points_count').html('Total points ' + updated_count.val());
+                  }
+                );
+              }
+            }
+          });
         }
-      });
-    }
-  });
-  $(".dragTarget").droppable({
-    drop: function(event, ui) {
-      ui.draggable.css('left', '');
-      ui.draggable.css('position', '');
-      ui.draggable.appendTo(event.target);
-      var id = ui.draggable.attr('data-id');
-      var target = $(this);
-      var sprint_id = target.attr('data-sprint');
-      if (sprint_id) {
-        console.log('committing story ' + id + ' to sprint ' + sprint_id);
-        $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
-          {},
-          function(result) {
-            target.html(result); 
-            var updated_count = $('#updated_points_count', target);
-            $('#points_count').html('Total points ' + updated_count.val());
-          }
-        );
-      } else {
-        console.log('uncommitting story ' + id);
-        $.post('/stories/' +  id + '/uncommit', 
-          {},
-          function(result) {
-            target.html(result); 
-            var updated_count = $('#updated_points_count', target);
-            $('#points_count').html('Total points ' + updated_count.val());
-          }
-        );
-      }
-    }
-  });
-});
+      };
+      this.sprintPlanning = self;
+      self.initialize();      
+    });
+  };
+})(jQuery);
 
 // TODO: Will need to apply this to the taskboard ONLY
 $(function() {

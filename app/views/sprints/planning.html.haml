@@ -1,14 +1,17 @@
 = page_heading "Planning Sprint - #{@sprint.title}"
 
-%div.leftPanel
-  %div.subPanel
-    = sub_heading 'Project Backlog'
-    = render 'planning_backlog'
-%div.rightPanel
-  %div.subPanel
-    = sub_heading 'Committed Stories'
-    %div#planningSelected.listPanel.dragTarget.dragSource{ :'data-status' => 'committed', :'data-sprint' => @sprint.id.to_s }
-      - @sprint.stories.each do |story|
-        = render story
-  %div.subPanel
-    = sub_heading "Total points #{@sprint.points_count}", :points_count
+%div#sprintPlanning
+  %div.leftPanel
+    %div.subPanel
+      = sub_heading 'Project Backlog'
+      = render 'planning_backlog'
+  %div.rightPanel
+    %div.subPanel
+      = sub_heading 'Committed Stories'
+      %div#planningSelected.listPanel.dragTarget.dragSource{ :'data-status' => 'committed', :'data-sprint' => @sprint.id.to_s }
+        - @sprint.stories.each do |story|
+          = render story
+    %div.subPanel
+      = sub_heading "Total points #{@sprint.points_count}", :points_count
+:javascript
+  $('#sprintPlanning').sprintPlanning();
