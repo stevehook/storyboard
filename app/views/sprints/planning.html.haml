@@ -3,9 +3,7 @@
 %div.leftPanel
   %div.subPanel
     = sub_heading 'Project Backlog'
-    %div#planningBacklog.listPanel.dragSource.dragTarget{ :'data-status' => 'ready' }
-      - @stories.each do |story|
-        = render story
+    = render 'planning_backlog'
 %div.rightPanel
   %div.subPanel
     = sub_heading 'Committed Stories'

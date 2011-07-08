@@ -22,7 +22,9 @@
       %td= select_tag :story_status, options_for_select(Story::STATUSES, :selected => @story.status), { :name => 'story[status]' }
     %tr
       %td.labelCell= f.label :project
-      %td= text_field_tag('story[project[title]]', @story.project ? @story.project.title : '', :disabled => true)
+      %td
+        = text_field_tag('story[project[title]]', @story.project ? @story.project.title : '', :disabled => true)
+        = f.hidden_field :project_id
     %tr
       %td.labelCell= f.label :sprint
       %td= text_field_tag('story[sprint[title]]', @story.sprint ? @story.sprint.title : '', :disabled => true)
