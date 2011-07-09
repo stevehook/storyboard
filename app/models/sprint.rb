@@ -45,6 +45,7 @@ class Sprint
     self.stories.each do |story|
       if story.has_incomplete_tasks?
         story.status = :ready
+        story.sprint = nil
         story.sprint_id = nil
         story.save
       else

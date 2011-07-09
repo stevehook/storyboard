@@ -58,7 +58,7 @@ class Release
     starting_sprint.status = :in_progress if starting_sprint
     finishing_sprint.status = :finished
     finishing_sprint.save
-    starting_sprint.save
+    starting_sprint.save if starting_sprint
     self.current_sprint = starting_sprint
     self.save
   end
