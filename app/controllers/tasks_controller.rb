@@ -69,7 +69,7 @@ class TasksController < ApplicationController
   def update_status
     @task.status = params[:status].to_sym
     @task.save
-    render :partial => 'sprints/task_panel', :layout => false, :locals => { :task => @task }
+    render :partial => 'sprints/task_panel.html.haml', :layout => false, :locals => { :task => @task }
   end
 
   # DELETE /stories/1/tasks/1
