@@ -57,7 +57,10 @@ class Release
     starting_sprint = self.sprints.select { |sprint| sprint.order == finishing_sprint.order + 1 }.first
     starting_sprint.status = :in_progress if starting_sprint
     finishing_sprint.status = :finished
+    finishing_sprint.save
+    starting_sprint.save
     self.current_sprint = starting_sprint
+    self.save
   end
   
   def end_date

@@ -36,7 +36,8 @@ class Sprint
 
   def finish
     #TODO: Close off the stories and mark any unfinished ones as failed
-    self.finish_all_stories
+    finish_all_stories
+    refresh_counts
     self.release.finish_sprint_and_start_next(self)
   end
 
@@ -44,7 +45,7 @@ class Sprint
     self.stories.each do |story|
       if story.has_incomplete_tasks?
         story.status = :ready
-        story.sprint = nil
+        story.sprint_id = nil
         story.save
       else
         story.status = :done
