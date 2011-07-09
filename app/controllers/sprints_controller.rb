@@ -75,13 +75,19 @@ class SprintsController < ApplicationController
     throw 'No current sprint'
   end
 
-  # GET /stories/1/edit
+  # POST /sprints/1/finish
+  def finish
+    @sprint.finish
+    redirect_to @sprint.release, :notice => 'Sprint was successfully finished'
+  end
+
+  # GET /sprints/1/edit
   def edit
     @release = @sprint.release
   end
 
-  # PUT /releases/1
-  # PUT /releases/1.xml
+  # PUT /sprints/1
+  # PUT /sprints/1.xml
   def update
     respond_to do |format|
       if @sprint.update_attributes(params[:sprint])

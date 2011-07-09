@@ -6,6 +6,7 @@ Storyboard::Application.routes.draw do
   get 'sprints/:id/planning' => 'sprints#planning', :as => 'sprint_planning'
   get 'sprints/current_sprint' => 'sprints#current_sprint', :as => 'current_sprint'
   get 'sprints/current_sprint_tasks' => 'sprints#current_sprint_tasks', :as => 'current_sprint_tasks'
+  post 'sprints/:id/finish' => 'sprints#finish', :as => 'finish_sprint'
   get 'select/:id' => 'sessions#select', :as => 'select'
   get 'projects/select' => 'projects#select', :as => 'project_select'
   post 'stories/filter' => 'stories#filter', :as => 'filter_stories'
