@@ -35,7 +35,7 @@ authorisation rules. The basic rule is that anybody can read information
 about the state of a product but you have to log in to make any changes.
 
 The seed data comes with a number of built-in users: Bob, Derek, Mary,
-Alice and Norman, each of which has password ''secret''.
+Alice and Norman, each of which has password *secret*.
 
 ##Agile methodologies
 
