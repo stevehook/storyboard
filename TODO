@@ -1,28 +1,30 @@
 * Get rid of the Welcome aboard home page. DONE
 * Edit a story from /stories. DONE
-* Add a new story from /stories.
+* Add a new story from /stories. DONE
 * Implement a simple menu bar. DONE
 * Swap out prototype.js for jQuery. DONE
 * Work out how to do meaningful URLs with mongodb IDs.
 * Work out how to setup some test data. DONE
-* Implement some filters on /stories.
+* Implement some filters on /stories. DONE
 * Implement sorting on /stories.
 * Setup autotest. DONE
 * Add a date picker to Project and Sprint forms
 * Work out how to represent enforce data types with mongoid
 * Add a sprint to a project. DONE
-* Sprint view - show basic details and any stories allocated to the sprint
-* Learn more about mocks/stubs in rpsec
+* Sprint view - show basic details and any stories allocated to the
+* sprint DONE
+* Learn more about mocks/stubs in rpsec DONE
 * Learn more about controller specs
 * Learn about setting up fixtures with rspec (& factory girl?)
 * Put the current document title in the page title. DONE
 * Create a User model DONE
 * Create a Team model DONE
 * Associate Users with Stories
-* Create a Task model
+* Create a Task model DONE
 * Work out how to denormalise data with mongoid (e.g. user.scrum_master.name, user.product_owner.name)
-* Need total task effort/remaining/inprogress on the story and sprint models
-* Need a status field on task
+* Need total task effort/remaining/inprogress on the story and sprint
+* models DONE
+* Need a status field on task DONE
 
 
 
