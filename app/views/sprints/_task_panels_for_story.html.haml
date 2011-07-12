@@ -1,2 +1,2 @@
-- story.tasks.select{|t| t.status == status}.each do |task|
+- story.tasks.select{ |t| t.status.to_sym == status.to_sym }.each do |task|
   = render 'task_panel', :task => task
