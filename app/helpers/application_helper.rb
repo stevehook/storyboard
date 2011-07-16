@@ -23,7 +23,7 @@ module ApplicationHelper
       when :finished then '#008'
       when :rejected then '#888'
     end
-    "<span class='statusBadge' style='background-color: #{colour};'>#{model.status.to_s.humanize}</span>".html_safe
+    content_tag :span, model.status.to_s.humanize, { :class => 'statusBadge', :style => "background-color: #{colour};" }
   end
 
   def assignee_badge(model)
