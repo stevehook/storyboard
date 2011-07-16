@@ -84,4 +84,15 @@ describe ApplicationHelper do
     end
   end
 
+  context "estimate badge" do
+    it "should show the estimate for a story" do
+      story = stub('Story', :class => Story, :estimate => 12)
+      helper.estimate_badge(story).should == '<span class="priorityBadge">12</span>'
+    end
+
+    it "should show the estimate for a task" do
+      task = stub('Task', :class => Task, :estimate => 8, :remaining => 4)
+      helper.estimate_badge(task).should == '<span class="priorityBadge">4/8</span>'
+    end
+  end
 end

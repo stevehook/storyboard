@@ -33,9 +33,9 @@ module ApplicationHelper
   def estimate_badge(model)
     case model.class
     when Story 
-      "<span class='priorityBadge'>#{model.estimate}</span>".html_safe
+      content_tag :span, model.estimate, { :class => 'priorityBadge' }
     when Task
-      "<span class='priorityBadge'>#{model.remaining}/#{model.estimate}</span>".html_safe
+      content_tag :span, "#{model.remaining}/#{model.estimate}", { :class => 'priorityBadge' }
     else ''
     end
   end
