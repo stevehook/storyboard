@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def sub_heading(text, id = nil)
-    id ? "<div id='#{id}' class='subHeading'>#{text}</div>".html_safe : "<div class='subHeading'>#{text}</div>".html_safe
+    content_tag(:div, text, { :id => id, :class => 'subHeading'})
   end
 
   def status_badge(model)

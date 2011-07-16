@@ -19,4 +19,18 @@ describe ApplicationHelper do
   #     helper.page_heading(nil).should == ''
   #   end
   # end
+
+  context "sub heading" do
+    it "should show heading without ID" do
+      helper.sub_heading('test text').should == '<div class="subHeading">test text</div>'
+    end
+    
+    it "should show heading with ID" do
+      helper.sub_heading('test text', 'testID').should == '<div class="subHeading" id="testID">test text</div>'
+    end
+  end
+
+  context "" do
+    
+  end
 end
