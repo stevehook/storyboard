@@ -1,13 +1,13 @@
 module StoriesHelper
   def priority_badge(story)
-    "<span class='priorityBadge'>#{story.priority}</span>".html_safe
+    content_tag :span, story.priority, { :class => 'priorityBadge' }
   end
   
   def sprint_badge(story)
-    story.sprint.nil? ? "" : "<span class='priorityBadge'>sprint #{story.sprint.title}</span>".html_safe
+    story.sprint.nil? ? "" : content_tag(:span, "sprint #{story.sprint.title}", { :class => 'priorityBadge' })
   end
 
   def points_badge(story)
-    "<span class='priorityBadge'>#{story.estimate} pts</span>".html_safe
+    content_tag :span, "#{story.estimate} pts", { :class => 'priorityBadge' }
   end
 end
