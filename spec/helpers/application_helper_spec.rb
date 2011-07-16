@@ -30,7 +30,7 @@ describe ApplicationHelper do
     end
   end
 
-  context "status_badge" do
+  context "status badge" do
     it "should display a green badge for done stories" do
       story = stub('Story', :status => :done)
       helper.status_badge(story).should == '<span class="statusBadge" style="background-color: #008;">Done</span>'
@@ -71,4 +71,17 @@ describe ApplicationHelper do
       helper.status_badge(task).should == '<span class="statusBadge" style="background-color: #800;">Not started</span>'
     end
   end
+
+  context "assignee badge" do
+    it "should show 'Unassigned' for a unassigned tasks" do
+      task = stub('Task', :assignee_name => nil)
+      helper.assignee_badge(task).should == '<span class="assigneeBadge">Unassigned</span>'
+    end
+    
+    it "should show assignee name for a assigned tasks" do
+      task = stub('Task', :assignee_name => 'Fred')
+      helper.assignee_badge(task).should == '<span class="assigneeBadge">Fred</span>'
+    end
+  end
+
 end

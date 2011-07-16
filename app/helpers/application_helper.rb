@@ -27,8 +27,7 @@ module ApplicationHelper
   end
 
   def assignee_badge(model)
-    return "<span class='assigneeBadge'>Unassigned</span>".html_safe if model.assignee_name.nil?
-    "<span class='assigneeBadge'>#{model.assignee_name}</span>".html_safe
+    content_tag :span, model.assignee_name.nil? ? 'Unassigned' : model.assignee_name, { :class => 'assigneeBadge' }
   end
 
   def estimate_badge(model)
