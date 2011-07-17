@@ -12,7 +12,7 @@
       %td= f.text_field :title
     %tr.field
       %td.labelCell= f.label :description
-      %td= f.text_field :description
+      %td= f.text_area :description
     %tr  
       %td.labelCell= f.label :assignee
       %td= f.collection_select :assignee_id, User.all, :id, :name, { :include_blank => true }
