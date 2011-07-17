@@ -3,7 +3,7 @@
     = link_to task.title, story_task_path(task.story.id, task.id)
   -if !task.description.nil? && !task.description.empty?
     %br
-    %span.listItemDetail= task.description
+    %span.listItemDetail= truncate(task.description, :length => 500, :omission => '...')
   - if can? :manage, task.story
     %br
     %a{ :href => edit_story_task_path(task.story.id, task.id) } Edit
