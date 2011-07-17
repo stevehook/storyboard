@@ -11,6 +11,10 @@ body {
   min-width: 1000px;
 }
 
+textarea {
+  min-width: 600px;
+}
+
 .dragTarget {
   min-height: 200px;
 }
