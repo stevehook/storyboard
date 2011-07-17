@@ -34,5 +34,11 @@ class SessionsController < ApplicationController
       redirect_to project_select_path
     end
   end
+
+  def help
+  end
+
+  def preferences
+  end
 end
 
