@@ -14,6 +14,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'cancan', :require => 'cancan'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'jquery-rails', '>= 1.0.3'
+gem 'formtastic', '~> 1.2.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
