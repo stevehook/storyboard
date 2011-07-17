@@ -28,14 +28,33 @@ $(function() {
   $(window).resize(positionDocument);
 });
 
-
-
 $(function() {
-  $(".listFilterPanel select").change(function() {
+  $('#task_estimate').change(function() {
     var $this = $(this);
-    $('#story_filter_form').submit();
+    var remaining = $('#task_remaining');
+    if (remaining.val() === '') { remaining.val($this.val()); }
   });
 });
+
+// taskForm plugin - specific code for the task form
+(function($) {
+  var defaults = {};
+  $.fn.taskForm = function() {        
+    return this.each(function() {
+      if (this.taskForm) { return false; }
+      var self = {   
+        initialize: function() {
+          $(".listFilterPanel select").change(function() {
+            var $this = $(this);
+            $('#story_filter_form').submit();
+          });
+        }
+      };
+      this.taskForm = self;
+      self.initialize();      
+    });
+  };
+})(jQuery);
 
 // TODO: Will need to generalise this into some kind of plugin for lists at some stage in the future...
 $(function() {
