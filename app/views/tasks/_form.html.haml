@@ -1,35 +1,16 @@
-- form_for(@task, :url => (@task.new_record? ? story_tasks_path(:story_id => @story) : story_task_path(:story_id => @story, :id => @task.id))) do |f|
-  - if @task.errors.any?
-    %div#error_explanation
-      %h2= "#{ pluralize(@task.errors.count, 'error') } prohibited this task from being saved:"
-      %ul
-        - @task.errors.full_messages.each do |msg|
-          %li= msg
-
-  %table
-    %tr.field
-      %td.labelCell= f.label :title
-      %td= f.text_field :title
-    %tr.field
-      %td.labelCell= f.label :description
-      %td= f.text_area :description
-    %tr  
-      %td.labelCell= f.label :assignee
-      %td= f.collection_select :assignee_id, User.all, :id, :name, { :include_blank => true }
-    %tr  
-      %td.labelCell= f.label :status
-      %td= select_tag :task_status, options_for_select(Task::STATUSES, :selected => @task.status), { :name => 'task[status]' }
-    %tr.field
-      %td.labelCell= f.label :estimate
-      %td= f.text_field :estimate
-    %tr.field
-      %td.labelCell= f.label :remaining
-      %td= f.text_field :remaining
-    %tr.actions
-      %td
-      %td
-        = f.submit 
-        = f.submit 'Cancel', :name => 'cancel'
+- url = @task.new_record? ? story_tasks_path(:story_id => @story) : story_task_path(:story_id => @story, :id => @task.id)
+= semantic_form_for(@task, :url => url) do |form|
+  = form.inputs do
+    = form.input :title
+    = form.input :description, :as => :text
+    = form.input :assignee, :collection => User.all
+    = form.input :status, :as => :select, :collection => Task::STATUSES
+    = form.input :estimate
+    = form.input :remaining
+  = form.buttons do
+    = form.commit_button
+    %li.button.cancel
+      %input{ :type => 'submit', :name => 'cancel', :value => 'Cancel' }
 
 :javascript
   $('.pageBody').taskForm();
