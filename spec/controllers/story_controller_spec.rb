@@ -74,9 +74,9 @@ describe StoriesController do
         get :index
       end
 
-      it "should succeed and set stories to a non-nil value" do
-        response.should be_success
-        assigns[:stories].should_not be_nil
+      it "should redirect to logon page" do
+        response.should be_redirect
+        flash.should_not be_empty
       end
     end
 

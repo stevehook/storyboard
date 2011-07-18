@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe ReleasesController do
   describe "GET index" do 
+    before(:each) do
+      controller.stub(:current_user).and_return(User.new)
+    end
     let(:release) { Release.new(:title => 'Mock Release 1') }
     
     it "should be successful" do
