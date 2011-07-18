@@ -31,8 +31,9 @@ of sample data which can be applied to the development database:
 ##Authentication
 
 Storyboard uses a home-grown authentication mechanism and cancan for
-authorisation rules. The basic rule is that anybody can read information
-about the state of a product but you have to log in to make any changes.
+authorisation rules. The basic rule is that you must log on before
+accessing the system. Once logged on there are two levels of
+authorisation, read access and manage (write) access. 
 
 The seed data comes with a number of built-in users: Bob, Derek, Mary,
 Alice and Norman, each of which has password *secret*.
