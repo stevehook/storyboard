@@ -15,6 +15,9 @@
       %td.labelCell= f.label :email
       %td= f.text_field :email
     %tr
+      %td.labelCell= f.label :profile
+      %td= f.text_area :profile
+    %tr
       %td.labelCell= f.label :team
       %td= f.collection_select :team_id, Team.all, :id, :name, { :include_blank => true }
     %tr
