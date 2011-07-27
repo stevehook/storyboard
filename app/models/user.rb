@@ -1,12 +1,14 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paperclip
 
-  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :project_id, :release_id, :project, :release, :profile
+  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :project_id, :release_id, :project, :release, :profile, :image
   attr_accessor :password
   field :name, :data_type => String
   field :email, :data_type => String
   field :profile, :data_type => String
+  has_mongoid_attached_file :image
   field :password_hash,  :data_type => String
   field :password_salt, :data_type => String
   referenced_in :team, :inverse_of => :members

@@ -1,4 +1,4 @@
-- form_for(@user) do |f|
+- form_for(@user, :html => { :multipart => true }) do |f|
   - if @user.errors.any?
     %div#error_explanation
       %h2= pluralize(@user.errors.count, 'error') + 'prohibited this user from being saved:'
@@ -17,6 +17,9 @@
     %tr
       %td.labelCell= f.label :profile
       %td= f.text_area :profile
+    %tr
+      %td.labelCell= f.label :image
+      %td= f.file_field :image
     %tr
       %td.labelCell= f.label :team
       %td= f.collection_select :team_id, Team.all, :id, :name, { :include_blank => true }

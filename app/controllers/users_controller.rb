@@ -59,6 +59,8 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    logger.info params['user[image]']
+    logger.info @user.image
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
