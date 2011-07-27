@@ -276,6 +276,33 @@ td {
   box-shadow: 5px 5px 5px #ccc;
 }
 
+.userPanel {
+  margin: 4px 6px 6px 4px;
+  padding: 2px;
+  float: left;
+}
+
+.userPanel img {
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 5px 5px 5px #ccc;
+  -webkit-box-shadow: 5px 5px 5px #ccc;
+  box-shadow: 5px 5px 5px #ccc;
+  display: block;
+  margin: auto;
+}
+
+.userName {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.userRole {
+  text-align: center;
+  font-style: italic;
+}
+
 #planningSelected .listItem, #planningBacklog .listItem {
   border: 1px solid #BBB;
   margin: 4px 6px 6px 4px;

@@ -1,13 +1,16 @@
 %div.listItem
   %span.listItemTitle= team.name
   %br
-  %span.listItemDetail Scrum Master: #{ link_to(team.scrum_master.name, user_path(team.scrum_master.id)) if team.scrum_master }
-  %br
-  %span.listItemDetail Product Owner: #{ link_to(team.product_owner.name, user_path(team.product_owner.id)) if team.product_owner }
-  %br
-  %span.listItemDetail Members:
-  - team.members.collect do |p| 
-    = link_to(p.name, user_path(p.id))
+  - team.members.collect do |user| 
+    %div.userPanel
+      = image_tag user.image.nil? ? '/images/default_user.gif' : user.image.url
+      %span.userName
+        = link_to(user.name, user_path(user.id))
+      - if team.scrum_master && team.scrum_master.id == user.id
+        %div.userRole Scrum Master
+      - if team.product_owner && team.product_owner.id == user.id
+        %div.userRole Product Owner
+  %div.clear
     
   %br
   - if can? :manage, team
