@@ -3,7 +3,7 @@ class User
   include Mongoid::Timestamps
   include Mongoid::Paperclip
 
-  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :profile, :image
+  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :profile, :image, :current_project_id, :current_project, :current_release_id, :current_release 
   attr_accessor :password
   field :name, :data_type => String
   field :email, :data_type => String
@@ -12,6 +12,8 @@ class User
   field :password_hash,  :data_type => String
   field :password_salt, :data_type => String
   referenced_in :team, :inverse_of => :members
+  referenced_in :current_project, :class_name => 'Project'
+  referenced_in :current_release, :class_name => 'Release'
 
   validates_presence_of :name, :email
   validates_presence_of :password, :on => :create

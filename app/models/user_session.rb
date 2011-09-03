@@ -14,8 +14,8 @@ class UserSession
   end
 
   def set_current_project(user)
-    self.current_project = user.project
-    self.current_release = user.release
+    self.current_project = user.current_project
+    self.current_release = user.current_release
   end
 
   def logout
