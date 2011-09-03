@@ -11,7 +11,6 @@ class Release
   # key :title
   references_many :sprints, :inverse_of => :release
   referenced_in :project
-  references_many :users
   belongs_to :current_sprint, :class_name => 'Sprint'
 
   validates :title, :presence => true
