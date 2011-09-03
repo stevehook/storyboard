@@ -1,5 +1,6 @@
 class Team
   include Mongoid::Document
+  include Mongoid::Paranoia
   include Mongoid::Timestamps
 
   field :name, :type => String

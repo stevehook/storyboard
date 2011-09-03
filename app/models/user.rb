@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paranoia
   include Mongoid::Paperclip
 
   attr_accessible :name, :email, :password, :password_confirmation, :team_id, :profile, :image, :current_project_id, :current_project, :current_release_id, :current_release 
