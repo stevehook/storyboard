@@ -23,8 +23,8 @@ class SessionsController < ApplicationController
     if release
       user = user_session.current_user
       if user
-        user.project = release.project
-        user.release = release
+        user.current_project = release.project
+        user.current_release = release
         user.save!
         user_session.set_current_project(user)
       end
