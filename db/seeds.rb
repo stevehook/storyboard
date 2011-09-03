@@ -36,12 +36,27 @@ derek = User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :passwor
 mary = User.create!(:name => 'Mary', :email => 'mary@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
 norman = User.create!(:name => 'Norman', :email => 'norman@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
 
-team1 = Team.create(:name => 'Team 1', :product_owner => alice, :scrum_master => bob, :members => [bob, derek, mary, norman])
+team1 = Team.create(:name => 'Team 1', :product_owner => alice, :scrum_master => bob, :members => [alice, bob, derek, mary, norman])
 
+eric = User.create!(:name => 'Eric', :email => 'eric@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
+marjory = User.create!(:name => 'Marjory', :email => 'marjory@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
+henry = User.create!(:name => 'Henry', :email => 'henry@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
+dorothy = User.create!(:name => 'Dorothy', :email => 'dorothy@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
+humphrey = User.create!(:name => 'Humphrey', :email => 'humphrey@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
+
+team2 = Team.create(:name => 'Team 1', :product_owner => marjory, :scrum_master => humphrey, :members => [marjory, eric, henry, dorothy, humphrey])
+
+alice.update(:team => team1)
 bob.update(:team => team1)
 derek.update(:team => team1)
 mary.update(:team => team1)
 norman.update(:team => team1)
+
+marjory.update(:team => team2)
+eric.update(:team => team2)
+henry.update(:team => team2)
+dorothy.update(:team => team2)
+humphrey.update(:team => team2)
 
 storyboard_category = Category.create(:name => 'Storyboard')
 other_category = Category.create(:name => 'Other')
