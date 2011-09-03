@@ -24,11 +24,5 @@
       %td.labelCell= f.label :team
       %td= f.collection_select :team_id, Team.all, :id, :name, { :include_blank => true }
     %tr
-      %td.labelCell= f.label :project
-      %td= f.collection_select :project_id, Project.all, :id, :title, { :include_blank => true }
-    %tr
-      %td.labelCell= f.label :release
-      %td= f.collection_select :release_id, Release.all, :id, :title, { :include_blank => true }
-    %tr
       %td
       %td= f.submit
