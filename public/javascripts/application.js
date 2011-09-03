@@ -94,6 +94,10 @@ $(function() {
               }
             }
           });
+          $(".listFilterPanel select").change(function() {
+            var $this = $(this);
+            $('#story_filter_form').submit();
+          });
         }
       };
       this.productBacklog = self;
