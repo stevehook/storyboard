@@ -1,7 +1,15 @@
 - page_heading 'Team List'
-%div.listPanel
-  = render @teams.each
-%br
-- if can? :manage, Team
-  %div.listItem.noBorder
-    = link_to 'Add Team', new_team_path
+%div.releaseMainPanel
+  %div.subPanel
+    = sub_heading 'Teams'
+
+    %div.listPanel
+      = render @teams.each
+    %br
+    - if can? :manage, Team
+      %div.listItem.noBorder
+        = link_to 'Add Team', new_team_path
+
+%div.releaseSidePanel
+  %div.subPanel
+    = sub_heading 'Users'
