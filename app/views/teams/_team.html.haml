@@ -6,12 +6,5 @@
     %span.listItemTitle= team.name
   %br
   - team.members.collect do |user| 
-    %div.userPanel
-      = image_tag user.image.nil? ? '/images/default_user.gif' : user.image.url, :size => '48x48'
-      %span.userName
-        = link_to(user.name, user_path(user.id))
-      - if team.scrum_master && team.scrum_master.id == user.id
-        %div.userRole Scrum Master
-      - if team.product_owner && team.product_owner.id == user.id
-        %div.userRole Product Owner
+    = render 'team_user', :user => user, :team => team
   %div.clear

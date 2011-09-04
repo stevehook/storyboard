@@ -15,7 +15,9 @@
     = sub_heading 'Unallocated Users'
 
     %div.listPanel
-      = render @unallocated_users.each
+      - @unallocated_users.each do |user|
+        = render 'team_user', :user => user, :team => nil
+      %div.clear
     %br
     - if can? :manage, User
       %div.listItem.noBorder
