@@ -12,4 +12,9 @@
 
 %div.releaseSidePanel
   %div.subPanel
-    = sub_heading 'Users'
+    = sub_heading 'Unallocated Users'
+
+    %br
+    - if can? :manage, User
+      %div.listItem.noBorder
+        = link_to 'Add User', new_user_path
