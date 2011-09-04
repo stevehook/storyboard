@@ -18,6 +18,7 @@ class User
 
   validates_presence_of :name, :email
   validates_presence_of :password, :password_confirmation, :on => :create
+  validates_confirmation_of :password
 
   def encrypt_password
     if password.present?
