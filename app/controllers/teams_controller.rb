@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
   # GET /teams.xml
   def index
     @teams = Team.all
+    @unallocated_users = User.unallocated_users
 
     respond_to do |format|
       format.html # index.html.erb

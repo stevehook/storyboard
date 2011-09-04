@@ -20,6 +20,8 @@ class User
   validates_presence_of :password, :password_confirmation, :on => :create
   validates_confirmation_of :password
 
+  scope :unallocated_users, where(:team_id => nil)
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
