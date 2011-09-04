@@ -1,5 +1,9 @@
 %div.listItem
-  %span.listItemTitle= team.name
+  - if can? :manage, team
+    %span.listItemTitle
+      = link_to team.name, edit_team_path(team.id)
+  - else
+    %span.listItemTitle= team.name
   %br
   - team.members.collect do |user| 
     %div.userPanel
@@ -11,7 +15,3 @@
       - if team.product_owner && team.product_owner.id == user.id
         %div.userRole Product Owner
   %div.clear
-    
-  %br
-  - if can? :manage, team
-    %a{ :href => edit_team_path(team.id) } Edit
