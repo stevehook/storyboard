@@ -5,7 +5,7 @@ class User
   include Mongoid::Paperclip
 
   attr_accessible :name, :email, :password, :password_confirmation, :team_id, :profile, :image, :current_project_id, :current_project, :current_release_id, :current_release 
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
   field :name, :data_type => String
   field :email, :data_type => String
   field :profile, :data_type => String
