@@ -17,7 +17,7 @@ class User
   referenced_in :current_release, :class_name => 'Release'
 
   validates_presence_of :name, :email
-  validates_presence_of :password, :on => :create
+  validates_presence_of :password, :password_confirmation, :on => :create
 
   def encrypt_password
     if password.present?

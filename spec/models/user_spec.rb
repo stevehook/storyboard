@@ -25,7 +25,7 @@ describe User do
     let(:user) { User.new(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret') }
     it "should be valid" do
       user.valid?.should be_false
-      user.errors[:password].any?.should be_true
+      user.errors[:password].any?.should be_false
       user.errors[:password_confirmation].any?.should be_true
     end
   end
