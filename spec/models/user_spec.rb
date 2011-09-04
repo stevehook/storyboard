@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  context "when creating a new user with a name, email and password" do
-    let(:user) { User.new(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret') }
+  context "when creating a new user with a name, email, password and password_confirmation" do
+    let(:user) { User.new(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret', :password_confirmation => 'secret') }
     it "should be valid" do
       user.valid?.should be_true
       user.errors[:name].any?.should be_false
@@ -11,6 +11,22 @@ describe User do
 
     it "password_hash should not be set" do
       user.password_hash.should be_nil
+    end
+  end
+
+  context "when creating a new user with a name, email, password and (non-matching) password_confirmation" do
+    let(:user) { User.new(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret', :password_confirmation => 'not_secret') }
+    it "should be valid" do
+      user.valid?.should be_false
+    end
+  end
+
+  context "when creating a new user with a name, email, password and missing password_confirmation" do
+    let(:user) { User.new(:name => 'Fred', :email => 'fred@nocompany.com', :password => 'secret') }
+    it "should be valid" do
+      user.valid?.should be_false
+      user.errors[:password].any?.should be_true
+      user.errors[:password_confirmation].any?.should be_true
     end
   end
 
