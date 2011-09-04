@@ -2,3 +2,6 @@
 %div.listPanel
   = render @teams.each
 %br
+- if can? :manage, Team
+  %div.listItem.noBorder
+    = link_to 'Add Team', new_team_path
