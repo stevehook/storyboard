@@ -30,21 +30,21 @@ sprint9 = Sprint.create(:release => release20, :title => '9', :order => 9, :star
 release20.current_sprint = sprint2
 release20.update
 
-bob = User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
-alice = User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
-derek = User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
-mary = User.create!(:name => 'Mary', :email => 'mary@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
-norman = User.create!(:name => 'Norman', :email => 'norman@nocompany.com', :password => 'secret', :current_release => release20, :current_project => project_x)
+bob = User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20, :current_project => project_x)
+alice = User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20, :current_project => project_x)
+derek = User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20, :current_project => project_x)
+mary = User.create!(:name => 'Mary', :email => 'mary@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20, :current_project => project_x)
+norman = User.create!(:name => 'Norman', :email => 'norman@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20, :current_project => project_x)
 
 team1 = Team.create(:name => 'Team 1', :product_owner => alice, :scrum_master => bob, :members => [alice, bob, derek, mary, norman])
 
-eric = User.create!(:name => 'Eric', :email => 'eric@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
-marjory = User.create!(:name => 'Marjory', :email => 'marjory@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
-henry = User.create!(:name => 'Henry', :email => 'henry@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
-dorothy = User.create!(:name => 'Dorothy', :email => 'dorothy@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
-humphrey = User.create!(:name => 'Humphrey', :email => 'humphrey@nocompany.com', :password => 'secret', :current_release => release20Y, :current_project => project_y)
+eric = User.create!(:name => 'Eric', :email => 'eric@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20Y, :current_project => project_y)
+marjory = User.create!(:name => 'Marjory', :email => 'marjory@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20Y, :current_project => project_y)
+henry = User.create!(:name => 'Henry', :email => 'henry@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20Y, :current_project => project_y)
+dorothy = User.create!(:name => 'Dorothy', :email => 'dorothy@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20Y, :current_project => project_y)
+humphrey = User.create!(:name => 'Humphrey', :email => 'humphrey@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :current_release => release20Y, :current_project => project_y)
 
-team2 = Team.create(:name => 'Team 1', :product_owner => marjory, :scrum_master => humphrey, :members => [marjory, eric, henry, dorothy, humphrey])
+team2 = Team.create(:name => 'Team 2', :product_owner => marjory, :scrum_master => humphrey, :members => [marjory, eric, henry, dorothy, humphrey])
 
 alice.update(:team => team1)
 bob.update(:team => team1)
