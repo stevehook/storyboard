@@ -1,23 +1,10 @@
-= form_for(@team) do |f|
-  - if @team.errors.any?
-    %div.error_explanation
-      %h2= "#{ pluralize(@team.errors.count, 'error') } prohibited this team from being saved:"
-
-      %ul
-        - @team.errors.full_messages.each do |msg|
-          %li= msg
-
-  = f.hidden_field :id
-  %table
-    %tr
-      %td.labelCell= f.label :name
-      %td= f.text_field :name
-    %tr
-      %td.labelCell= f.label :scrum_master
-      %td= f.collection_select :scrum_master_id, @team.members, :id, :name, { :include_blank => true }
-    %tr
-      %td.labelCell= f.label :product_owner
-      %td= f.collection_select :product_owner_id, User.all, :id, :name, { :include_blank => true }
-    %tr.actions
-      %td
-      %td= f.submit
+- url = @team.new_record? ? team_path : team_path(@team)
+= semantic_form_for(@team, :url => url) do |form|
+  = form.inputs do
+    = form.input :name
+    = form.input :scrum_master, :collection => @team.members
+    = form.input :product_owner, :collection => @team.members
+  = form.buttons do
+    = form.commit_button
+    %li.button.cancel
+      %input{ :type => 'submit', :name => 'cancel', :value => 'Cancel' }
