@@ -32,3 +32,15 @@
     %tr
       %td
       %td= f.submit
+
+
+
+- url = @user.new_record? ? user_path : user_path(@user)
+= semantic_form_for(@user, :url => url) do |form|
+  = form.inputs do
+    = form.input :name
+    = form.input :email
+  = form.buttons do
+    = form.commit_button
+    %li.button.cancel
+      %input{ :type => 'submit', :name => 'cancel', :value => 'Cancel' }
