@@ -1,45 +1,13 @@
-- form_for(@user, :html => { :multipart => true }) do |f|
-  - if @user.errors.any?
-    %div#error_explanation
-      %h2= pluralize(@user.errors.count, 'error') + 'prohibited this user from being saved:'
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-
-  = f.hidden_field :id
-  %table
-    %tr
-      %td.labelCell= f.label :name
-      %td= f.text_field :name
-    %tr
-      %td.labelCell= f.label :email
-      %td= f.text_field :email
-    %tr
-      %td.labelCell= f.label :password
-      %td= f.password_field :password
-    %tr
-      %td.labelCell= f.label :password_confirmation
-      %td= f.password_field :password_confirmation
-    %tr
-      %td.labelCell= f.label :profile
-      %td= f.text_area :profile
-    %tr
-      %td.labelCell= f.label :image
-      %td= f.file_field :image
-    %tr
-      %td.labelCell= f.label :team
-      %td= f.collection_select :team_id, Team.all, :id, :name, { :include_blank => true }
-    %tr
-      %td
-      %td= f.submit
-
-
-
 - url = @user.new_record? ? user_path : user_path(@user)
 = semantic_form_for(@user, :url => url) do |form|
   = form.inputs do
     = form.input :name
     = form.input :email
+    = form.input :password
+    = form.input :password_confirmation
+    = form.input :profile
+    = form.input :image
+    = form.input :team, :collection => Team.all
   = form.buttons do
     = form.commit_button
     %li.button.cancel
