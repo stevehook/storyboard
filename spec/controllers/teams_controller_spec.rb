@@ -46,13 +46,13 @@ describe TeamsController do
     describe "with valid params" do
       it "assigns a newly created team as @team" do
         Team.stub(:new).with({'these' => 'params'}) { mock_team(:save => true) }
-        post :create, :team => {'these' => 'params'}
+        post :create, :team => {'these' => 'params'}, :commit => 'commit'
         assigns(:team).should be(mock_team)
       end
 
       it "redirects to the created team" do
         Team.stub(:new) { mock_team(:save => true) }
-        post :create, :team => {}
+        post :create, :team => {}, :commit => 'commit'
         response.should redirect_to(team_url(mock_team))
       end
     end
@@ -60,13 +60,13 @@ describe TeamsController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved team as @team" do
         Team.stub(:new).with({'these' => 'params'}) { mock_team(:save => false) }
-        post :create, :team => {'these' => 'params'}
+        post :create, :team => {'these' => 'params'}, :commit => 'commit'
         assigns(:team).should be(mock_team)
       end
 
       it "re-renders the 'new' template" do
         Team.stub(:new) { mock_team(:save => false) }
-        post :create, :team => {}
+        post :create, :team => {}, :commit => 'commit'
         response.should render_template("new")
       end
     end
@@ -74,21 +74,27 @@ describe TeamsController do
 
   describe "PUT update" do
     describe "with valid params" do
+      it "cancels the requested team" do
+        Team.stub(:find).with("37") { mock_team }
+        mock_team.should_not_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => "37", :team => {'these' => 'params'}
+      end
+
       it "updates the requested team" do
         Team.stub(:find).with("37") { mock_team }
         mock_team.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :team => {'these' => 'params'}
+        put :update, :id => "37", :team => {'these' => 'params'}, :commit => 'commit'
       end
 
       it "assigns the requested team as @team" do
         Team.stub(:find) { mock_team(:update_attributes => true) }
-        put :update, :id => "1"
+        put :update, :id => "1", :commit => 'commit'
         assigns(:team).should be(mock_team)
       end
 
       it "redirects to the team" do
         Team.stub(:find) { mock_team(:update_attributes => true) }
-        put :update, :id => "1"
+        put :update, :id => "1", :commit => 'commit'
         response.should redirect_to(team_url(mock_team))
       end
     end
@@ -96,13 +102,13 @@ describe TeamsController do
     describe "with invalid params" do
       it "assigns the team as @team" do
         Team.stub(:find) { mock_team(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => "1", :commit => 'commit'
         assigns(:team).should be(mock_team)
       end
 
       it "re-renders the 'edit' template" do
         Team.stub(:find) { mock_team(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => "1", :commit => 'commit'
         response.should render_template("edit")
       end
     end

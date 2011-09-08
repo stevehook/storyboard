@@ -1,4 +1,4 @@
-- url = @team.new_record? ? team_path : team_path(@team)
+- url = @team.new_record? ? teams_path : team_path(@team)
 = semantic_form_for(@team, :url => url) do |form|
   = form.inputs do
     = form.input :name
