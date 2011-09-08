@@ -43,32 +43,40 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.xml
   def create
-    @team = Team.new(params[:team])
+    if params[:commit]
+      @team = Team.new(params[:team])
 
-    respond_to do |format|
-      if @team.save
-        format.html { redirect_to(@team, :notice => 'Team was successfully created.') }
-        format.xml  { render :xml => @team, :status => :created, :location => @team }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @team.save
+          format.html { redirect_to(@team, :notice => 'Team was successfully created.') }
+          format.xml  { render :xml => @team, :status => :created, :location => @team }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(teams_url)
     end
   end
 
   # PUT /teams/1
   # PUT /teams/1.xml
   def update
-    @team = Team.find(params[:id])
+    if params[:commit]
+      @team = Team.find(params[:id])
 
-    respond_to do |format|
-      if @team.update_attributes(params[:team])
-        format.html { redirect_to(@team, :notice => 'Team was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @team.update_attributes(params[:team])
+          format.html { redirect_to(@team, :notice => 'Team was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(teams_url)
     end
   end
 

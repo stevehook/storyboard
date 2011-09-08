@@ -36,34 +36,42 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
+    if params[:commit]
+      @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(teams_url, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @user.save
+          format.html { redirect_to(teams_url, :notice => 'User was successfully created.') }
+          format.xml  { render :xml => @user, :status => :created, :location => @user }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(teams_url)
     end
   end
 
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
-    logger.info params['user[image]']
-    logger.info @user.image
+    if params[:commit]
+      @user = User.find(params[:id])
+      logger.info params['user[image]']
+      logger.info @user.image
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(teams_url, :notice => 'User was successfully created.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          format.html { redirect_to(teams_url, :notice => 'User was successfully created.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to(teams_url)
     end
   end
 end
