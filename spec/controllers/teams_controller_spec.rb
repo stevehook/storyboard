@@ -53,7 +53,7 @@ describe TeamsController do
       it "redirects to the created team" do
         Team.stub(:new) { mock_team(:save => true) }
         post :create, :team => {}, :commit => 'commit'
-        response.should redirect_to(team_url(mock_team))
+        response.should redirect_to(teams_url())
       end
     end
 
@@ -95,7 +95,7 @@ describe TeamsController do
       it "redirects to the team" do
         Team.stub(:find) { mock_team(:update_attributes => true) }
         put :update, :id => "1", :commit => 'commit'
-        response.should redirect_to(team_url(mock_team))
+        response.should redirect_to(teams_url())
       end
     end
 
