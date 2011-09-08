@@ -4,10 +4,11 @@ class User
   include Mongoid::Paranoia
   include Mongoid::Paperclip
 
-  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :profile, :image, :current_project_id, :current_project, :current_release_id, :current_release 
+  attr_accessible :name, :email, :password, :password_confirmation, :team_id, :profile, :image, :current_project_id, :current_project, :current_release_id, :current_release, :job_title
   attr_accessor :password, :password_confirmation
   field :name, :data_type => String
   field :email, :data_type => String
+  field :job_title, :data_type => String
   field :profile, :data_type => String
   has_mongoid_attached_file :image
   field :password_hash,  :data_type => String

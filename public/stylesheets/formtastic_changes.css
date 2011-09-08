@@ -40,6 +40,7 @@ form.formtastic fieldset > ol > li.search input { width: 82%; }
 form.formtastic fieldset > ol > li.password input { max-width: 200px; }
 form.formtastic fieldset > ol > li#user_name_input input { max-width: 500px; }
 form.formtastic fieldset > ol > li#user_email_input input { max-width: 500px; }
+form.formtastic fieldset > ol > li#user_job_title_input input { max-width: 500px; }
 
 
 input#task_remaining, input#task_estimate {
