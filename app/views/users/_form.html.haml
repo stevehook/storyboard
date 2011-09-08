@@ -5,7 +5,7 @@
     = form.input :email
     = form.input :password
     = form.input :password_confirmation
-    = form.input :profile
+    = form.input :profile, :as => :text
     = form.input :image
     = form.input :team, :collection => Team.all
   = form.buttons do
