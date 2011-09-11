@@ -3,7 +3,11 @@ require 'spec_helper'
 describe 'Teams', :type => :request do
   describe 'GET /teams' do
     before(:each) do
-      Team.create(:name => 'Team 1')
+      # TODO: Need to convert this to use Factory Girl...
+      team = Team.create(:name => 'Team 1')
+      User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :password_confirmation => 'secret')
+      User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret', :password_confirmation => 'secret')
+      User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :team_id => team.id)
       visit teams_path
     end
 
@@ -17,6 +21,22 @@ describe 'Teams', :type => :request do
 
     it 'does not show Team 2' do
       page.should_not have_content('Team 2')
+    end
+
+    it 'shows Bob and Alice in the Unallocated Users section' do
+      unallocate_users_div = page.find('#unallocatedUsersPanel')
+      unallocate_users_div.should_not be_nil
+      unallocate_users_div.should have_content('Bob')
+      unallocate_users_div.should have_content('Alice')
+      unallocate_users_div.should_not have_content('Derek')
+    end
+
+    it 'shows Derek in the Team 1 panel' do
+      teams_div = page.find('#teamsPanel')
+      teams_div.should_not be_nil
+      teams_div.should_not have_content('Bob')
+      teams_div.should_not have_content('Alice')
+      teams_div.should have_content('Derek')
     end
   end
 

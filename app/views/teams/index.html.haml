@@ -1,4 +1,4 @@
-%div.releaseMainPanel
+%div.releaseMainPanel#teamsPanel
   - page_heading 'Team List'
   %div.subPanel
     = sub_heading 'Teams'
@@ -10,7 +10,7 @@
       %div.listItem.noBorder
         = link_to 'Add Team', new_team_path
 
-%div.releaseSidePanel
+%div.releaseSidePanel#unallocatedUsersPanel
   %div.subPanel
     = sub_heading 'Unallocated Users'
 
