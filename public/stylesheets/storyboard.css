@@ -279,7 +279,6 @@ td {
 .userPanel {
   margin: 4px 6px 6px 4px;
   padding: 2px;
-  float: left;
 }
 
 .userPanel img {
@@ -287,15 +286,19 @@ td {
   -moz-box-shadow: 5px 5px 5px #ccc;
   -webkit-box-shadow: 5px 5px 5px #ccc;
   box-shadow: 5px 5px 5px #ccc;
+  float: left;
   display: block;
   margin: auto;
+}
+
+.userTextPanel {
+  float: left;
+  padding-left: 10px;
 }
 
 .userName {
   margin-top: 10px;
   width: 100%;
-  text-align: center;
-  display: block;
 }
 
 .userRole {
