@@ -1,7 +1,7 @@
 %div.userPanel
   = image_tag user.image.nil? ? '/images/default_user.gif' : user.image.url, :size => '48x48'
   %div.userTextPanel
-    %span.userName
+    %span.userName.listItemTitle
       = link_to(user.name, user_path(user.id))
     - if team && team.scrum_master && team.scrum_master.id == user.id
       %span.userRole Scrum Master

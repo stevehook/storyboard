@@ -304,6 +304,11 @@ td {
 .userRole {
   text-align: center;
   font-style: italic;
+  font-weight: bold;
+}
+
+.userJobTitle {
+  font-style: italic;
 }
 
 #planningSelected .listItem, #planningBacklog .listItem {
