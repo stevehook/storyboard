@@ -1,6 +1,9 @@
 require 'spec_helper'
+require 'requests/request_spec_helpers'
 
 describe 'Teams', :type => :request do
+  include RequestSpecHelpers
+
   describe 'GET /teams' do
     before(:each) do
       # TODO: Need to convert this to use Factory Girl...
@@ -8,6 +11,11 @@ describe 'Teams', :type => :request do
       User.create!(:name => 'Bob', :email => 'bob@nocompany.com', :password => 'secret', :password_confirmation => 'secret')
       User.create!(:name => 'Alice', :email => 'alice@nocompany.com', :password => 'secret', :password_confirmation => 'secret')
       User.create!(:name => 'Derek', :email => 'derek@nocompany.com', :password => 'secret', :password_confirmation => 'secret', :team_id => team.id)
+      project = Project.create(:title => 'Project X')
+      Project.create(:title => 'Project Y')
+      Project.create(:title => 'Project Z')
+      release = Release.create(:title => 'Version 1.0', :order => 1, :start_date => Time.utc(2010, 'feb', 12), :project => project)
+      logon(project, release)
       visit teams_path
     end
 
@@ -37,6 +45,18 @@ describe 'Teams', :type => :request do
       teams_div.should_not have_content('Bob')
       teams_div.should_not have_content('Alice')
       teams_div.should have_content('Derek')
+    end
+
+    it "shows the new User form when the 'Add User' link is clicked" do
+      page.should have_link('Add User')
+      find_link('Add User').click
+      page.should have_content('New User')
+    end
+
+    it "shows the new Team form when the 'Add Team' link is clicked" do
+      page.should have_link('Add Team')
+      page.click_link('Add Team')
+      page.should have_content('New Team')
     end
   end
 
