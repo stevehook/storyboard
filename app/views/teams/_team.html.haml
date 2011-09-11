@@ -1,6 +1,6 @@
 %div.listItem
   - if can? :manage, team
-    %span.listItemTitle
+    %span.listItemTitle.listItemMainTitle
       = link_to team.name, edit_team_path(team.id)
   - else
     %span.listItemTitle= team.name
