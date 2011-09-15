@@ -1,4 +1,4 @@
-%div.userPanel.dragSource
+%div.userPanel.dragSource{:'data-id' => user.id}
   = image_tag user.image.nil? ? '/images/default_user.gif' : user.image.url, :size => '48x48'
   %div.userTextPanel
     %span.userName.listItemTitle

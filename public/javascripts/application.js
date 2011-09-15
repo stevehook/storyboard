@@ -133,9 +133,20 @@ $(function() {
               ui.draggable.css('left', '');
               ui.draggable.css('position', '');
               ui.draggable.appendTo(event.target);
-              var id = ui.draggable.attr('data-id');
+              var userId = ui.draggable.attr('data-id');
               var target = $(this);
+              console.log('user id: ' + userId);
+              $this = $(this);
+              var teamId = $this.attr('data-id');
+              console.log('team id: ' + teamId);
               // TODO: Make Ajax request to the server to move the user
+              $.ajax({
+                url: '/users/' + userId,
+                type: 'POST',
+                dataType: 'json',
+                data: { _method: 'PUT', user: { team_id: teamId }, commit: true },
+                success: function(result) { console.log('moved'); }
+              });
             }
           });
         }

@@ -65,9 +65,11 @@ class UsersController < ApplicationController
         if @user.update_attributes(params[:user])
           format.html { redirect_to(teams_url, :notice => 'User was successfully created.') }
           format.xml  { head :ok }
+          format.json  { head :ok }
         else
           format.html { render :action => "edit" }
           format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+          format.json  { render :xml => @user.errors, :status => :unprocessable_entity }
         end
       end
     else
