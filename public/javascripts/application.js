@@ -135,11 +135,9 @@ $(function() {
               ui.draggable.appendTo(event.target);
               var userId = ui.draggable.attr('data-id');
               var target = $(this);
-              console.log('user id: ' + userId);
               $this = $(this);
               var teamId = $this.attr('data-id');
-              console.log('team id: ' + teamId);
-              // TODO: Make Ajax request to the server to move the user
+              // TODO: Doesn't work for moving users into the unallocated group?
               $.ajax({
                 url: '/users/' + userId,
                 type: 'POST',
