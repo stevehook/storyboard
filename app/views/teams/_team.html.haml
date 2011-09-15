@@ -1,4 +1,4 @@
-%div.listItem
+%div.listItem.dragTarget
   - if can? :manage, team
     %span.listItemTitle.listItemMainTitle
       = link_to team.name, edit_team_path(team.id)

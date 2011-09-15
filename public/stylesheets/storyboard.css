@@ -281,6 +281,14 @@ td {
   padding: 2px;
 }
 
+.userPanel:hover {
+  background: #ddf none no-repeat scroll;
+}
+
+.userPanel img:hover {
+  cursor: move;
+}
+
 .userPanel img {
   -moz-border-radius: 6px;
   -moz-box-shadow: 5px 5px 5px #ccc;

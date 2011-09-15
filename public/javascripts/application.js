@@ -106,6 +106,46 @@ $(function() {
   };
 })(jQuery);
 
+// teamOrganisation plugin - used on the admin page to enable the drag and drop operations
+// to move people between different teams
+(function($) {
+  var defaults = {};
+  $.fn.teamOrganisation = function() {        
+    return this.each(function() {
+      if (this.teamOrganisation) { return false; }
+      var self = {   
+        initialize: function() {
+          $('.dragSource').live('mouseover', function(event) {
+            $this = $(this);
+            if (!$this.data('initdrag')) {
+              $this.data("initdrag", true); 
+              $this.draggable({
+                cursor: 'move',
+                revert: 'invalid',
+                handle: 'img',
+                update: function(event, ui) {
+                }
+              });
+            }
+          });
+          $(".dragTarget").droppable({
+            drop: function(event, ui) {
+              ui.draggable.css('left', '');
+              ui.draggable.css('position', '');
+              ui.draggable.appendTo(event.target);
+              var id = ui.draggable.attr('data-id');
+              var target = $(this);
+              // TODO: Make Ajax request to the server to move the user
+            }
+          });
+        }
+      };
+      this.teamOrganisation = self;
+      self.initialize();      
+    });
+  };
+})(jQuery);
+
 // sprintPlanning plugin - used on the sprint planning page to enable the drag and drop operations
 // between backlog and committed lists
 (function($) {

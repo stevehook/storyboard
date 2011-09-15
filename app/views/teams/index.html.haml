@@ -14,7 +14,7 @@
   %div.subPanel
     = sub_heading 'Unallocated Users'
 
-    %div.listPanel
+    %div.listPanel.dragTarget
       - @unallocated_users.each do |user|
         = render 'team_user', :user => user, :team => nil
       %div.clear
@@ -22,3 +22,6 @@
     - if can? :manage, User
       %div.listItem.noBorder
         = link_to 'Add User', new_user_path
+
+:javascript
+  $('.pageBody').teamOrganisation();
