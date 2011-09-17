@@ -128,7 +128,6 @@ $(function() {
               });
             }
           });
-          console.log($(".dragTarget").length);
           $(".dragTarget").droppable({
             tolerance: 'pointer',
             hoverClass: 'dragTargetHover',
@@ -146,7 +145,6 @@ $(function() {
                 type: 'POST',
                 dataType: 'json',
                 data: { _method: 'PUT', user: { team_id: teamId }, commit: true },
-                success: function(result) { console.log('moved'); }
               });
             }
           });
@@ -188,7 +186,6 @@ $(function() {
               var target = $(this);
               var sprint_id = target.attr('data-sprint');
               if (sprint_id) {
-                console.log('committing story ' + id + ' to sprint ' + sprint_id);
                 $.post('/stories/' +  id + '/commit?sprint_id=' + sprint_id, 
                   {},
                   function(result) {
@@ -198,7 +195,6 @@ $(function() {
                   }
                 );
               } else {
-                console.log('uncommitting story ' + id);
                 $.post('/stories/' +  id + '/uncommit', 
                   {},
                   function(result) {
@@ -212,8 +208,6 @@ $(function() {
           });
           $('#planningBacklog .pagination a').live('click', function () {  
             $.get(this.href, function(result) {
-                console.log(result);
-                console.log($('#planningBacklog'));
                 $('#planningBacklog').html(result); 
               });  
             return false;  
