@@ -289,6 +289,10 @@ td {
   cursor: move;
 }
 
+.dragTargetHover {
+  background: #eee none no-repeat scroll;
+}
+
 .userPanel img {
   -moz-border-radius: 6px;
   -moz-box-shadow: 5px 5px 5px #ccc;

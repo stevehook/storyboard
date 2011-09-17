@@ -128,7 +128,10 @@ $(function() {
               });
             }
           });
+          console.log($(".dragTarget").length);
           $(".dragTarget").droppable({
+            tolerance: 'pointer',
+            hoverClass: 'dragTargetHover',
             drop: function(event, ui) {
               ui.draggable.css('left', '');
               ui.draggable.css('position', '');
@@ -137,7 +140,6 @@ $(function() {
               var target = $(this);
               $this = $(this);
               var teamId = $this.attr('data-id');
-              // TODO: Doesn't work for moving users into the unallocated group?
               $.ajax({
                 url: '/users/' + userId,
                 type: 'POST',
