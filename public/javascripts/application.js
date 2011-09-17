@@ -140,6 +140,7 @@ $(function() {
               var target = $(this);
               $this = $(this);
               var teamId = $this.attr('data-id');
+              if (!teamId) { teamId = ''; }
               $.ajax({
                 url: '/users/' + userId,
                 type: 'POST',
