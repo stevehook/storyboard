@@ -10,8 +10,7 @@ describe Story do
 
   context "when creating a new valid story" do
     before(:each) do
-      @story = Story.create(:title => 'test title', :description => 'test description', :estimate => 2)
-      @story.before_save
+      @story = Story.new(:title => 'test title', :description => 'test description', :estimate => 2)
     end
 
     it "should be valid if mandatory attributes are specified" do
@@ -25,20 +24,26 @@ describe Story do
       @story.save.should be_true
     end
 
-    it "should have a default priority of 10000" do
-      @story.priority.should == 10000
-    end
-    
-    it "should have a default status of open" do
-      @story.status.should == :open
-    end
+    context "after save" do
+      before(:each) do
+        @story.before_save
+      end
 
-    it "should have 1 history item" do
-      @story.history.length.should == 1
-    end
+      it "should have a default priority of 10000" do
+        @story.priority.should == 10000
+      end
+      
+      it "should have a default status of open" do
+        @story.status.should == :open
+      end
 
-    it "first history item should have correct title" do
-      @story.history[0].title.should == 'Story created'
+      it "should have 1 history item" do
+        @story.history.length.should == 1
+      end
+
+      it "first history item should have correct title" do
+        @story.history[0].title.should == 'Story created'
+      end
     end
   end
 
