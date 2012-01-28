@@ -13,7 +13,7 @@ describe SessionsController do
     it "should be successful" do
       get 'destroy'
       response.should be_redirect
-      redirect_to root_url, :notice => "Logged out!"
+      redirect_to root_url
     end
   end
 

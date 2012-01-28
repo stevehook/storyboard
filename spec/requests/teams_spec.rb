@@ -67,7 +67,7 @@ describe 'Teams', :type => :request do
 
     it 'creates a new team' do
       fill_in 'team_name', :with => 'Team 2'
-      click_button 'team_submit'
+      click_button 'Create Team'
       new_team = Team.where(:name => 'Team 2').first
       new_team.should_not be_nil
       new_team.name.should == 'Team 2'
@@ -86,7 +86,7 @@ describe 'Teams', :type => :request do
 
     it 'updates the form name' do
       fill_in 'team_name', :with => 'Team 4'
-      click_button 'team_submit'
+      click_button 'Update Team'
       team = Team.find(@new_team.id)
       team.should_not be_nil
       team.name.should == 'Team 4'
