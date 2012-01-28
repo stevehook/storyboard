@@ -144,10 +144,10 @@ class Story
       self.history << StoryHistoryItem.new(:title => "Story created", :user => User.current, :created_at => Time.now.utc)
     end
 
-    if self.status_changed?
+    if !self.new_record? && self.status_changed?
       self.history << StoryHistoryItem.new(:title => "Status changed to #{self.status}", :user => User.current)
     end
-    
+
     if !self._sprint.nil? && self._sprint_id_changed? 
       self.history << StoryHistoryItem.new(:title => "Added to sprint #{self.sprint.title}", :user => User.current)
     end

@@ -38,6 +38,7 @@ describe Story do
       end
 
       it "should have 1 history item" do
+        puts @story.history.inspect
         @story.history.length.should == 1
       end
 
@@ -114,7 +115,7 @@ describe Story do
 
   context "when a story is done" do
     before(:each) do
-      @story = Story.create(:title => 'test title', :description => 'test description')
+      @story = Story.create!(:title => 'test title', :description => 'test description', :estimate => 1)
       @story.status = :done
       @story.before_save
     end
