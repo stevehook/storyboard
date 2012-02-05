@@ -29,9 +29,8 @@ describe Team do
     it "a restored user should not be destroyed?" do
       arthur.delete
       arthur.restore
-      arthur = User.find_by_name('Arthur')
-      arthur.should_not be_nil
-      arthur.destroyed?.should be_false
+      arthur.deleted_at.should be_nil
+      #arthur.destroyed?.should be_false
     end
   end
 end
