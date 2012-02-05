@@ -1,4 +1,4 @@
-- form_for(@sprint) do |f|
+= form_for(@sprint) do |f|
   - if @sprint.errors.any?
     %div#error_explanation
       %h2= "#{ pluralize(@sprint.errors.count, "error") } prohibited this sprint from being saved:"
